@@ -18,6 +18,13 @@ const RULES: [string, RegExp][] = [
 	['personal attack or slur', /\b(idiots?|morons?|scum|retard\w*)\b/i]
 ];
 
+/** Segment words that call for the crisis line on screen (G10, docs/PLAN.md section 0). Clinical use
+ * ("suicidal ideation" as an endpoint) is allowed on air, but the line shows with it. */
+export const CRISIS = /\b(suicid\w*|self[- ]harm\w*|kill (?:myself|themselves|himself|herself)|end (?:my|their|his|her) (?:own )?life|overdos\w*)\b/i;
+export function needsCrisisLine(texts: (string | undefined)[]): boolean {
+	return texts.some((t) => !!t && CRISIS.test(t));
+}
+
 export function screenQuote(text: string): ScreenResult {
 	const reasons: string[] = [];
 	const t = text.trim();

@@ -11,6 +11,8 @@
 	import { Channel } from '$lib/player/channel.svelte';
 	import { notesFor } from '$lib/player/cite';
 	import { clockText } from '$lib/player/format';
+	import { needsCrisisLine } from '$lib/pipeline/screen';
+	import { beatTexts } from '$lib/pipeline/check';
 
 	const q = page.url.searchParams;
 	const ch = new Channel({
@@ -42,6 +44,7 @@
 	const opinion = $derived(!!seg && (!!seg.forwardLooking || ch.slot?.show === 'mad-science'));
 	const progress = $derived(ch.elapsed / Math.max(0.1, ch.elapsed + ch.remaining));
 	const clock = $derived(ch.now ? clockText(ch.now) : '');
+	const crisis = $derived(!!seg && needsCrisisLine([seg.title, ...seg.beats.flatMap((b) => (b.type === 'quote' ? [b.text] : beatTexts(b)))]));
 	const key = $derived(`${ch.slot?.start}:${ch.entryIndex}:${ch.beatIndex}:${ch.padded}`);
 </script>
 
@@ -74,6 +77,7 @@
 			{progress}
 			beatKey={key}
 			{notes}
+			{crisis}
 		>
 			{#key key}
 				{#if seg && beat}
@@ -91,7 +95,7 @@
 		<UpNext items={next} />
 	</div>
 	<p class="site-foot">
-		Text only. Anchors and panelists are AI characters, not real people. Quotes are real, word for word, with their source. Not medical advice.
+		Text only. Anchors and panelists are AI characters, not real people. Quotes are real, word for word, with their source. Not medical advice. <a href="/about">About DNBC</a>
 	</p>
 </div>
 

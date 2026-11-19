@@ -13,6 +13,7 @@
 		progress = 0,
 		beatKey = '',
 		notes,
+		crisis = false,
 		children
 	}: {
 		show: string;
@@ -24,6 +25,8 @@
 		beatKey?: string;
 		/** Footnotes for the current beat. Undefined when the segment has no citations (no strip). */
 		notes?: Note[];
+		/** Show the crisis line under the picture (segments that mention suicide, self-harm, or overdose). */
+		crisis?: boolean;
 		children: Snippet;
 	} = $props();
 </script>
@@ -43,9 +46,24 @@
 	</div>
 	<div class="progress"><span style="width: {Math.min(100, Math.max(0, progress * 100))}%; background: {color}"></span></div>
 </div>
+{#if crisis}
+	<p class="crisis" data-crisis>If you are thinking about suicide or self-harm, call or text <a href="tel:988">988</a> (Suicide and Crisis Lifeline, US). Outside the US, <a href="https://findahelpline.com" target="_blank" rel="noopener noreferrer">find a helpline</a>.</p>
+{/if}
 </div>
 
 <style>
+	.crisis {
+		margin: 0.5rem 0 0;
+		padding: 0.5rem 0.75rem;
+		border: 1px solid var(--color-stage-line, #334);
+		border-radius: 6px;
+		font-size: 0.9rem;
+		line-height: 1.4;
+	}
+	.crisis a {
+		color: inherit;
+		font-weight: 700;
+	}
 	.frame {
 		container: stage / inline-size;
 	}

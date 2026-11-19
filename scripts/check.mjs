@@ -483,6 +483,26 @@ for (const size of ['desktop', 'phone']) {
 	await ctx.close();
 }
 
+// ---- about page and crisis line (G10) ----
+for (const size of ['desktop', 'phone']) {
+	const { page, ctx } = await newPage(size);
+	await page.goto(`${BASE}/about`);
+	await page.waitForSelector('[data-about]', { timeout: 20_000 });
+	const a = await page.evaluate(() => ({ text: document.body.innerText, wide: document.documentElement.scrollWidth > window.innerWidth + 1, tel: !!document.querySelector('a[href="tel:988"]'), issues: !!document.querySelector('a[href*="github.com/saehyunjun/dnbc/issues"]') }));
+	check(`about ${size}: crisis line with a 988 call link`, a.tel && a.text.includes('988'));
+	check(`about ${size}: report-a-mistake link`, a.issues);
+	check(`about ${size}: says the cast are AI characters`, /AI characters/.test(a.text));
+	check(`about ${size}: no horizontal scroll`, !a.wide);
+	await ctx.close();
+}
+{
+	const { page, ctx } = await newPage('desktop');
+	await page.goto(`${BASE}/?t=${T}`);
+	await ready(page);
+	check('player links to About from the nav', (await page.locator('nav a[href="/about"]').count()) === 1);
+	await ctx.close();
+}
+
 // ---- home page timing and errors ----
 {
 	const live = await newPage('phone');

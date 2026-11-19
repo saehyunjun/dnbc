@@ -27,3 +27,10 @@ export const checks: [string, () => void][] = [
 		for (const k of keeps) assert.ok(screenQuote(k).ok, `${k}: ${screenQuote(k).reasons.join(', ')}`);
 	}]
 ];
+
+import { needsCrisisLine } from '../../src/lib/pipeline/screen.ts';
+checks.push(['crisis line for suicide, self-harm, and overdose words only', () => {
+	assert.ok(needsCrisisLine(['The trial measured suicidal ideation at week 4.']));
+	assert.ok(needsCrisisLine(['Overdose deaths fell in the study counties.']));
+	assert.ok(!needsCrisisLine(['Esketamine is approved for treatment-resistant depression.', undefined]));
+}]);
