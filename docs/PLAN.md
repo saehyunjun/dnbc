@@ -31,20 +31,20 @@ Out for now: pain other than migraine and neuropathy, and eye disease.
 
 Brain cancer trials often enrol other solid tumours too. A trial is in scope when a brain cancer is one of its conditions. Psychiatry stories touch suicide and self-harm, so the patient screen (`src/lib/pipeline/screen.ts`) keeps its self-harm rule, and Patient Desk takes no psychiatry quotes about self-harm, dosing, or stopping medicine.
 
-### Size of the area (Neon snapshot, keyword match on condition and title, 2026-11-19)
+### Size of the area (checked list `src/lib/channel/scope.ts`, Neon snapshot, 2026-11-19)
 
 | Measure | All areas | Neurology | Psychiatry | Brain cancers | In scope |
 |---|---|---|---|---|---|
-| Active trials | 16,655 | 1,135 | 373 | 196 | 1,669 (10%) |
-| New registrations, last 90 days | 1,737 | 90 | 31 | 11 | 132, about 1.5 a day |
-| Stories, last 7 days | 294 | 20 | 4 | 1 | 24, about 3.5 a day |
-| Segments in the store | 184 | 16 | 4 | 0 | 20 (14 library) |
+| Active trials | 16,655 | 1,171 | 360 | 202 | 1,697 (10%) |
+| New registrations, last 90 days | 1,737 | 89 | 28 | 11 | 128, about 1.4 a day |
+| Stories, last 7 days | 294 | 31 | 5 | 2 | 36, about 5 a day |
+| Segments in the store | 184 | 9 | 1 | 0 | 10 (4 library) |
 
-The match is rough and misses conditions not in the list. Phase N1 replaces it with a checked list.
+A trial can sit in more than one group, so the groups add up to more than the in-scope column. Stories count when the story or one of its items names a listed condition in its title, conditions, or first 400 characters.
 
 ### What this changes
 
-1. **Live is thin.** About 3.5 stories a day cannot fill 13 live hours. Live shows shrink to three wheels (Morning Dose, Pipeline Close, Patient Desk) and the library carries the rest. Reruns run 21:00 to 07:00 as before.
+1. **Live is thin.** About 5 stories a day cannot fill 13 live hours. Live shows shrink to three wheels (Morning Dose, Pipeline Close, Patient Desk) and the library carries the rest. Reruns run 21:00 to 07:00 as before.
 2. **The library becomes neurology.** This Day in Approvals keeps only neurology drugs. Blockbuster, The Failure Files, Rare Ones, How It Works, and Future Pipeline get neurology lists (`docs/SHOWS.md`, Neurology library).
 3. **The ticker stays neurology only.** Other areas leave the channel, not just the main screen.
 4. **Analysis gets easier.** A fixed list of about 40 conditions, each checked by hand, replaces open condition terms. That answers Fable's "ambiguous term" refusal for this area (`docs/ANALYSIS.md` section 10).
@@ -55,7 +55,7 @@ The match is rough and misses conditions not in the list. Phase N1 replaces it w
 
 | # | Goal | Done when |
 |---|---|---|
-| N1 | Scope list | `src/lib/channel/scope.ts`: the conditions above (neurology, psychiatry, brain cancers) as terms with synonyms and MeSH ids, `inScope()` for items, stories, and trials; unit cases for near misses ("nerve block" in surgery, "neuropathy" as a chemotherapy side effect, glioma); counts in section 0 rerun with it |
+| N1 | Scope list | **Done 2026-11-19.** `src/lib/channel/scope.ts`: 38 conditions in three groups with synonyms and acronyms, look-alike phrases blanked (`not`), and acronyms that clash outside the area left out (AD, ASD, GAD, PPD, TBI). `trialScope`, `itemScope` (title, conditions, first 400 characters), and `storyScope` (falls back to its items). 18 unit cases in `scripts/unit/scope.ts`, 112 of 112. Counts above rerun with it. MeSH ids are not added: from memory they would be guesses. They come with the MeSH work after launch |
 | N2 | Filter | stories carry `scope`; writers and the scheduler take in-scope stories only; out-of-scope segments are marked retired, not deleted; next day's playlist is 100% neurology with padding reported |
 | N3a | Fact library | a `facts` table of neurology facts (section 12): each fact one sentence with its source item, date, and condition; a second session subagent checks each against its source before it is saved; about 300 facts at launch (approvals, trial results, condition basics, scale definitions) |
 | N3 | Library | the launch counts in `docs/SHOWS.md` written by session subagents from the fact library only, through `import-segments`; every beat cites a fact or a source item |

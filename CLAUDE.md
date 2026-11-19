@@ -26,7 +26,7 @@ TypeScript scripts run with `tsx`. Node 20 locally, Node 22 in Actions.
 
 ## Scope
 
-Neurology, psychiatry, and brain cancers only since 2026-11-19 (`docs/PLAN.md` section 0). The condition list goes in `src/lib/channel/scope.ts` (phase N1). New content outside it does not air.
+Neurology, psychiatry, and brain cancers only since 2026-11-19 (`docs/PLAN.md` section 0). The condition list is `src/lib/channel/scope.ts` (38 conditions; `trialScope`, `itemScope`, `storyScope`; cases in `scripts/unit/scope.ts`). Add a condition there, never a second list. New content outside it does not air.
 
 ## File map
 
