@@ -1,11 +1,11 @@
-# Drug Channel: handoff
+# DNBC: handoff
 
-A 24/7 text-only TV channel about drug development, laid out like CNBC's schedule. It is a public demo app, with a launch target of Monday 23 November 2026.
+DNBC is a 24/7 text-only TV channel about drug development, laid out like CNBC's schedule. It is a public hobby demo, with a launch target of Monday 23 November 2026.
 
 - Repo: `~/drug-channel` (local git on `main`, no remote).
-- Full plan: `docs/PLAN.md` (v2, reviewed by Fable on 2026-11-18).
+- Full plan: `docs/PLAN.md` (v3, 2026-11-18). v2 was reviewed by Fable. v3 is not reviewed yet.
 - Status on 2026-11-18: plan only, no code.
-- New in this doc and not yet in `PLAN.md`: the library shows in section 4.
+- `PLAN.md` is the source of truth. This doc is the short version.
 
 ## 1. Decisions already made
 
@@ -15,7 +15,10 @@ A 24/7 text-only TV channel about drug development, laid out like CNBC's schedul
 | No stock talk | no market prices. Pipeline talk takes their place (phase moves, registrations, deals as pipeline changes) |
 | Licensing | ignored. This is a demo app |
 | Launch | public |
-| Repo | `~/drug-channel` |
+| Name | DNBC |
+| Repo | `~/drug-channel`, public on GitHub (so Actions minutes are free) |
+| Hosting | free plans: Vercel Hobby (a hobby project, which Hobby's terms allow), Neon free, GitHub Actions. No Vercel Pro |
+| SEC contact | chosen by Aaron, kept in the `DNBC_CONTACT` Actions secret, never in the repo |
 | Method | copied from Scorchball TV (https://scorchball.tv/how-it-was-built): docs first, shows and timings as data, content made before airtime, a static player on a shared UTC clock, one task per session, and watch-and-note fixes |
 
 ## 2. How the channel works
@@ -29,9 +32,9 @@ ingest  ->  stories  ->  write  ->  check  ->  schedule  ->  player
 3. Sonnet writes each story as a segment for each format it fits. A segment is a list of on-screen beats (headline, anchor line, quote, panel, pipeline chart, timeline, stat, list, bumper).
 4. A rule-based check rejects any segment with a fact, number, drug name, or quote not found in its primary sources. Haiku screens patient quotes.
 5. The scheduler fills 30-minute blocks that each play twice per show hour. Slots lock 30 minutes before they air.
-6. The player works out the current beat from UTC time, so every viewer sees the same thing. A kill switch file (`blocked.json`) pulls a segment off air within 60 seconds.
+6. The player works out the current beat from UTC time, so every viewer sees the same thing. A kill switch (`blocked` table, `scripts/block.mjs`) pulls a segment off air within 60 seconds.
 
-Stack: SvelteKit on Vercel (needs Pro), Neon for the story pool, Blob for published files, and AI Gateway for Sonnet 5.5 and Haiku 5.5.
+Stack: jobs run in GitHub Actions every 15 minutes. Neon holds everything. One Vercel function serves the playlist with a 60 s CDN cache. AI Gateway runs Sonnet 5.5 and Haiku 5.5. Vercel Pro is not needed, because Hobby's once-a-day cron and 300 s function limit no longer matter.
 
 ## 3. Live shows (weekdays, ET)
 
@@ -52,7 +55,7 @@ The channel day runs 06:00 to 06:00 ET.
 | 20–21 | (new) | Lab Notes | journal papers of the day |
 | 21–06 | overnight | reruns and library shows | section 4 |
 
-## 4. Library shows (proposed)
+## 4. Library shows (in `PLAN.md` section 3)
 
 Live news can't fill 24 hours, and on quiet days (Thanksgiving week, weekends) it can't fill the daytime grid either. Library shows don't depend on the day's news. Each segment is written once, checked once, and can air for months.
 
@@ -111,12 +114,12 @@ CNBC does the same thing with its evening and weekend shows (American Greed, Sha
 
 The rest come after launch. Trial vs Trial and Name That Mechanism are the cheapest to add next.
 
-### What the library needs that the plan doesn't have yet
+### Library rules (in the plan)
 
 - **A third source tier.** History pages, Nobel Prize pages, and review papers count as `reference` items. Facts in library segments may come from `primary` or `reference` items, never `social`.
 - **A `library` flag on segments.** Library segments skip the 7-day rule for quotes and the "3 show hours a day" repeat rule. Instead, a library segment airs at most once a day and at most 3 times a week.
 - **An "As of" date on every segment.** Forward-looking segments age. Each one shows its "as of" date and drops out of the grid after 30 days unless rewritten.
-- **A Phase 2 add-on.** The 30 written-ahead library segments above, written from fixture source items and passed through the same check.
+- **Phase 2** writes the 30 library segments above and passes them through the same check.
 
 ## 5. Interview rules
 
@@ -146,16 +149,11 @@ If time runs short, cut in this order: the pipeline chart beat, Lab Notes, Linke
 - A wrong FDA decision or trial result goes on air under the PatientlyIQ name. Guards: facts from primary sources only, outcome words checked against the source sentence, and the kill switch.
 - History shows can repeat a popular but wrong story. Guard: the same check, with facts only from `primary` or `reference` items.
 - Failure Files names companies over real harms. Guard: documented facts only, with every claim cited.
-- Not verified yet: the Vercel plan, Reddit API approval time, why the SEC 8-K feed returned nothing in review, and whether Bluesky search works from Vercel.
+- GitHub Actions schedules can run late or be dropped at busy times. Slots lock 30 minutes ahead, and library segments fill any gap.
+- Not verified yet: Neon free limits, Reddit API approval time, why the SEC 8-K feed returned nothing in review, and whether Bluesky search works from GitHub's runners.
 
 ## 8. Open decisions
 
-Channel name?
-
 Domain?
 
-What contact name and email go in the User-Agent that SEC requires?
-
-Is the Vercel account on Pro, or will this project move to Pro?
-
-Is the library plan in section 4 approved to go into `PLAN.md`?
+Set the Actions secrets, `DNBC_CONTACT` among them, once the GitHub repo exists.

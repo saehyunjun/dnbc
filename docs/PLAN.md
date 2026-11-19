@@ -1,10 +1,10 @@
-# Drug Channel: plan
+# DNBC: plan
 
-A 24/7 text-only TV channel about drug development, styled on CNBC's schedule. Every show is built from news, registry changes, papers, and social posts that are pulled in on a timer. It is a public demo app. It launches on Monday 23 November 2026.
+DNBC is a 24/7 text-only TV channel about drug development, styled on CNBC's schedule. Live shows are built from news, registry changes, papers, and social posts that are pulled in on a timer. Library shows (history, explainers, and forward-looking) fill the rest. It is a public hobby demo. It launches on Monday 23 November 2026.
 
-Status: plan v2, 2026-11-18. Fable reviewed v1 the same day, and every finding is folded in (section 10). No code yet.
-
-Working name: Drug Channel (placeholder until Aaron picks one).
+- Name: DNBC (Aaron, 2026-11-18). The repo stays `~/drug-channel`.
+- Status: plan v3, 2026-11-18. No code yet.
+- v2 folded in Fable's review. v3 adds the library shows and moves the stack to free plans (section 5, Stack). See section 11.
 
 ## 1. What we copy from Scorchball TV
 
@@ -28,12 +28,12 @@ What we do not copy: voices, sound, a simulation, or avatars. **Every word is te
 
 - A 16:9 stage that also works at phone width (stacked, with the ticker under the stage).
 - Each show has its own colour, title bug, and lower-third style.
-- Permanent parts: the channel bug, a show clock ("Morning Dose, 7:42 ET"), a live ticker, and an "Up next" strip.
+- Permanent parts: the DNBC bug, a show clock ("Morning Dose, 7:42 ET"), a live ticker, and an "Up next" strip.
 - Anchors and panelists are illustrated name plates (initial, colour, and role), each tagged "AI character". No faces.
 
 ### Beats (the building blocks of a segment)
 
-A segment is a list of beats. The player draws each beat for the duration stored with it in the playlist (section 4, step 6).
+A segment is a list of beats. The player draws each beat for the duration stored with it in the playlist (section 5, step 6).
 
 | Beat | What shows |
 |---|---|
@@ -42,52 +42,54 @@ A segment is a list of beats. The player draws each beat for the duration stored
 | `quote` | a real quote, a whole sentence or more, verbatim, with attribution (section 2, Interviews) |
 | `panel` | two or three fictional panelists' lines in turn (debate shows) |
 | `pipeline` | a sponsor's or drug's registered trials counted by phase from ClinicalTrials.gov, with the new trial highlighted |
-| `timeline` | trial milestones (start, primary completion, results posted, PDUFA date when a company release gives one) |
+| `timeline` | trial milestones (start, primary completion, results posted, and a PDUFA date when a company release gives one), or the dates in a drug's history |
 | `stat` | one number with its label and source |
 | `list` | three to five items, such as the day's phase moves |
+| `quiz` | a clue, a pause, then the answer (Name That Mechanism) |
 | `bumper` | the show's opening card, "after the break", and the like |
 
-Hold time when a segment is written is `1.5 s + words / 3.5` seconds, with a 4 s minimum and 12 s maximum (a 40-word beat reaches 12.9 s, so 12 s caps it). Settings in `src/lib/channel/timing.ts`. A change there affects only segments written after the change, because each beat's duration is stored.
+Hold time when a segment is written is `1.5 s + words / 3.5` seconds, with a 4 s minimum and 12 s maximum (a 40-word beat reaches 12.9 s, so 12 s caps it). The settings go in `src/lib/channel/timing.ts`. A change there affects only segments written after the change, because each beat's duration is stored.
 
 ### Interviews
 
 The interview format puts a real quote beside a fictional anchor's framing. The quote never reads as an answer to us.
 
-- The anchor line before a quote is a statement that names where the quote came from: "In a press release on 17 November, the company's CEO said". It is never a question.
+- The anchor line before a quote is a statement that names where the quote came from, for example "In a press release on 17 November, the company's CEO said". It is never a question.
 - Real people only appear in `quote` beats. A quote is one or more whole sentences, verbatim from a stored source item.
 - The speaker's name must appear in the source within 300 characters of the quote, so a release that quotes two people can't be misattributed.
-- The quote's source item must belong to the same story and be dated within 7 days of airtime.
+- In live shows, the quote's source item must belong to the same story and be dated within 7 days of airtime. Library shows are exempt from the 7-day rule but not from the same-story rule.
 - Fictional cast members say everything else, and they are tagged AI on screen.
+- No show, including the history shows, invents words for a real person.
 
 Attribution by source:
 
 | Source | Shown |
 |---|---|
-| Press release, 8-K, FDA, or journal | name, role, publisher, date, and link |
+| Press release, 8-K, FDA, journal, or reference page | name, role, publisher, date, and link |
 | Bluesky | handle, date, and link. No name or role, because those are unverified |
 | LinkedIn (hand-filled) | name and role as written on the post, date, and link |
 | Reddit or patient forum (hand-filled) | community and date only ("r/MultipleSclerosis, 17 Nov"). No username and no link |
 
-Patient quotes pass a screen before use (section 4, step 4).
+Patient quotes pass a screen before use (section 5, step 4).
 
 ### Cast (fictional)
 
 | Character | Role | Shows |
 |---|---|---|
-| Anchor A | morning lead | Morning Dose, Pipeline Open |
-| Anchor B | afternoon lead | Deal Desk, Pipeline Close |
-| The Clinician | panelist, reads trial design | Readout, Fast Science |
-| The Skeptic | panelist, asks what could go wrong | Fast Science |
-| The Advocate | panelist, patient view | Fast Science, Patient Desk |
-| The Professor | opinion host, labelled "Opinion" | Mad Science |
+| Anchor A | morning lead | Morning Dose, Pipeline Open, This Day in Approvals |
+| Anchor B | afternoon lead | Deal Desk, Pipeline Close, Catalyst Calendar |
+| The Clinician | panelist, reads trial design | Readout, Fast Science, Trial vs Trial |
+| The Skeptic | panelist, asks what could go wrong | Fast Science, The Failure Files |
+| The Advocate | panelist, patient view | Fast Science, Patient Desk, Rare Ones |
+| The Professor | opinion and history host, with Opinion labels on opinion segments | Mad Science, Blockbuster, Future Pipeline, What If |
 
 Names and colours go in `src/lib/channel/cast.ts`.
 
 ### Grid (ET, weekdays)
 
-The channel day runs from 06:00 ET to 06:00 ET. Stock talk is replaced by pipeline talk, and no market prices appear.
+The channel day runs from 06:00 ET to 06:00 ET. There is no stock talk and no market prices. Pipeline talk takes their place.
 
-Five formats ship at launch. The other shows are grid entries that reuse a launch format with their own name, colour, and story filter.
+Five live formats ship at launch. The other live shows are grid entries that reuse a launch format with their own name, colour, and story filter.
 
 | ET | Modelled on | Show | Format | Story filter | Fed by |
 |---|---|---|---|---|---|
@@ -102,84 +104,164 @@ Five formats ship at launch. The other shows are grid entries that reuse a launc
 | 18:00–19:00 | Mad Money | **Mad Science** | Panel (one host) | one story, labelled Opinion | story pool |
 | 19:00–20:00 | (new) | **Patient Desk** | Voices | screened patient and Bluesky quotes | Bluesky, hand-filled Reddit file |
 | 20:00–21:00 | (new) | **Lab Notes** | Headlines | journal papers of the day | PubMed |
-| 21:00–06:00 | overnight reruns | **Rerun wheel** | none | the day's shows again, in order | archive |
+| 21:00–06:00 | overnight reruns | **Rerun wheel**, with library hours | none | the day's shows again in order. Every third hour is a library hour (section 3) | archive, library |
 
-Weekends and Thanksgiving (Thursday 26 and Friday 27 November): reruns of the latest weekday shows. Cut from launch: Pipeline Week, the Friday long-form show, and "Approvals of the Year".
+Weekends, and Thanksgiving (Thursday 26 and Friday 27 November), use the library grid in section 3.
 
 ### How the grid gets filled
 
 Each show hour is a 30-minute wheel that plays twice. Each wheel holds 10 to 15 segments of 2 to 3 minutes. Every story gets one version per format it fits, so a deal can air as a Headlines segment in Deal Desk and as a Panel segment in Fast Science.
 
-- Rule: a segment airs at most once in each wheel and in no more than 3 show hours a day, not counting the rerun wheel.
-- Volume: about 15 live hours of 2 wheels each, with shows sharing segments, needs about 120 to 180 new segments a day. Ingest gives about 50 to 80 stories a day, at 2 to 3 formats each.
-- When a wheel runs short, it falls back to the same show from the most recent earlier day. If that is missing too (day one), it falls back to the fixture day's segments. A wheel never airs empty.
+- Each weekday daytime wheel has one library slot (section 3).
+- Repeat rule for live segments: a segment airs at most once in each wheel and in no more than 3 show hours a day, not counting the rerun wheel.
+- Volume: about 15 live hours of 2 wheels each, with shows sharing segments and one library slot per wheel, needs about 110 to 160 new live segments a day. Ingest gives about 50 to 80 stories a day, at 2 to 3 formats each.
+- When a wheel runs short, it first adds library segments, then falls back to the same show from the most recent earlier day. If that is missing too (day one), it falls back to the fixture day's segments. A wheel never airs empty.
 - Padding: when the segments don't add up to 30 minutes, the gap is filled by `bumper` beats ("Up next", schedule card, ticker full-screen) of 4 to 12 s each.
 
-## 3. Sources
+## 3. Library shows
 
-All requests send `User-Agent: DrugChannel/0.1 (<contact>)`. SEC requires a contact (section 9).
+Library segments don't depend on the day's news. Each one is written once, checked once, and can air for months. They fill reruns, weekends, holidays, and quiet days. CNBC does the same with its evening and weekend shows (American Greed, CNBC Originals).
 
-| Source | Method | Every | Notes |
+### History
+
+| Show | Modelled on | What it is | Sources | Made by |
+|---|---|---|---|---|
+| **This Day in Approvals** | "this day in history" spots | drugs the FDA approved on today's date in past years: the drug, the disease, and what it changed | Drugs@FDA approval dates, FDA labels, PubMed | automatic, a few segments every day |
+| **Blockbuster** | CNBC Originals | the life of one big drug: discovery, trials, approval, sales peak, and patent cliff (penicillin, insulin, statins, Humira, GLP-1s) | Drugs@FDA, PubMed, FDA history pages, company filings | written ahead |
+| **The Failure Files** | American Greed | well-documented failures and withdrawals (thalidomide, Vioxx, torcetrapib), and what the rules changed after each | FDA records, Federal Register, PubMed | written ahead, documented facts only |
+| **Ad Break** | (new) | the history of drug marketing: the 1997 FDA guidance that opened TV ads, the "ask your doctor" era, famous campaigns, and the rules on ads now | FDA guidance documents, Federal Register, PubMed | written ahead |
+| **Lab Legends** | biography shows | scientists behind landmark drugs (Banting and Best, Gertrude Elion, Katalin Karikó) | PubMed, Nobel Prize pages | written ahead |
+| **Rare Ones** | (new) | orphan drugs and the patient advocates who pushed for them, from the 1983 Orphan Drug Act on | FDA orphan designations, PubMed | written ahead. Ties to PatientlyIQ and the PIQHome rare pediatric vouchers page |
+
+### Explainers
+
+| Show | What it is | Sources | Made by |
 |---|---|---|---|
-| ClinicalTrials.gov API v2 | `query.term=AREA[LastUpdatePostDate]RANGE[<yesterday>,MAX]` | 24 h (data refreshes once a day) | seed a snapshot of the about 115,000 industry interventional studies first (Phase 1). Records rarely change phase, so a **phase move** is a new registration at a later phase for the same drug and sponsor. Also status changes and results posted |
-| FDA press releases and novel approvals | RSS (returns 200) | 1 h | |
-| FDA CRLs | openFDA `transparency/crl.json` | 24 h | |
-| PDUFA and adcomm dates | parsed from company releases and the FDA adcomm calendar page | with the wires | FDA publishes no PDUFA calendar |
-| SEC EDGAR 8-Ks for a list of biotech CIKs | full-text search (returns 200 with a User-Agent), then Exhibit 99.1 for the news text | 15 min | the 8-K atom feed returned 0 entries in review, so it's not used |
-| PR Newswire and Business Wire health feeds | RSS (both return 200) | 15 min | GlobeNewswire dropped, because it returned 403 |
-| PubMed | E-utilities, a fixed journal list | 24 h | preprints cut from launch |
-| Bluesky | `app.bsky.feed.searchPosts` with an app-password session | 30 min | unauthenticated public search returned 403 |
-| Reddit | `data/quotes/reddit.json`, hand-filled from an allowlist of subreddits | by hand | unauthenticated `.json` returned 403, and new OAuth apps need Reddit approval (reported as 1 to 4 weeks). Apply anyway, for after launch |
-| LinkedIn | `data/quotes/linkedin.json`, hand-filled | by hand | posts sit behind login |
+| **How It Works** | one rule or process per segment: trial phases, PDUFA dates, accelerated approval, breakthrough designation, priority review vouchers, biosimilars, and patent cliffs | FDA guidance pages | written ahead, about 20 segments |
+| **Molecule of the Week** | one mechanism as beats: the target, what the drug does, and which drugs use it | FDA labels, PubMed | written ahead, one a week |
+| **Trial vs Trial** | two trials in the same disease, side by side on design, endpoints, and size | ClinicalTrials.gov | automatic from registry data |
+| **Name That Mechanism** | a `quiz` break between segments | FDA labels | written ahead, short interstitials |
+
+### Forward-looking
+
+| Show | What it is | Sources | Made by |
+|---|---|---|---|
+| **Future Pipeline** | where drug development is heading: AI-designed molecules now in trials, protein structure prediction, gene editing, cell therapy, and the next GLP-1s | ClinicalTrials.gov (trials by AI-first biotechs), PubMed, company releases | written ahead, refreshed monthly |
+| **Catalyst Calendar** | trials due to read out in the next 30 days, and PDUFA dates from company releases | CT.gov primary completion dates, press wires | automatic, daily |
+| **Patent Cliff Countdown** | big drugs losing exclusivity in the next few years, and who has a biosimilar or generic ready | FDA Orange and Purple Books, company filings | written ahead, refreshed quarterly |
+| **Conference Countdown** | what to watch at the next big meeting (ASH in early December, then JPM in January) | abstract releases, press wires | written ahead of each meeting |
+| **What If** | a Fast Science panel on a future question ("What if AI cuts trial time in half?"), labelled Opinion | the Future Pipeline sources | written ahead |
+
+### Where the library airs
+
+| Slot | Mix |
+|---|---|
+| Weekday daytime | one library segment per 30-minute wheel: This Day in Approvals in Morning Dose, Catalyst Calendar in Pipeline Open, How It Works in Regulatory Hour, Future Pipeline in Lab Notes, and other shows by turns elsewhere |
+| Weekday 21:00–06:00 | reruns of the day, with a library hour every third hour (22:00, 01:00, 04:00) |
+| Weekends | library hours, plus one block of the week's top live segments at 09:00 and 18:00 |
+| Thanksgiving, 26 and 27 November | Blockbuster, Lab Legends, Rare Ones, and This Day in Approvals in turn, with Catalyst Calendar each morning |
+
+### Library rules
+
+- **Reference tier.** History pages, Nobel Prize pages, FDA history and guidance pages, and review papers are `reference` items. Facts in library segments may come from `primary` or `reference` items, never `social`.
+- **`library` flag.** A library segment skips the 7-day quote rule and the live repeat rule. It airs at most once a day and 3 times a week.
+- **"As of" date.** Every segment shows the date its facts were checked. Forward-looking segments (Future Pipeline, Catalyst Calendar, Patent Cliff Countdown, Conference Countdown, and What If) leave the grid 30 days after that date unless rewritten.
+- **The Failure Files** cites every claim about harm, and it says only what the cited records say.
+
+### Library size for launch
+
+| Show | Segments by Monday 23 November |
+|---|---|
+| This Day in Approvals | automatic, every day |
+| Catalyst Calendar | automatic, every day |
+| How It Works | 10 |
+| Blockbuster | 5 |
+| The Failure Files | 5 |
+| Ad Break | 5 |
+| Future Pipeline | 5 |
+
+The others come after launch. Trial vs Trial and Name That Mechanism are the cheapest to add next.
+
+## 4. Sources
+
+All requests send `User-Agent: DNBC/0.1 (<DNBC_CONTACT>)`. SEC requires a contact name and email address. `DNBC_CONTACT` is an environment variable: a GitHub Actions secret in production and `.env` locally (git-ignored). Aaron chose the contact on 2026-11-18 and sets the secret himself. The address is never written in the repo, because the repo is public.
+
+| Source | Tier | Method | Every | Notes |
+|---|---|---|---|---|
+| ClinicalTrials.gov API v2 | primary | `query.term=AREA[LastUpdatePostDate]RANGE[<yesterday>,MAX]` | 24 h (data refreshes once a day) | seed a slim snapshot (NCT id, sponsor, phase, status, interventions, conditions, and dates) of the about 115,000 industry interventional studies first, in Phase 1. Records rarely change phase, so a **phase move** is a new registration at a later phase for the same drug and sponsor. Also status changes and results posted |
+| FDA press releases and novel approvals | primary | RSS (returns 200) | 1 h | |
+| FDA CRLs | primary | openFDA `transparency/crl.json` | 24 h | |
+| PDUFA and adcomm dates | primary | parsed from company releases and the FDA adcomm calendar page | with the wires | FDA publishes no PDUFA calendar |
+| SEC EDGAR 8-Ks for a list of biotech CIKs | primary | full-text search (returns 200 with a User-Agent), then Exhibit 99.1 for the news text | 15 min | the 8-K atom feed returned 0 entries in review, so it's not used |
+| PR Newswire and Business Wire health feeds | primary | RSS (both return 200) | 15 min | GlobeNewswire dropped, because it returned 403 |
+| PubMed | primary | E-utilities, a fixed journal list | 24 h | preprints cut from launch |
+| Drugs@FDA | primary | openFDA `drug/drugsfda.json` | 24 h | approval dates for This Day in Approvals |
+| FDA Orange and Purple Books | primary | the published data files | weekly | Patent Cliff Countdown |
+| FDA guidance, history pages, Federal Register, and Nobel Prize pages | reference | fetched by hand per library segment and stored as items | by hand | library only |
+| Bluesky | social | `app.bsky.feed.searchPosts` with an app-password session | 30 min | unauthenticated public search returned 403 |
+| Reddit | social | `data/quotes/reddit.json`, hand-filled from an allowlist of subreddits, stored without usernames | by hand | unauthenticated `.json` returned 403, and new OAuth apps need Reddit approval (reported as 1 to 4 weeks). Apply anyway, for after launch |
+| LinkedIn | social | `data/quotes/linkedin.json`, hand-filled | by hand | posts sit behind login |
 
 Cut from launch: EMA and preprints.
 
-Every ingested item is stored as a `SourceItem`: `id`, `source`, `tier` (`primary` for FDA, CT.gov, EDGAR, wires, and journals; `social` for Bluesky, Reddit, and LinkedIn), `url`, `fetchedAt`, `publishedAt`, `title`, `text` (full text kept for the check), `entities` (drug, sponsor, NCT id, condition), and `kind`.
+Every ingested item is stored as a `SourceItem`: `id`, `source`, `tier` (`primary`, `reference`, or `social`), `url`, `fetchedAt`, `publishedAt`, `title`, `text` (full text kept for the check), `entities` (drug, sponsor, NCT id, condition), and `kind`.
 
-## 4. Pipeline
+## 5. Pipeline
 
 ```
-ingest  ->  stories  ->  write  ->  check  ->  schedule  ->  player
-(cron)     (dedupe,     (LLM, per   (rules +   (wheels,     (static page,
-            score)       format)     screen)    lock 30 m)   UTC clock)
+ingest  ->  stories  ->  write  ->  check  ->  schedule  ->  serve  ->  player
+(GitHub    (dedupe,     (LLM, per   (rules +   (wheels,     (Vercel     (static page,
+ Actions)   score)       format)     screen)    lock 30 m)   function,   UTC clock)
+                                                             60 s cache)
 ```
 
 1. **Ingest** jobs write `SourceItem`s to Neon.
 2. **Stories.** Items about the same thing (same NCT id, drug, or 8-K event) are grouped into a `Story`. Stories are scored by recency, kind (approval > CRL > readout > deal > registration > paper > post), and number of primary sources. Haiku tags entities and kind. A story needs at least one primary item to air. Social items only add quotes.
-3. **Write.** For each story and each format it fits, Sonnet writes a segment as beats in JSON, with each beat citing source item ids. Format templates go in `src/lib/channel/formats/`. Each run writes in batches under a 240 s time budget and resumes on the next run.
-4. **Check** (rules, no LLM except the patient screen). A segment is rejected when:
+3. **Write.** For each story and each format it fits, Sonnet writes a segment as beats in JSON, with each beat citing source item ids. Library segments are written from library briefs in `data/library/` with their reference items. Format templates go in `src/lib/channel/formats/`.
+4. **Check** (rules, with no LLM except the patient screen). A segment is rejected when:
    - a beat cites no source item, or cites only `social` items for a fact (a number, date, outcome, or approval),
-   - a number, date, or NCT id is not in a cited primary item. Numbers are normalised first ("45%", "45 percent", "0.45"; "17 Nov", "November 17"),
-   - a drug or sponsor name is not in the story's entity list (the lexicon is the entities Haiku tagged from primary items),
-   - an outcome word (met, missed, approved, rejected, CRL, discontinued, halted) is not in the same source sentence as the drug it is said of,
-   - a `quote` is not whole sentences verbatim from its item, the speaker's name is not within 300 characters of it in the source, the item is from another story, or it is older than 7 days,
+   - a number, date, or NCT id is not in a cited `primary` or `reference` item. Numbers and dates are normalised first ("45%", "45 percent", and "0.45"; "17 Nov" and "November 17"),
+   - a drug or sponsor name is not in the story's entity list (the lexicon is the entities Haiku tagged from primary and reference items),
+   - an outcome word (met, missed, approved, rejected, CRL, discontinued, halted, or withdrawn) is not in the same source sentence as the drug it is said of,
+   - a `quote` is not whole sentences verbatim from its item, the speaker's name is not within 300 characters of it in the source, the item is from another story, or a live quote is older than 7 days,
    - a patient quote carries a username or link,
-   - a beat runs over 40 words.
+   - a beat runs over 40 words,
+   - a segment has no "as of" date.
 
-   **Patient screen.** Haiku checks each Reddit and Bluesky quote before it enters the pool. It drops quotes with cure claims, dosing or medical advice, or identifying details (names, places, dates of birth, rare personal facts). Reddit quotes come only from the subreddit allowlist.
+   **Patient screen.** Haiku checks each Reddit and Bluesky quote before it enters the pool. It drops quotes with cure claims, dosing or medical advice, or identifying details (names, places, dates of birth, and rare personal facts). Reddit quotes come only from the subreddit allowlist.
 
    A failed segment is rewritten once, then dropped. Failures go to a log the soak test reads.
 5. **Schedule** builds the channel day (06:00 to 06:00 ET) at 03:00 ET, and patches it every 15 minutes for slots more than 30 minutes ahead. A slot inside 30 minutes, or already started, never changes.
-6. **Publish.** The playlist stores each beat's start offset and duration, so viewers stay in sync whatever `timing.ts` says later. Files are written with versioned names (`playlists/2026-11-23.v14.json`, `segments/<id>.json`), and a small `playlists/current.json` names the latest version with `cacheControlMaxAge: 60`.
-7. **Player** fetches `current.json`, then the playlist and its segments. It works out the current beat from UTC time, corrected by the offset from the server's `Date` header so a wrong device clock doesn't matter.
+6. **Serve.** The playlist stores each beat's start offset and duration, so viewers stay in sync whatever `timing.ts` says later. One Vercel function, `src/routes/api/channel/[name]/+server.ts`, reads Neon and returns `playlist` (today and tomorrow), `segments`, and `blocked`, with `Cache-Control: s-maxage=60, stale-while-revalidate=300`. The CDN answers almost every request, so the function runs about once a minute per region.
+7. **Player** fetches the playlist, then the segments it names. It works out the current beat from UTC time, corrected by the offset from the server's `Date` header so a wrong device clock doesn't matter. It refetches the playlist and `blocked` every 60 s.
 
 ### Kill switch
 
-`blocked.json` (in Blob, max age 60 s) lists blocked segment and story ids. The player skips a blocked segment and shows the next one, and the scheduler never schedules it again. It is edited by a script `scripts/block.mjs <id> "<reason>"`, or by hand. It must be live before launch.
+A `blocked` table in Neon lists blocked segment and story ids. The player skips a blocked segment and shows the next one within 60 s. The scheduler never schedules it again. Add an id with `node scripts/block.mjs <id> "<reason>"`. It must work before launch.
 
-### Stack
+### Stack (free plans, no Vercel Pro)
+
+Vercel Pro is not needed, because no work runs on Vercel's timer. Checked on 2026-11-18:
+
+| Limit on the free plan | Source | What we do |
+|---|---|---|
+| Vercel Hobby cron runs once a day, within a 59-minute window. A more frequent expression fails the deploy | vercel.com/docs/cron-jobs/usage-and-pricing | all jobs run in GitHub Actions |
+| Vercel Hobby functions run for up to 300 s | vercel.com/docs/plans/hobby | the long jobs (ingest, write) run in Actions, which allows hours per job. Vercel only serves |
+| Vercel Blob on Hobby allows 2,000 advanced operations a month, and going over locks Blob for 30 days (from Fable's review) | vercel.com/docs/vercel-blob/usage-and-pricing | Blob is not used. Neon plus one cached function serves everything |
+| Vercel Hobby allows personal or non-commercial use only (Terms, section 4) | vercel.com/legal/terms | DNBC is a hobby project (Aaron, 2026-11-18) |
+| GitHub Actions schedules run every 5 minutes at the most, can be delayed at busy times (most often at the top of the hour), and can be dropped under high load | docs.github.com, events that trigger workflows | schedules run off the hour (minutes 7, 22, 37, and 52). Slots lock 30 minutes ahead, and the 24-hour buffer of library and earlier segments covers a missed run |
+| GitHub Actions is free on standard runners in public repos. Private repos get $12 of compute a month (about 2,000 Linux minutes), and a 15-minute schedule would use more than that | docs.github.com, Actions billing | the repo is public on GitHub. Secrets stay in Actions secrets. Nothing in the repo is private, because quote files are stored without usernames |
+| GitHub disables scheduled workflows in a public repo after 60 days with no repo activity | same | fine for a demo. A monthly library refresh commit keeps it active |
 
 | Part | Choice |
 |---|---|
 | App | SvelteKit 2, Svelte 5, TypeScript, Tailwind v4 (same as PIQHome) |
-| Host | Vercel, its own project. Needs the Pro plan for 15-minute schedules and 800 s functions. Hobby runs a job once a day |
-| Database | Neon Postgres (Vercel Marketplace) for items, stories, segments, and the schedule |
-| Published files | Vercel Blob, public, for playlists, segments, and `blocked.json` only. This keeps operations well under the Hobby limit of 2,000 advanced operations a month |
-| Jobs | Vercel Schedules (formerly Cron Jobs) calling routes under `src/routes/api/jobs/` (`ingest`, `stories`, `write`, `schedule`), each guarded by `CRON_SECRET` |
-| LLM | AI Gateway, `anthropic/claude-sonnet-5.5` for writing, `anthropic/claude-haiku-5.5` for tagging and the patient screen. Daily spend cap set in the gateway |
+| Host | Vercel Hobby, its own project in "saehyunjun's projects". It serves the player page and the one cached function |
+| Database | Neon Postgres, free plan (through the Vercel Marketplace), for items, stories, segments, the schedule, and `blocked`. The CT.gov snapshot is slim, so storage stays well under the free limit (to confirm in Phase 0) |
+| Jobs | GitHub Actions workflows in `.github/workflows/`: `ingest.yml` (every 15 min), `daily.yml` (CT.gov, Drugs@FDA, openFDA, and PubMed), and `produce.yml` (stories, write, check, and schedule, every 15 min). Each uses a `concurrency` group so runs never overlap. They run `node scripts/jobs/<name>.mjs`, which calls `src/lib/pipeline/` |
+| Secrets | Actions secrets: `DATABASE_URL`, `AI_GATEWAY_API_KEY`, `BLUESKY_HANDLE`, `BLUESKY_APP_PASSWORD`, and `DNBC_CONTACT`. Vercel holds only `DATABASE_URL` |
+| LLM | AI Gateway. `anthropic/claude-sonnet-5.5` for writing, `anthropic/claude-haiku-5.5` for tagging and the patient screen. Daily spend cap set in the gateway |
 | Checks | `playwright-core` headless suite, `node scripts/check.mjs <out-dir> <port>` |
-
-Fallback if the account is on Hobby and won't move to Pro: a `launchd` job on Aaron's Mac calls the same routes every 15 minutes.
 
 ### File map (planned)
 
@@ -188,77 +270,84 @@ Fallback if the account is on Hobby and won't move to Pro: a `launchd` job on Aa
 | `src/routes/+page.svelte` | the channel player |
 | `src/routes/schedule/+page.svelte` | the TV guide for today and tomorrow |
 | `src/routes/study/[template]/+page.svelte` | one study page per format (dev and review) |
-| `src/lib/channel/grid.ts` | weekday, weekend, and holiday grids, with each show's format and story filter |
+| `src/routes/api/channel/[name]/+server.ts` | serves `playlist`, `segments`, and `blocked` from Neon, cached for 60 s |
+| `src/lib/channel/grid.ts` | weekday, weekend, and holiday grids, with each show's format, story filter, and library slots |
 | `src/lib/channel/cast.ts` | fictional cast |
-| `src/lib/channel/formats/` | `headlines`, `pipeline`, `readout`, `panel`, `voices`: beat order and prompt |
+| `src/lib/channel/formats/` | live formats `headlines`, `pipeline`, `readout`, `panel`, and `voices`, plus library formats `day-in-approvals`, `catalyst`, `explainer`, and `story` (for Blockbuster, The Failure Files, Ad Break, and Future Pipeline) |
 | `src/lib/channel/timing.ts` | hold-time settings, used at write time |
 | `src/lib/channel/clock.ts` | UTC plus offset to the current show, segment, and beat |
 | `src/lib/ingest/<source>.ts` | one module per source |
-| `src/lib/pipeline/{stories,write,check,screen,schedule,publish}.ts` | pipeline stages, callable from job routes and from scripts |
+| `src/lib/ingest/http.ts` | the shared fetch, which sets the User-Agent from `DNBC_CONTACT` and fails fast when it is unset |
+| `src/lib/pipeline/{stories,write,check,screen,schedule}.ts` | pipeline stages |
+| `scripts/jobs/{ingest,daily,produce}.mjs` | entry points the Actions workflows run |
+| `.github/workflows/` | the three schedules |
+| `data/library/` | one brief per library segment: show, topic, and reference item URLs |
 | `data/quotes/{reddit,linkedin}.json` | hand-filled quotes |
 | `data/subreddits.json` | allowlist |
 | `scripts/check.mjs` | headless suite |
 | `scripts/soak.mjs` | runs the clock across a simulated 24 hours on fixtures and reports gaps, repeats, and check failures |
-| `scripts/block.mjs` | adds an id to `blocked.json` |
+| `scripts/block.mjs` | adds an id to `blocked` |
 | `fixtures/` | a frozen day of source items and segments, for offline tests and the day-one fallback |
 
-## 5. Phases
+## 6. Phases
 
 Each phase ends with `npm run check` (0 errors), the headless suite, screenshots at desktop (1440 x 900) and phone (390 x 844) of every state the phase touched, and an update to this plan, `CHANGELOG.md`, and `CLAUDE.md`.
 
 | # | Day | Goal | Done when |
 |---|---|---|---|
-| 0 | Wed 18 | Plan | v2 written after Fable's review. Aaron answers section 9. `CLAUDE.md` and `docs/SHOWS.md` written. Vercel plan confirmed |
-| 1 | Thu 19 | Ingest | 7 automated sources write `SourceItem`s to Neon, and the CT.gov snapshot is seeded. A dry run makes at least 50 stories with entities. The fixture day is frozen. **Ingest runs on its schedule in production from Thursday night**, so stories build up before launch |
-| 2 | Fri 20 | Write and check | the 5 formats. 120 segments from the fixture day pass the check, and the check catches 15 planted bad segments (one per rule, plus wrong speaker, reversed outcome, and social-only fact). The patient screen drops 5 planted bad quotes. Reddit and LinkedIn files have 20 quotes each |
-| 3 | Sat 21 | Player | every beat type and format draws at both sizes. Two browsers with clocks set 90 s apart land on the same beat. Ticker, up-next strip, `/schedule`, and the kill switch work |
-| 4 | Sun 22 | Schedule and soak | `soak.mjs` on a simulated 24 hours of fixtures finds no empty wheel, no repeat breaking the rule in section 2, and no blocked or failed segment on air. The production schedule and write jobs run from Sunday morning, and Sunday evening's wheels are watched live. Watch notes are fixed |
-| 5 | Mon 23 | Launch | public at a domain with a link preview image and a card on PIQHome `/experiments`. Holiday grid set for 26 and 27 November |
+| 0 | Wed 18 | Plan | v3 written. `CLAUDE.md` and `docs/SHOWS.md` written. Neon free limits confirmed. Public GitHub repo created and pushed. Aaron has set the Actions secrets |
+| 1 | Thu 19 | Ingest | 9 automated sources write `SourceItem`s to Neon, and the CT.gov snapshot is seeded. A dry run makes at least 50 stories with entities. The fixture day is frozen. **`ingest.yml` and `daily.yml` run on schedule from Thursday night**, so stories build up before launch |
+| 2 | Fri 20 | Write and check | the 5 live formats and 4 library formats. 120 live segments from the fixture day pass the check, and the check catches 15 planted bad segments (one per rule, plus wrong speaker, reversed outcome, and social-only fact). The patient screen drops 5 planted bad quotes. The 30 written-ahead library segments pass. Reddit and LinkedIn files have 20 quotes each |
+| 3 | Sat 21 | Player | every beat type and format draws at both sizes. Two browsers with clocks set 90 s apart land on the same beat. The ticker, up-next strip, `/schedule`, and kill switch work |
+| 4 | Sun 22 | Schedule and soak | `soak.mjs` on a simulated 24 hours of fixtures finds no empty wheel, no repeat that breaks the live or library rules, and no blocked or failed segment on air. The same check passes on the weekend and holiday grids. `produce.yml` runs on schedule from Sunday morning, and Sunday evening's wheels are watched live. Watch notes are fixed |
+| 5 | Mon 23 | Launch | public at a domain, with a link preview image and a card on PIQHome `/experiments`. Holiday grid set for 26 and 27 November |
 
-If time runs short, cut in this order: the `pipeline` beat (Pipeline Open and Close then use Headlines), Lab Notes, LinkedIn, Mad Science, and the `timeline` beat.
+If time runs short, cut in this order: the `pipeline` beat (Pipeline Open and Close then use Headlines), Lab Notes, LinkedIn, Mad Science, the `timeline` beat, and then the written-ahead library down to How It Works (This Day in Approvals and Catalyst Calendar stay, because they are automatic).
 
-### Headless checks (target about 60 by Phase 4)
+### Headless checks (target about 70 by Phase 4)
 
 - Clock: the same corrected UTC time gives the same beat. Slot edges, 06:00 day start, midnight, the weekend switch, the holiday grid, and a device clock 90 s off.
 - Player: each beat type renders, with no text overflow at either size and no page errors. Holding a beat for 10 minutes doesn't leak memory. A blocked segment is skipped within 60 s.
 - Check stage: each reject rule fires on a planted segment, and a clean one passes. Number and date normalisation doesn't reject a matching fact.
 - Screen: each kind of bad patient quote is dropped.
-- Schedule: every wheel is filled for 7 days, fallbacks work in order, and a slot inside 30 minutes stays unchanged after a patch.
+- Schedule: every wheel is filled for 7 days on each grid. Fallbacks work in order. A slot inside 30 minutes stays unchanged after a patch. Library segments keep to once a day and 3 times a week. Forward-looking segments past 30 days are left out.
 - Interviews: the beat before each quote is a statement, not a question. Patient quotes show no username or link. Bluesky quotes show a handle only.
+- Serve: the function sends the 60 s cache header and the server `Date` header.
 - Pages: `/` and `/schedule` load in under 2 s on the preview build.
 
-## 6. Risks
+## 7. Risks
 
 | Risk | Guard |
 |---|---|
 | A wrong FDA decision or trial result goes on air under the PatientlyIQ name | facts from primary sources only, the outcome-word rule, and the kill switch |
-| Real people quoted out of context or misattributed | whole sentences, speaker name near the quote, the same story, within 7 days, and a statement of origin before the quote |
+| History shows repeat a popular but wrong story | facts from `primary` or `reference` items only, with the same check |
+| The Failure Files names companies over real harms | every claim cited, and only what the records say |
+| Real people quoted out of context or misattributed | whole sentences, speaker name near the quote, the same story, a 7-day limit on live quotes, and a statement of origin before the quote |
 | Patient quotes with harmful or identifying content | subreddit allowlist, Haiku screen, and no username or link |
-| Too few stories on a quiet day (Thanksgiving week) | fallback order in section 2, and the holiday grid |
-| Vercel plan limits | confirm Pro in Phase 0, with `launchd` as the fallback |
-| LLM spend | gateway daily cap, batches under a time budget, and segments written once |
-| Five days is short | the cut order in section 5 |
+| GitHub Actions runs delayed or dropped | off-hour schedules, 30-minute slot lock, and the library and earlier-day fallbacks |
+| Too few stories on a quiet day | library slots first, then earlier-day fallbacks, and the holiday grid |
+| LLM spend | gateway daily cap. Segments are written once and reused |
+| Five days is short | the cut order in section 6 |
 
-## 7. Out of scope for launch
+## 8. Out of scope for launch
 
 Voices and sound, avatars or video, viewer polls, accounts, market prices, EMA, preprints, automated Reddit, non-English sources, and a mobile app.
 
-## 8. Not verified
+## 9. Not verified
 
-- The Vercel account's plan.
+- Neon free plan storage and compute limits.
 - Reddit OAuth approval time.
 - Why the EDGAR 8-K atom feed returned 0 entries, and whether GlobeNewswire answers a real User-Agent.
-- Bluesky search from Vercel's network.
+- Bluesky search from GitHub's runners.
 
-## 9. Open for Aaron
+## 10. Open for Aaron
 
-- Channel name.
 - Domain.
-- The contact string for the User-Agent that SEC requires (a name and email address it can reach).
-- Is the Vercel account on Pro, or will it move to Pro for this project?
+- Set the Actions secrets, `DNBC_CONTACT` among them, once the GitHub repo exists.
 
-## 10. Review log
+## 11. Review log
 
 | Date | Reviewer | Result |
 |---|---|---|
 | 2026-11-18 | Fable | v1 not ready: Reddit ingest fails, the soak rule couldn't pass at the planned volume, and there was no kill switch. v2 fixes: 30-minute wheels and a new repeat rule, stricter check rules and a patient screen, statement-of-origin interviews, Neon plus versioned Blob files, the kill switch, stored beat timing and clock correction, corrected source methods and model ids, cuts to 5 formats, and ingest running from Thursday night |
+| 2026-11-18 | Aaron, then Claude | v3: name DNBC, SEC contact chosen (kept in a secret), and library shows added (section 3). Pro checked against Vercel and GitHub docs and found not needed. Jobs move to GitHub Actions in a public repo, and serving moves from Blob to Neon plus one cached function. Not yet reviewed by Fable |
