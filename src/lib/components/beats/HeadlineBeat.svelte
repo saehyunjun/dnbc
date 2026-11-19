@@ -2,7 +2,6 @@
 	import Notes from '../Notes.svelte';
 	import type { Note } from '$lib/player/cite';
 	import { fit } from '$lib/player/fit';
-	import { sourceLabel } from '$lib/player/format';
 	import type { Beat } from '$lib/types';
 
 	let { beat, color, notes = [] }: { beat: Extract<Beat, { type: 'headline' }>; color: string; notes?: Note[] } = $props();
@@ -10,7 +9,7 @@
 
 <div class="beat" data-beat="headline">
 	<div class="beat-body" data-beat-body use:fit={beat.text} style="--fs: calc(var(--u) * 5.6)">
-		<span class="chip" style="color: {color}">{sourceLabel(beat.sources)}</span>
+		<!-- Sources are footnotes only (Aaron 2026-11-19), so no source chip here. -->
 		<h2 style="border-color: {color}">{beat.text}<Notes {notes} /></h2>
 	</div>
 </div>
