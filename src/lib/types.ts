@@ -144,7 +144,8 @@ export type LibraryShowId =
 	| 'patent-cliff'
 	| 'conference'
 	| 'what-if'
-	| 'pipeline-profile';
+	| 'pipeline-profile'
+	| 'condition-landscape';
 
 /** One footnote. Beats cite by item id; the player numbers footnotes in `Segment.citations` order. */
 export interface Citation {

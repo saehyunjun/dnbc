@@ -163,7 +163,7 @@ export function storyScope(story: Pick<Story, 'title' | 'entities' | 'itemIds'>,
 }
 
 /** Items we build ourselves from the trials table. They are footnote sources, never story members. */
-export const isDerivedId = (id: string) => /^(?:catalyst|profile)-/.test(id);
+export const isDerivedId = (id: string) => /^(?:catalyst|profile|landscape)-/.test(id);
 
 /** A segment's conditions: from its story when it has one, else from its own words. */
 export function segmentScope(seg: { title: string; beats: unknown[] }): Condition[] {

@@ -4,6 +4,7 @@ import { itemScope, segmentInScope, storyInScope } from '../../src/lib/channel/s
 import type { Job } from './registry.ts';
 import { buildStories, airable } from '../../src/lib/pipeline/stories.ts';
 import { writeStory, writeCatalyst, catalystItem, pickCatalysts, shortDrug, topSponsors, profileItem, writeProfile, type PipelineCounts } from '../../src/lib/pipeline/write-templates.ts';
+import { scopedActive, landscapes, scopedSponsors, landscapeItem, writeLandscape, scopeProfileItem, writeScopeProfile } from '../../src/lib/pipeline/write-landscape.ts';
 import { writeWithModel, checkWritten, assertPaidRun, Budget, WRITER_MODEL } from '../../src/lib/pipeline/write-model.ts';
 import { applyTiming } from '../../src/lib/channel/timing.ts';
 import { pipelineOf } from '../../src/lib/ingest/ctgov.ts';
@@ -132,7 +133,23 @@ export const PIPELINE_JOBS: Record<string, Job> = {
 				out.push(r.segment);
 			} else why.set(r.dropped[0] ?? '?', (why.get(r.dropped[0] ?? '?') ?? 0) + 1);
 		}
-		console.log(`write-library: ${out.length} segments (catalysts and ${top.size} profiles)`);
+		// Scope landscapes and in-scope sponsor profiles, from the whole trials table (docs/PLAN.md section 0, G1).
+		const scoped = scopedActive(await store.getTrials());
+		let nLand = 0;
+		let nScope = 0;
+		for (const [c, trials] of landscapes(scoped)) {
+			const it = landscapeItem(c, trials, now);
+			const r = writeLandscape(c, it, { items: new Map([[it.id, it]]), now });
+			if (r.segment) (items.push(it), out.push(r.segment), nLand++);
+			else why.set(`landscape ${c.id}: ${r.dropped[0]}`, 1);
+		}
+		for (const [sponsor, rows] of scopedSponsors(scoped)) {
+			const it = scopeProfileItem(sponsor, rows, now);
+			const r = writeScopeProfile(it, { items: new Map([[it.id, it]]), now });
+			if (r.segment) (items.push(it), out.push(r.segment), nScope++);
+			else why.set(`scope profile ${sponsor}: ${r.dropped[0]}`, 1);
+		}
+		console.log(`write-library: ${out.length} segments (catalysts, ${top.size} profiles, ${nLand} landscapes, ${nScope} scope profiles)`);
 		for (const [k, n] of why) console.log(`  not written (${n}): ${k}`);
 		if (dry === 'dry') {
 			for (const b of out[0]?.beats ?? []) console.log(`  [${b.type}] ${'text' in b ? b.text : b.type === 'list' ? `${b.title}: ${b.items.join('; ')}` : b.type === 'pipeline' ? b.phases.map((p) => `${p.phase} ${p.count}`).join(', ') : ''}`);
@@ -190,6 +207,10 @@ export const PIPELINE_JOBS: Record<string, Job> = {
 				byShow.set(s.show, v);
 			}
 			for (const [show, v] of byShow) console.log(`  ${show.padEnd(16)} ${Math.round((100 * v.air) / (v.air + v.pad))}% filled`);
+			const airs = new Map<string, number>();
+			for (const sl of playlist.slots) for (const e of sl.entries) if (e.kind === 'segment') airs.set(e.segmentId, (airs.get(e.segmentId) ?? 0) + 1);
+			const top1 = [...airs].sort((a, b) => b[1] - a[1])[0];
+			console.log(`  ${airs.size} distinct segments air; the most-aired airs ${top1?.[1] ?? 0} times (${top1?.[0] ?? '-'})`);
 			if (dry !== 'dry') await store.putPlaylist(playlist);
 		}
 	},
