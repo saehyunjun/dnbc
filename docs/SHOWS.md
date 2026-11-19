@@ -1,6 +1,6 @@
 # DNBC show bible
 
-Tone and beat order per show. Since 2026-11-19 every show covers neurology only (`docs/PLAN.md` section 0). The grid and show data are in `src/lib/channel/grid.ts`. The rules for facts and quotes are in `docs/PLAN.md` sections 2 and 5.
+Tone and beat order per show. Since 2026-11-19 every show covers neurology, psychiatry, and brain cancers only (`docs/PLAN.md` section 0). The grid and show data are in `src/lib/channel/grid.ts`. The rules for facts and quotes are in `docs/PLAN.md` sections 2 and 5.
 
 ## House style on screen
 
@@ -55,6 +55,8 @@ Candidates from memory. Every date and fact is checked against a primary or refe
 | Blockbuster | levodopa, the MS drugs, nusinersen, onasemnogene | 3 |
 | The Failure Files | aducanumab, the amyloid trials before it, ALS drugs withdrawn after confirmatory trials | 3 |
 | Rare Ones | SMA, Duchenne, Rett, Batten, and the advocates behind each | 4 |
+| Psychiatry history | chlorpromazine and the first antipsychotics, lithium, fluoxetine, esketamine, the first postpartum depression drugs | 3 |
+| Brain cancer explainers | why the blood-brain barrier blocks most cancer drugs, temozolomide and the standard of care, tumour-treating fields | 2 |
 | Future Pipeline | gene therapy and antisense in the brain, anti-tau, brain shuttles, neuromodulation | 3 |
 
 Live shows keep their formats. Patient Desk draws only from neurology communities.

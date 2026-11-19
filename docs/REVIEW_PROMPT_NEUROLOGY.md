@@ -16,7 +16,7 @@ You may query the data read-only: `npx tsx` with `process.loadEnvFile('.env.loca
 
 Answer these:
 1. **Is neurology the right first area?** Compare it with one or two other candidates (for example rare disease, or oncology narrowed to one tumour type) on daily news volume, how well the sources cover it, how risky errors are on air, and how much "so what" analysis the data can support. Use the store's numbers, not general knowledge.
-2. **Is the scope list right?** Name conditions that should be added or dropped, and the hardest edge cases for a keyword or MeSH match (for example neuropathy as a side effect, nerve blocks, glioma, psychiatric overlap). Say whether psychiatry and brain cancers belong in or out, and why.
+2. **Is the scope list right?** The owner put psychiatry and brain cancers in on 2026-11-19. Name conditions that should be added or dropped, and the hardest edge cases for a keyword or MeSH match (for example neuropathy as a side effect, nerve blocks, brain metastases in basket trials, insomnia or agitation as secondary conditions).
 3. **Can the channel fill 24 hours?** With about 3 neurology stories a day and the library counts in `docs/SHOWS.md`, work out how often a viewer sees the same segment during a day and a week, and whether three live wheels are enough or too many.
 4. **Do phases N1 to N4 fit before Monday?** Name the riskiest step, what to cut, and anything missing (for example what happens to the 168 out-of-scope segments, or to the ticker).
 5. **Does the scope change the analysis plan enough?** Check whether the fixed condition list removes the problems in `docs/ANALYSIS.md` section 9, and which remain.

@@ -9,11 +9,11 @@ DNBC is a 24/7 text-only TV channel about drug development, styled on CNBC's sch
 
 ## 0. Focus: neurology first (2026-11-19)
 
-DNBC covers neurological conditions only until the format is right. Other areas come back one at a time, each with its own condition list and library.
+DNBC covers neurology, psychiatry, and brain cancers only until the format is right (Aaron 2026-11-19: psychiatry and brain cancers in, Monday launch kept). Other areas come back one at a time, each with its own condition list and library.
 
 ### Scope
 
-In: diseases of the brain, spinal cord, nerves, and muscles.
+In: diseases of the brain, spinal cord, nerves, and muscles, mental health conditions, and brain cancers.
 
 | Group | Conditions |
 |---|---|
@@ -24,23 +24,27 @@ In: diseases of the brain, spinal cord, nerves, and muscles.
 | Headache and movement | migraine, essential tremor, dystonia, Tourette syndrome, tardive dyskinesia, restless legs, narcolepsy |
 | Rare genetic | Rett and Angelman syndromes, leukodystrophies, Batten disease |
 | Acute | stroke, traumatic brain injury |
+| Psychiatry | depression (including treatment-resistant and postpartum), schizophrenia, bipolar disorder, anxiety, PTSD, OCD, ADHD, autism, substance use disorders, insomnia, eating disorders, agitation in dementia |
+| Brain cancers | glioblastoma and other gliomas, DIPG, medulloblastoma, ependymoma, meningioma, brain metastases |
 
-Out for now: psychiatry (depression, schizophrenia), pain other than migraine and neuropathy, brain cancers (they follow oncology rules), and eye disease. Each is a decision for Aaron (section 10).
+Out for now: pain other than migraine and neuropathy, and eye disease.
+
+Brain cancer trials often enrol other solid tumours too. A trial is in scope when a brain cancer is one of its conditions. Psychiatry stories touch suicide and self-harm, so the patient screen (`src/lib/pipeline/screen.ts`) keeps its self-harm rule, and Patient Desk takes no psychiatry quotes about self-harm, dosing, or stopping medicine.
 
 ### Size of the area (Neon snapshot, keyword match on condition and title, 2026-11-19)
 
-| Measure | All areas | Neurology | Share |
-|---|---|---|---|
-| Active trials | 16,655 | 1,298 | 8% |
-| New registrations, last 90 days | 1,737 | 99 | 6%, about 1 a day |
-| Stories, last 7 days | 294 | 20 | 7%, about 3 a day |
-| Segments in the store | 184 | 16 (11 library) | 9% |
+| Measure | All areas | Neurology | Psychiatry | Brain cancers | In scope |
+|---|---|---|---|---|---|
+| Active trials | 16,655 | 1,135 | 373 | 196 | 1,669 (10%) |
+| New registrations, last 90 days | 1,737 | 90 | 31 | 11 | 132, about 1.5 a day |
+| Stories, last 7 days | 294 | 20 | 4 | 1 | 24, about 3.5 a day |
+| Segments in the store | 184 | 16 | 4 | 0 | 20 (14 library) |
 
-The match is rough: it includes brain tumours and misses conditions not in the list. Phase N1 replaces it with a checked list.
+The match is rough and misses conditions not in the list. Phase N1 replaces it with a checked list.
 
 ### What this changes
 
-1. **Live is thin.** About 3 stories a day cannot fill 13 live hours. Live shows shrink to three wheels (Morning Dose, Pipeline Close, Patient Desk) and the library carries the rest. Reruns run 21:00 to 07:00 as before.
+1. **Live is thin.** About 3.5 stories a day cannot fill 13 live hours. Live shows shrink to three wheels (Morning Dose, Pipeline Close, Patient Desk) and the library carries the rest. Reruns run 21:00 to 07:00 as before.
 2. **The library becomes neurology.** This Day in Approvals keeps only neurology drugs. Blockbuster, The Failure Files, Rare Ones, How It Works, and Future Pipeline get neurology lists (`docs/SHOWS.md`, Neurology library).
 3. **The ticker stays neurology only.** Other areas leave the channel, not just the main screen.
 4. **Analysis gets easier.** A fixed list of about 40 conditions, each checked by hand, replaces open condition terms. That answers Fable's "ambiguous term" refusal for this area (`docs/ANALYSIS.md` section 10).
@@ -51,14 +55,14 @@ The match is rough: it includes brain tumours and misses conditions not in the l
 
 | # | Goal | Done when |
 |---|---|---|
-| N1 | Scope list | `src/lib/channel/scope.ts`: the conditions above as terms with synonyms and MeSH ids, `inScope()` for items, stories, and trials; unit cases for near misses ("nerve block" in surgery, "neuropathy" as a chemotherapy side effect, glioma); counts in section 0 rerun with it |
+| N1 | Scope list | `src/lib/channel/scope.ts`: the conditions above (neurology, psychiatry, brain cancers) as terms with synonyms and MeSH ids, `inScope()` for items, stories, and trials; unit cases for near misses ("nerve block" in surgery, "neuropathy" as a chemotherapy side effect, glioma); counts in section 0 rerun with it |
 | N2 | Filter | stories carry `scope`; writers and the scheduler take in-scope stories only; out-of-scope segments are marked retired, not deleted; next day's playlist is 100% neurology with padding reported |
 | N3a | Fact library | a `facts` table of neurology facts (section 12): each fact one sentence with its source item, date, and condition; a second session subagent checks each against its source before it is saved; about 300 facts at launch (approvals, trial results, condition basics, scale definitions) |
 | N3 | Library | the launch counts in `docs/SHOWS.md` written by session subagents from the fact library only, through `import-segments`; every beat cites a fact or a source item |
 | N4 | Grid | `src/lib/channel/grid.ts` with three live wheels; fill measured again |
 | N5 | Analysis | `docs/ANALYSIS.md` section 9 slice S1 to S5, scoped to the condition list |
 
-Launch on Monday 23 November holds only if N1 to N4 finish by Sunday. N5 can follow launch.
+Launch stays on Monday 23 November (Aaron 2026-11-19). N1 to N4 and N3a must finish by Sunday. If they run late, N3a drops to about 100 facts for the library shows only. N5 follows launch.
 
 ## 1. What we copy from Scorchball TV
 
@@ -405,7 +409,6 @@ Voices and sound, avatars or video, viewer polls, accounts, market prices, EMA, 
 
 ## 10. Open for Aaron
 
-- Neurology scope (section 0): include psychiatry? brain cancers? Keep the Monday launch with N1 to N4 only?
 
 - Domain.
 - Set the Actions secrets in `saehyunjun/dnbc` (Settings, Secrets and variables, Actions). `DATABASE_URL` is the Neon `DATABASE_URL` in `.env.local` (from `vercel env pull`). `DNBC_CONTACT` is the SEC contact. Optional: `BUSINESSWIRE_FEEDS` (a health feed URL from Business Wire's RSS builder) and `BLUESKY_HANDLE` plus `BLUESKY_APP_PASSWORD`. Until `DATABASE_URL` is set, both workflows start and skip.
