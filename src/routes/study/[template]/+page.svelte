@@ -2,7 +2,8 @@
 	import { onMount } from 'svelte';
 	import BeatView from '$lib/components/BeatView.svelte';
 	import StageFrame from '$lib/components/StageFrame.svelte';
-	import { BEAT_TYPES, SAMPLES } from '$lib/player/samples';
+	import { notesFor } from '$lib/player/cite';
+	import { BEAT_TYPES, SAMPLE_CITATIONS, SAMPLES } from '$lib/player/samples';
 	import type { BeatType } from '$lib/types';
 
 	let { data } = $props();
@@ -27,8 +28,8 @@
 			<div class="grid">
 				{#each SAMPLES[type] as s}
 					<figure data-sample={s.label}>
-						<StageFrame show="Morning Dose" color="#f5b700" clock="7:42 ET" title="Sample segment title" progress={0.5}>
-							<BeatView beat={s.beat} elapsed={(s.beat.duration ?? 5) * 0.9} show="Morning Dose" color="#f5b700" {reduced} />
+						<StageFrame show="Morning Dose" color="#f5b700" clock="7:42 ET" title="Sample segment title" progress={0.5} notes={notesFor(s.beat, SAMPLE_CITATIONS)}>
+							<BeatView beat={s.beat} elapsed={(s.beat.duration ?? 5) * 0.9} show="Morning Dose" color="#f5b700" {reduced} citations={SAMPLE_CITATIONS} />
 						</StageFrame>
 						<figcaption>{s.label}</figcaption>
 					</figure>

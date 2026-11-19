@@ -1,5 +1,7 @@
 <script lang="ts">
 	import CastPlate from '../CastPlate.svelte';
+	import Notes from '../Notes.svelte';
+	import type { Note } from '$lib/player/cite';
 	import { fit } from '$lib/player/fit';
 	import type { Beat } from '$lib/types';
 
@@ -7,8 +9,9 @@
 		beat,
 		elapsed,
 		duration,
-		reduced = false
-	}: { beat: Extract<Beat, { type: 'panel' }>; elapsed: number; duration: number; reduced?: boolean } = $props();
+		reduced = false,
+		notes = []
+	}: { beat: Extract<Beat, { type: 'panel' }>; elapsed: number; duration: number; reduced?: boolean; notes?: Note[] } = $props();
 
 	// Lines come in turn, each for an equal share of the beat.
 	const turn = $derived(
@@ -21,7 +24,7 @@
 		{#each beat.lines as line, i}
 			<div class="line" class:rv-hidden={i > turn} data-line={i}>
 				<CastPlate who={line.who} active={i === turn} />
-				<p>{line.text}</p>
+				<p>{line.text}{#if i === beat.lines.length - 1}<Notes {notes} />{/if}</p>
 			</div>
 		{/each}
 	</div>

@@ -391,6 +391,77 @@ for (const size of ['desktop', 'phone']) {
 	await ctx.close();
 }
 
+// ---- footnotes and cast avatars ----
+for (const size of ['desktop', 'phone']) {
+	const { page, ctx } = await newPage(size);
+	await page.goto(`${BASE}/study/anchor`);
+	await page.waitForSelector('[data-study="anchor"] [data-footnotes]');
+	await page.waitForTimeout(500);
+	const a = page.locator('[data-study="anchor"] [data-sample="Anchor A"]');
+	check(`footnotes ${size}: superscript number after the anchor text`, (await a.locator('[data-fn]').innerText()) === '1');
+	check(`footnotes ${size}: strip lists "1 FDA, 18 Nov 2026"`, /^1\s*FDA, 18 Nov 2026$/.test((await a.locator('[data-footnotes]').innerText()).replace(/\s+/g, ' ').trim()), await a.locator('[data-footnotes]').innerText());
+	const link = a.locator('[data-footnotes] a');
+	check(`footnotes ${size}: link href matches the citation`, (await link.getAttribute('href')) === 'https://www.fda.gov/news-events/press-announcements/sample');
+	check(`footnotes ${size}: link opens in a new tab safely`, (await link.getAttribute('target')) === '_blank' && (await link.getAttribute('rel')) === 'noopener noreferrer');
+	check(`footnotes ${size}: strip sits above the lower third`, await a.evaluate((el) => el.querySelector('[data-footnotes]').getBoundingClientRect().bottom <= el.querySelector('.lower').getBoundingClientRect().top + 1));
+	const fit = await page.evaluate(() =>
+		[...document.querySelectorAll('[data-footnotes]')].every((el) => {
+			const r = el.getBoundingClientRect();
+			const st = el.closest('[data-stage]').getBoundingClientRect();
+			return el.scrollWidth <= el.clientWidth + 1 && el.scrollHeight <= el.clientHeight + 1 && r.left >= st.left - 1 && r.right <= st.right + 1;
+		})
+	);
+	check(`footnotes ${size}: strip does not overflow`, fit);
+	await page.goto(`${BASE}/study/quote`);
+	await page.waitForSelector('[data-study="quote"] [data-by]');
+	await page.waitForTimeout(400);
+	check(`footnotes ${size}: quote whose attribution matches its citation shows no footnote`, (await page.locator('[data-sample="Press release"] [data-fn]').count()) === 0 && (await page.locator('[data-sample="Press release"] [data-fn-item]').count()) === 0);
+	check(`footnotes ${size}: a Reddit quote has no link in the strip`, (await page.locator('[data-sample="Reddit"] [data-footnotes] a').count()) === 0);
+	check(`footnotes ${size}: a quote with another source shows its footnote`, (await page.locator('[data-sample="With footnote"] [data-fn-item]').count()) === 1);
+	// The player: segments with and without citations.
+	const withC = entries.find((e) => e.seg.citations?.length && e.beats.some((b) => b.dur >= 3500 && b.beat.sources?.length));
+	const without = entries.find((e) => !e.seg.citations?.length && e.beats.some((b) => b.dur >= 3500));
+	if (withC) {
+		const b = withC.beats.find((x) => x.dur >= 3500 && x.beat.sources?.length);
+		await page.goto(`${BASE}/?t=${b.start + 300}`);
+		await ready(page);
+		check(`footnotes ${size}: player shows the strip when the segment has citations`, (await page.locator('[data-stage] [data-footnotes]').count()) === 1);
+		const hrefs = await page.locator('[data-stage] [data-footnotes] a').evaluateAll((as) => as.map((a) => a.getAttribute('href')));
+		const expected = b.beat.sources.map((id) => withC.seg.citations.find((c) => c.id === id)?.url).filter(Boolean);
+		check(`footnotes ${size}: player links match the citations`, hrefs.every((h) => expected.includes(h)), `${hrefs} vs ${expected}`);
+		check(`footnotes ${size}: player strip does not overflow`, await page.evaluate(() => { const el = document.querySelector('[data-footnotes]'); return el.scrollWidth <= el.clientWidth + 1 && el.scrollHeight <= el.clientHeight + 1; }));
+	} else console.log('skip player footnote check: no segment with citations in the data yet');
+	if (without) {
+		await page.goto(`${BASE}/?t=${without.beats[0].start + 300}`);
+		await ready(page);
+		check(`footnotes ${size}: player shows no strip without citations`, (await page.locator('[data-footnotes], [data-fn]').count()) === 0);
+	}
+	await ctx.close();
+}
+{
+	const { page, ctx } = await newPage('desktop');
+	await page.goto(`${BASE}/study/cast`);
+	await page.waitForSelector('[data-cast-grid]');
+	const cards = await page.locator('[data-cast-card]').count();
+	check('cast page: six cast cards', cards === 6, String(cards));
+	check('cast page: each card draws one avatar svg', (await page.locator('[data-cast-card] > svg[data-avatar]').count()) === 6);
+	const sigs = await page.locator('[data-cast-card] > svg[data-avatar]').evaluateAll((els) => els.map((e) => e.innerHTML.length + ':' + [...new Set([...e.querySelectorAll('[fill]')].map((n) => n.getAttribute('fill')))].join('')));
+	check('cast page: the six avatars are all different', new Set(sigs).size === 6);
+	const sized = await page.locator('[data-cast-card] > svg[data-avatar]').evaluateAll((els) => els.every((e) => e.getBoundingClientRect().width > 100 && Math.abs(e.getBoundingClientRect().width - e.getBoundingClientRect().height) < 1));
+	check('cast page: avatars are square and large', sized);
+	check('cast page: every plate keeps the AI character tag', (await page.locator('[data-cast-card] .tag').allInnerTexts()).every((t) => t === 'AI character'));
+	check('cast page: noindex and no horizontal scroll', (await page.locator('meta[name="robots"]').getAttribute('content')) === 'noindex' && (await noHScroll(page)));
+	await page.goto(`${BASE}/study/panel`);
+	await page.waitForSelector('[data-study="panel"] .plate');
+	check('panel beat: each speaker line has an avatar', (await page.locator('[data-study="panel"] [data-sample="Two voices"] .plate svg[data-avatar]').count()) === 2);
+	await ctx.close();
+	const ph = await newPage('phone');
+	await ph.page.goto(`${BASE}/study/cast`);
+	await ph.page.waitForSelector('[data-cast-grid]');
+	check('cast page phone: no horizontal scroll', await noHScroll(ph.page));
+	await ph.ctx.close();
+}
+
 // ---- home page timing and errors ----
 {
 	const live = await newPage('phone');

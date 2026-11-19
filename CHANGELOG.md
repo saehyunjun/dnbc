@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-19, Phase 3b: footnotes and cast avatars
+
+- Sources are footnotes, never spoken lines. A beat's `sources` map to `Segment.citations` (first-cited order). A small superscript number follows the beat's main text (`src/lib/components/Notes.svelte`), and a footnote strip sits inside the stage under the beat and above the lower third (`FootnoteStrip.svelte`, "1 PR Newswire, 18 Nov 2026", label is a new-tab link with `rel="noopener noreferrer"` when `url` is set). Helper `src/lib/player/cite.ts`. A quote whose publisher, date, and link match its citation shows no footnote, because its own attribution line says the same. Segments with no `citations` show no strip. Study samples carry citations (`SAMPLE_CITATIONS` in `samples.ts`).
+- Cast avatars: one flat head-and-shoulders SVG per member (`src/lib/components/cast/Avatar.svelte`, art data in `avatars.ts`) on the member's colour, with glasses for the professor, a white coat and stethoscope for the clinician, and so on. They replace the initial square in `CastPlate.svelte` (3em), so panel beats show each speaker's avatar. The "AI character" tag stays. Review page `/study/cast`.
+- `fit.ts` now shrinks at a 1 px overflow (a quiz sample clipped by 1.5 px once the strip took height).
+- Headless suite `scripts/check.mjs`: 186 of 186 (new checks: footnote numbers, strip text, link href and target, strip placement and no overflow at 1440 x 900 and 390 x 844, quote dedupe, absent without citations, six distinct avatars on `/study/cast`). `npm run check` 0 errors, 0 warnings. `npm test` 94 of 94.
+- Screenshots: `docs/screenshots/phase-3b/` (cast, anchor, panel, quote, headline, player; desktop and phone).
+
 ## 2026-11-19, Phase 3: the player
 
 - Player at `/` (`src/routes/+page.svelte`, state in `src/lib/player/channel.svelte.ts`): clock offset from the server `Date` header (median of the last five reads of `/api/channel/time`), `onAir()` on every animation frame, playlist and blocked refetched every 60 s. A blocked or missing segment airs as a bumper with the show name, "Up next", and the next title.

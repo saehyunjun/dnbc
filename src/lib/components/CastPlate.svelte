@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { AI_TAG, CAST } from '$lib/channel/cast';
+	import Avatar from './cast/Avatar.svelte';
 	import type { CastId } from '$lib/types';
 
 	let { who, active = true }: { who: CastId; active?: boolean } = $props();
@@ -7,7 +8,7 @@
 </script>
 
 <div class="plate" class:dim={!active} style="--c: {member.color}" data-cast={who}>
-	<span class="initial" aria-hidden="true">{member.name.replace(/^(Dr\.|Prof\.)\s*/, '').charAt(0)}</span>
+	<Avatar id={who} size="3em" />
 	<span class="text">
 		<span class="name">{member.name}</span>
 		<span class="role">{member.role}<span class="tag">{AI_TAG}</span></span>
@@ -24,19 +25,6 @@
 	}
 	.plate.dim {
 		opacity: 0.7;
-	}
-	.initial {
-		flex: none;
-		width: 2.2em;
-		height: 2.2em;
-		border-radius: 0.4em;
-		background: var(--c);
-		color: #07111f;
-		display: grid;
-		place-items: center;
-		font-family: var(--font-display);
-		font-weight: 800;
-		font-size: 1.2em;
 	}
 	.text {
 		display: flex;

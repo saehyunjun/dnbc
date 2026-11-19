@@ -1,9 +1,11 @@
 <script lang="ts">
+	import Notes from '../Notes.svelte';
+	import type { Note } from '$lib/player/cite';
 	import { fit } from '$lib/player/fit';
 	import { hostOf, shortDate } from '$lib/player/format';
 	import type { Beat } from '$lib/types';
 
-	let { beat, color }: { beat: Extract<Beat, { type: 'quote' }>; color: string } = $props();
+	let { beat, color, notes = [] }: { beat: Extract<Beat, { type: 'quote' }>; color: string; notes?: Note[] } = $props();
 
 	// Attribution by source (docs/PLAN.md, Interviews).
 	// Community only: no name, no handle, no link. Handle only: no name, no role.
@@ -12,7 +14,7 @@
 
 <div class="beat" data-beat="quote" data-attribution={kind}>
 	<div class="beat-body" data-beat-body use:fit={beat.text} style="--fs: calc(var(--u) * 4.4)">
-		<blockquote style="border-color: {color}">“{beat.text}”</blockquote>
+		<blockquote style="border-color: {color}">“{beat.text}”<Notes {notes} /></blockquote>
 		<p class="by" data-by>
 			{#if kind === 'community'}
 				<strong>{beat.speaker.community}</strong>

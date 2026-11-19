@@ -1,6 +1,6 @@
 // Fixed sample beats for the study pages. Not real stories.
 
-import type { Beat, BeatType } from '../types';
+import type { Beat, BeatType, Citation } from '../types';
 
 export interface Sample {
 	label: string;
@@ -55,6 +55,19 @@ export const SAMPLES: Record<BeatType, Sample[]> = {
 				publisher: 'Reddit',
 				date: '2026-11-17',
 				sources: ['reddit-sample'],
+				duration: 8
+			}
+		},
+		{
+			label: 'With footnote',
+			beat: {
+				type: 'quote',
+				text: 'The study met its primary endpoint and the safety profile was consistent with earlier trials.',
+				speaker: { name: 'Sam Okoro', role: 'Chief Executive Officer, Example Bio' },
+				publisher: 'Business Wire',
+				date: '2026-11-18',
+				url: 'https://www.businesswire.com/news/home/sample',
+				sources: ['businesswire-sample', 'fda-sample'],
 				duration: 8
 			}
 		},
@@ -162,5 +175,18 @@ export const SAMPLES: Record<BeatType, Sample[]> = {
 	],
 	bumper: [{ label: 'Bumper', beat: { type: 'bumper', text: 'After the break: the day’s phase moves', sources: [], duration: 5 } }]
 };
+
+/** Footnotes for the sample beats, in the order a segment would carry them. */
+export const SAMPLE_CITATIONS: Citation[] = [
+	{ id: 'fda-sample', label: 'FDA', title: 'FDA approves a once-weekly insulin', date: '2026-11-18', url: 'https://www.fda.gov/news-events/press-announcements/sample' },
+	{ id: 'prnewswire-sample', label: 'PR Newswire', title: 'Sample release', date: '2026-11-18', url: 'https://www.prnewswire.com/news-releases/sample.html' },
+	{ id: 'businesswire-sample', label: 'Business Wire', title: 'Sample release', date: '2026-11-18', url: 'https://www.businesswire.com/news/home/sample' },
+	{ id: 'bluesky-sample', label: 'Bluesky', date: '2026-11-18', url: 'https://bsky.app/profile/trialwatcher.example.com/post/sample' },
+	{ id: 'reddit-sample', label: 'Reddit', date: '2026-11-17' },
+	{ id: 'profile-sample', label: 'ClinicalTrials.gov', title: 'Sponsor registry counts', date: '2026-11-19', url: 'https://clinicaltrials.gov/search?spons=AstraZeneca' },
+	{ id: 'ref-sample', label: 'PubMed', title: 'Five-year follow-up', date: '2024-03-01', url: 'https://pubmed.ncbi.nlm.nih.gov/00000000/' },
+	{ id: 'drugsfda-sample', label: 'Drugs@FDA', date: '2025-11-19', url: 'https://www.accessdata.fda.gov/scripts/cder/daf/' },
+	{ id: 'catalyst-sample', label: 'ClinicalTrials.gov', title: 'Primary completion dates', date: '2026-11-19', url: 'https://clinicaltrials.gov/' }
+];
 
 export const BEAT_TYPES = Object.keys(SAMPLES) as BeatType[];

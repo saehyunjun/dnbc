@@ -9,6 +9,7 @@
 	import UpNext from '$lib/components/UpNext.svelte';
 	import { SHOWS } from '$lib/channel/grid';
 	import { Channel } from '$lib/player/channel.svelte';
+	import { notesFor } from '$lib/player/cite';
 	import { clockText } from '$lib/player/format';
 
 	const q = page.url.searchParams;
@@ -35,6 +36,7 @@
 	const color = $derived(show?.color ?? 'var(--color-brand)');
 	const seg = $derived(ch.segment);
 	const beat = $derived(seg ? seg.beats[ch.beatIndex] : undefined);
+	const notes = $derived(seg?.citations?.length ? (beat ? notesFor(beat, seg.citations) : []) : undefined);
 	const next = $derived(ch.upNext(3));
 	const ticker = $derived(ch.tickerItems());
 	const opinion = $derived(!!seg && (!!seg.forwardLooking || ch.slot?.show === 'mad-science'));
@@ -71,10 +73,11 @@
 			{opinion}
 			{progress}
 			beatKey={key}
+			{notes}
 		>
 			{#key key}
 				{#if seg && beat}
-					<BeatView {beat} elapsed={ch.elapsed} show={name} {color} {reduced} />
+					<BeatView {beat} elapsed={ch.elapsed} show={name} {color} {reduced} citations={seg.citations} />
 				{:else}
 					<PadCard
 						show={ch.loaded ? name : 'DNBC'}

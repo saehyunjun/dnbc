@@ -6,7 +6,7 @@ export function fit(node: HTMLElement, _key?: unknown) {
 		node.style.fontSize = '';
 		let size = parseFloat(getComputedStyle(node).fontSize);
 		let n = 0;
-		while ((node.scrollHeight > node.clientHeight + 1 || node.scrollWidth > node.clientWidth + 1) && size > 8 && n++ < 40) {
+		while ((node.scrollHeight >= node.clientHeight + 1 || node.scrollWidth > node.clientWidth + 1) && size > 8 && n++ < 40) {
 			size *= 0.94;
 			node.style.fontSize = `${size}px`;
 		}

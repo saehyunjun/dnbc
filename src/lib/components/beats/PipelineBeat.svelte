@@ -1,8 +1,10 @@
 <script lang="ts">
+	import Notes from '../Notes.svelte';
+	import type { Note } from '$lib/player/cite';
 	import { fit } from '$lib/player/fit';
 	import type { Beat } from '$lib/types';
 
-	let { beat, color }: { beat: Extract<Beat, { type: 'pipeline' }>; color: string } = $props();
+	let { beat, color, notes = [] }: { beat: Extract<Beat, { type: 'pipeline' }>; color: string; notes?: Note[] } = $props();
 
 	const max = $derived(Math.max(1, ...beat.phases.map((p) => p.count)));
 	const rows = $derived(
@@ -13,7 +15,7 @@
 
 <div class="beat" data-beat="pipeline">
 	<div class="beat-body" data-beat-body use:fit={JSON.stringify(beat.phases)} style="--fs: calc(var(--u) * 3.4)">
-		<h2>{beat.sponsor}{#if beat.drug}<span> · {beat.drug}</span>{/if}</h2>
+		<h2>{beat.sponsor}{#if beat.drug}<span> · {beat.drug}</span>{/if}<Notes {notes} /></h2>
 		<div class="bars">
 			{#each rows as r}
 				<div class="row" class:hit={hit(r.phase)}>

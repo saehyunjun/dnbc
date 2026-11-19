@@ -1,5 +1,7 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
+	import FootnoteStrip from './FootnoteStrip.svelte';
+	import type { Note } from '$lib/player/cite';
 
 	// The 16:9 picture: DNBC bug, show clock, the beat, and the lower third.
 	let {
@@ -10,6 +12,7 @@
 		opinion = false,
 		progress = 0,
 		beatKey = '',
+		notes,
 		children
 	}: {
 		show: string;
@@ -19,6 +22,8 @@
 		opinion?: boolean;
 		progress?: number;
 		beatKey?: string;
+		/** Footnotes for the current beat. Undefined when the segment has no citations (no strip). */
+		notes?: Note[];
 		children: Snippet;
 	} = $props();
 </script>
@@ -30,6 +35,7 @@
 		<span class="clock" data-show-clock>{show}, {clock}</span>
 	</div>
 	<div class="screen">{@render children()}</div>
+	{#if notes}<FootnoteStrip {notes} />{/if}
 	<div class="lower" style="--show: {color}">
 		<span class="show-name" data-show-name>{show}</span>
 		<span class="seg" data-segment-title>{title ?? ''}</span>
