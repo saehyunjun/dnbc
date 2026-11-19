@@ -62,7 +62,27 @@ A trial can sit in more than one group, so the groups add up to more than the in
 | N4 | Grid | `src/lib/channel/grid.ts` with three live wheels; fill measured again |
 | N5 | Analysis | `docs/ANALYSIS.md` section 9 slice S1 to S5, scoped to the condition list |
 
-Launch stays on Monday 23 November (Aaron 2026-11-19). N1 to N4 and N3a must finish by Sunday. If they run late, N3a drops to about 100 facts for the library shows only. N5 follows launch.
+Launch stays on Monday 23 November (Aaron 2026-11-19). N5 follows launch.
+
+### Fable gap review, 2026-11-19 (verdict: not ready as planned, ready with the cuts below)
+
+| # | Gap | Fix | Hours | Status |
+|---|---|---|---|---|
+| G1 | Too little content: 27 library plus 15 live segments make a 24-minute loop, each airing 72 to 80 times a day, and the holiday and weekend grids are 98% library | template profiles from the trials table for the 38 conditions and about 48 sponsors with 5 or more in-scope trials, 60 library segments of about 90 s, and a labelled 3-hour library block that repeats | 14 | open |
+| G2 | Jobs late: the 15-minute ingest ran once today, the daily ran 8 hours late, `schedule` builds today only | build today and tomorrow in every run, the player falls back to the newest playlist, an outside timer triggers `workflow_dispatch`, a stale-playlist alarm | 4 | open |
+| G3 | Story scope wrong both ways: derived items join stories by URL, and brand-name releases name the condition after character 400 | keep derived items out of `buildStories`, judge a story by its lead item, add drug names to `scope.ts`, give segments a `scope` field (N2) | 8 | open |
+| G4 | Library sources are typed into the import file, not fetched, so the check compares the writer's numbers with the writer's own text | the import fetches each URL and requires the stored text verbatim in the page; each fact gets a status check | 4 plus 6 for 100 facts | open |
+| G5 | Patient Desk has no writer and no in-scope quotes | cut for launch | 0.5 | open |
+| G6 | Live writing has no owner after Monday | a daily runbook for one morning session | 1 | open |
+| G7 | This Day in Approvals cannot be filtered: `drugsfda` items have no conditions | drug list in `scope.ts`, or cut | 1 | open |
+| G8 | Trial scope: about 60 false positives in 1,698 (anti-GBM kidney disease, FTD chemotherapy, osteochondritis, optic neuropathy, stroke prevention in cardiology) and misses ("Brain Neoplasms", CNS lymphoma, adrenoleukodystrophy, "Bipolar I or II", MOGAD) | fix the terms and add cases | 2 | open |
+| G9 | Sources miss the area: PubMed journals and Bluesky keywords are general, Catalyst Calendar uses a second condition list | neurology and psychiatry journals and keywords, Catalyst Calendar on `scope.ts` | 2 | open |
+| G10 | Psychiatry safeguards cover quotes only; no crisis line, corrections contact, or about page | self-harm rule on segment text, an `/about` page with a crisis line and corrections contact | 2 | open |
+| G11 | Launch chores: deploy approval, domain, link preview, PIQHome card, `scripts/soak.mjs`, rehearsal, retiring 185 out-of-scope segments | Phase 4 | 6 | open |
+| G12 | Owner decisions: the DNBC name and CNBC styling may draw a trademark complaint (Fable's judgment, not checked); Vercel Hobby is for non-commercial use | Aaron | 0 | open |
+
+Cut for launch (Fable): Patient Desk, Fast Science, Mad Science, Lab Notes, and Deal Desk. The weekday grid is Morning Dose, one Pipeline hour, and the library block. N3a is 100 facts with no analysis lines. EDGAR, Business Wire, Reddit, and LinkedIn wait. This Day in Approvals airs only if G7 is done.
+
 
 ## 1. What we copy from Scorchball TV
 
@@ -423,6 +443,7 @@ Voices and sound, avatars or video, viewer polls, accounts, market prices, EMA, 
 | 2026-11-18 | Aaron, then Claude | v3: name DNBC, SEC contact chosen (kept in a secret), and library shows added (section 3). Pro checked against Vercel and GitHub docs and found not needed. Jobs move to GitHub Actions in a public repo, and serving moves from Blob to Neon plus one cached function. Not yet reviewed by Fable |
 
 | 2026-11-19 | Fable | `docs/ANALYSIS.md` v1 ("so what" analysis layer): not ready. The check passed 11 planted wrong analysis beats, own-matcher counts are unreliable, and the plan did not fit before Monday. v2 adds a derived tier with a row rule and word rules, lets ClinicalTrials.gov do the grouping, and cuts the launch slice to Landscape for registrations (`docs/ANALYSIS.md` section 9) |
+| 2026-11-19 | Fable | Gap review of the neurology scope: not ready as planned; G1 to G12 and the cut list in section 0 |
 
 ## 12. Lessons from PNN (2026-11-19)
 
