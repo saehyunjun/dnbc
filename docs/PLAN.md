@@ -53,7 +53,8 @@ The match is rough: it includes brain tumours and misses conditions not in the l
 |---|---|---|
 | N1 | Scope list | `src/lib/channel/scope.ts`: the conditions above as terms with synonyms and MeSH ids, `inScope()` for items, stories, and trials; unit cases for near misses ("nerve block" in surgery, "neuropathy" as a chemotherapy side effect, glioma); counts in section 0 rerun with it |
 | N2 | Filter | stories carry `scope`; writers and the scheduler take in-scope stories only; out-of-scope segments are marked retired, not deleted; next day's playlist is 100% neurology with padding reported |
-| N3 | Library | the launch counts in `docs/SHOWS.md` written by session subagents and through `import-segments`; every fact checked |
+| N3a | Fact library | a `facts` table of neurology facts (section 12): each fact one sentence with its source item, date, and condition; a second session subagent checks each against its source before it is saved; about 300 facts at launch (approvals, trial results, condition basics, scale definitions) |
+| N3 | Library | the launch counts in `docs/SHOWS.md` written by session subagents from the fact library only, through `import-segments`; every beat cites a fact or a source item |
 | N4 | Grid | `src/lib/channel/grid.ts` with three live wheels; fill measured again |
 | N5 | Analysis | `docs/ANALYSIS.md` section 9 slice S1 to S5, scoped to the condition list |
 
@@ -352,7 +353,7 @@ Each phase ends with `npm run check` (0 errors), the headless suite, screenshots
 | 1 | Thu 19 | Ingest | 9 automated sources write `SourceItem`s to Neon, and the CT.gov snapshot is seeded. A dry run makes at least 50 stories with entities. The fixture day is frozen. **`ingest.yml` and `daily.yml` run on schedule from Thursday night**, so stories build up before launch. **Status 2026-11-18:** built a day early. 7 of 9 sources live, 180 stories (129 airable), fixture day frozen. The schedule waits on the Actions secrets (section 10). Business Wire and EDGAR not live |
 | 2 | Fri 20 | Write and check | the 5 live formats and 4 library formats. 120 live segments from the fixture day pass the check, and the check catches 15 planted bad segments (one per rule, plus wrong speaker, reversed outcome, and social-only fact). The patient screen drops 5 planted bad quotes. The 30 written-ahead library segments pass. Reddit and LinkedIn files have 20 quotes each. **Status 2026-11-19:** template writer (pipeline, FDA releases, CRLs, This Day in Approvals, Catalyst Calendar, Pipeline Profile), 10 model-written live segments and 30 written-ahead library segments from session subagents (the AI Gateway free tier blocks Claude models), all through the check. 184 segments in Neon. Scheduler `src/lib/pipeline/schedule.ts` built early from Phase 4: 2026-11-19 is 0% padding, 43% live and 57% library. Patient screen and quote files not done |
 | 3 | Sat 21 | Player | every beat type and format draws at both sizes. Two browsers with clocks set 90 s apart land on the same beat. The ticker, up-next strip, `/schedule`, and kill switch work **Status 2026-11-19:** built a day early. Player at `/`, `/schedule`, `/study/<beat type or all>`, the cached API (`playlist`, `segments`, `blocked`, plus an uncached `time` read for the clock offset), `npm run block`. All 10 beat types draw at both sizes. Headless suite `scripts/check.mjs`, 154 of 154. Not done: the quiz beat has no real data yet, and the 10-minute memory check is not written |
-| 4 | Sun 22 | Schedule and soak | `soak.mjs` on a simulated 24 hours of fixtures finds no empty wheel, no repeat that breaks the live or library rules, and no blocked or failed segment on air. The same check passes on the weekend and holiday grids. `produce.yml` runs on schedule from Sunday morning, and Sunday evening's wheels are watched live. Watch notes are fixed |
+| 4 | Sun 22 | Schedule and soak | `soak.mjs` on a simulated 24 hours of fixtures finds no empty wheel, no repeat that breaks the live or library rules, and no blocked or failed segment on air. The same check passes on the weekend and holiday grids. `produce.yml` runs on schedule from Sunday morning, and Sunday evening's wheels are watched live. Watch notes are fixed. Added 2026-11-19 from PNN: a rehearsal runs the next day's playlist through the headless player at the shifted clock (`?t=`) before the playlist is published, and fails on an empty wheel, a clipped beat, or a blocked segment |
 | 5 | Mon 23 | Launch | public at a domain, with a link preview image and a card on PIQHome `/experiments`. Holiday grid set for 26 and 27 November |
 
 If time runs short, cut in this order: the `pipeline` beat (Pipeline Open and Close then use Headlines), Lab Notes, LinkedIn, Mad Science, the `timeline` beat, and then the written-ahead library down to How It Works (This Day in Approvals and Catalyst Calendar stay, because they are automatic).
@@ -419,3 +420,31 @@ Voices and sound, avatars or video, viewer polls, accounts, market prices, EMA, 
 | 2026-11-18 | Aaron, then Claude | v3: name DNBC, SEC contact chosen (kept in a secret), and library shows added (section 3). Pro checked against Vercel and GitHub docs and found not needed. Jobs move to GitHub Actions in a public repo, and serving moves from Blob to Neon plus one cached function. Not yet reviewed by Fable |
 
 | 2026-11-19 | Fable | `docs/ANALYSIS.md` v1 ("so what" analysis layer): not ready. The check passed 11 planted wrong analysis beats, own-matcher counts are unreliable, and the plan did not fit before Monday. v2 adds a derived tier with a row rule and word rules, lets ClinicalTrials.gov do the grouping, and cuts the launch slice to Landscape for registrations (`docs/ANALYSIS.md` section 9) |
+
+## 12. Lessons from PNN (2026-11-19)
+
+PNN (pnn.watch) is a 24/7 AI news channel about crypto and the internet, built by one person with Claude Code. Aaron shared the builder's post on 2026-11-19. Every claim below is from that post and not checked by us.
+
+### What PNN does that we take
+
+| PNN practice | Here | Where |
+|---|---|---|
+| About 15,000 sourced facts in a research library, checked by a second agent before they are added | a neurology fact library: one sentence per fact with its source item, checked by a second session subagent before saving. Library shows, the Professor, and analysis lines draw only from it. Fable's "derived tier" (`docs/ANALYSIS.md` section 9) becomes one kind of fact | phase N3a |
+| A number that does not match the data is rewritten or the line is killed | we already drop failing optional beats. Add one rewrite attempt for subagent-written segments before a beat is dropped, then drop | `import-segments` |
+| Parody guests speak only from sourced research sheets, with a second standards check | every cast member speaks only from cited items or facts. That is our rule already. Opinion segments keep the Opinion label | `docs/SHOWS.md` |
+| Characters remember earlier coverage | continuity lines: when a story's drug or trial was covered before, an anchor line says when ("We first covered this trial on 12 November"), taken from the segments store, so it can be checked. No invented memories | after launch |
+| One shared timeline that everyone sees at the same moment | already built (`src/lib/channel/clock.ts`, playlist per day) | done |
+| Changes run against a time-shifted copy of the station before going live | a rehearsal of the next day's playlist in the headless player before it is published | Phase 4 |
+| About 2,500 checks run before each push | we have 186 headless and 94 unit checks. Every phase adds checks for what it changes | every phase |
+| Cheap model for routine lines, stronger model for big shows and fact checks | if AI Gateway credits are approved: Haiku writes template-like segments, Sonnet writes panels and checks facts. Until then, session subagents do both | section 10 |
+| Nothing is written when nobody is watching | not needed while writing costs nothing. If paid writing starts, live writing pauses when Vercel Analytics shows no viewers in the past hour | later |
+| Distinct shows with a fixed premise and recurring characters | keep the six-character cast with fixed roles. A recurring bit per show is allowed if it is about the format, not a real person | `docs/SHOWS.md` |
+
+### What we do not take
+
+| PNN practice | Why not |
+|---|---|
+| Voices, music, house bands, lip sync | text only is a launch rule (section 8). It keeps writing cheap and the check simple |
+| Parodies of real people | real patients, doctors, and companies in a health channel. A parody line can be read as a medical claim |
+| Feuds, walk-offs, and opinions the cast holds about each other | the cast may disagree on how to read a trial design, never about each other. Drama pulls attention from the facts |
+| Running on a home computer | we run on GitHub Actions, Neon, and Vercel free plans so it keeps going without Aaron's machine |

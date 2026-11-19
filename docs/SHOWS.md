@@ -58,3 +58,10 @@ Candidates from memory. Every date and fact is checked against a primary or refe
 | Future Pipeline | gene therapy and antisense in the brain, anti-tau, brain shuttles, neuromodulation | 3 |
 
 Live shows keep their formats. Patient Desk draws only from neurology communities.
+
+## Cast rules (2026-11-19, from the PNN review)
+
+- A cast member says only what a cited item or a fact in the fact library says. Opinion segments carry the Opinion label.
+- The cast may disagree about how to read a trial or a decision. They never argue about each other, and nobody leaves the set.
+- A recurring bit belongs to a show's format (the Professor's chalkboard, the Skeptic's "what could go wrong" question). It never imitates a real person.
+- Continuity lines ("We first covered this trial on 12 November") come from the segments store. No invented memories.

@@ -8,7 +8,7 @@ You are reviewing a scope change to DNBC, a 24/7 text-only "CNBC for drug develo
 
 Read, in this order:
 1. `docs/PLAN.md` section 0 (the scope, its numbers, and phases N1 to N5), then sections 2, 3, 6, and 7.
-2. `docs/SHOWS.md`, the "Neurology library" section.
+2. `docs/PLAN.md` section 12 (what we take from PNN, another 24/7 AI channel, and what we do not), and `docs/SHOWS.md`, the "Neurology library" and "Cast rules" sections.
 3. `docs/ANALYSIS.md` sections 9 and 10 (the "so what" analysis layer and its launch slice).
 4. `src/lib/channel/grid.ts`, `src/lib/pipeline/schedule.ts`, `src/lib/pipeline/stories.ts`, and `src/lib/pipeline/check.ts`, to judge whether the phases fit the code.
 
@@ -21,6 +21,7 @@ Answer these:
 4. **Do phases N1 to N4 fit before Monday?** Name the riskiest step, what to cut, and anything missing (for example what happens to the 168 out-of-scope segments, or to the ticker).
 5. **Does the scope change the analysis plan enough?** Check whether the fixed condition list removes the problems in `docs/ANALYSIS.md` section 9, and which remain.
 6. **What would make a neurology viewer stop watching?** Name the two most likely failures on screen.
+7. **Is the fact library (phase N3a) the right size and design?** Say whether about 300 checked facts can feed the library shows and the analysis lines, and what a fact record must hold so the check can tie a number to its label.
 
 Report:
 - A verdict first: ready, ready with changes, or not ready.
