@@ -1,6 +1,6 @@
 # DNBC show bible
 
-Tone and beat order per show. The grid and show data are in `src/lib/channel/grid.ts`. The rules for facts and quotes are in `docs/PLAN.md` sections 2 and 5.
+Tone and beat order per show. Since 2026-11-19 every show covers neurology only (`docs/PLAN.md` section 0). The grid and show data are in `src/lib/channel/grid.ts`. The rules for facts and quotes are in `docs/PLAN.md` sections 2 and 5.
 
 ## House style on screen
 
@@ -42,3 +42,19 @@ Tone and beat order per show. The grid and show data are in `src/lib/channel/gri
 | Prof. Walt Okafor, the Professor | history and opinion, with a long view |
 
 All six are fictional and tagged "AI character" on screen.
+
+## Neurology library (2026-11-19)
+
+Candidates from memory. Every date and fact is checked against a primary or reference source before a segment is written.
+
+| Show | Neurology segments | Launch count |
+|---|---|---|
+| This Day in Approvals | neurology drugs only (levodopa, the first MS interferons, nusinersen, onasemnogene, the anti-CGRP migraine drugs, lecanemab, tofersen) | automatic |
+| Catalyst Calendar | neurology trials due to read out in 30 days | automatic |
+| How It Works | accelerated approval on a biomarker (amyloid, neurofilament), natural-history controls in rare disease, gene therapy dosing, the blood-brain barrier, functional rating scales (ALSFRS-R, CDR-SB, EDSS) | 6 |
+| Blockbuster | levodopa, the MS drugs, nusinersen, onasemnogene | 3 |
+| The Failure Files | aducanumab, the amyloid trials before it, ALS drugs withdrawn after confirmatory trials | 3 |
+| Rare Ones | SMA, Duchenne, Rett, Batten, and the advocates behind each | 4 |
+| Future Pipeline | gene therapy and antisense in the brain, anti-tau, brain shuttles, neuromodulation | 3 |
+
+Live shows keep their formats. Patient Desk draws only from neurology communities.

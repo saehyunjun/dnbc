@@ -196,3 +196,13 @@ Verdict on v1: not ready. The direction is sound, but the check cannot hold the 
 | S5 | Fill | Score bonus for analysed segments, fill measured again. The ticker takes the plain fact lines |
 
 Sections 3 to 8 stay as the longer-term design.
+
+## 10. Neurology scope (2026-11-19)
+
+Aaron narrowed DNBC to neurology (`docs/PLAN.md` section 0). This changes the launch slice in section 9:
+
+1. **Condition terms are a fixed list.** S2 searches only the about 40 checked terms in `src/lib/channel/scope.ts`. A registration whose condition is not on the list gets no landscape. This removes the "ambiguous term" case.
+2. **Counts can be checked by hand.** One area is small enough to compare each ClinicalTrials.gov count with a manual search before launch, condition by condition.
+3. **Drug history is shorter.** Most neurology drugs have few earlier trials, so the history beat often has nothing to say. It is optional.
+4. **A sponsor map becomes possible later.** About 30 sponsors run most neurology trials. A hand-kept parent map for them is small enough to review. It stays out of the launch slice.
+5. **The example in section 2 is oncology.** A neurology example replaces it when S2 is built.

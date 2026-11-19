@@ -24,6 +24,10 @@ DNBC is a 24/7 text-only TV channel about drug development, laid out like CNBC's
 
 TypeScript scripts run with `tsx`. Node 20 locally, Node 22 in Actions.
 
+## Scope
+
+Neurology only since 2026-11-19 (`docs/PLAN.md` section 0). The condition list goes in `src/lib/channel/scope.ts` (phase N1). New content outside it does not air.
+
 ## File map
 
 | Path | Role |

@@ -5,6 +5,59 @@ DNBC is a 24/7 text-only TV channel about drug development, styled on CNBC's sch
 - Name: DNBC (Aaron, 2026-11-18). The repo stays `~/drug-channel`.
 - Status: plan v3, 2026-11-18. No code yet.
 - v2 folded in Fable's review. v3 adds the library shows and moves the stack to free plans (section 5, Stack). See section 11.
+- **2026-11-19: narrowed to neurology** (Aaron: "narrow the focus to something like just neurological conditions … to hone the overall project before expanding"). Section 0 holds the scope and the phases it adds. Where section 0 disagrees with a later section, section 0 wins.
+
+## 0. Focus: neurology first (2026-11-19)
+
+DNBC covers neurological conditions only until the format is right. Other areas come back one at a time, each with its own condition list and library.
+
+### Scope
+
+In: diseases of the brain, spinal cord, nerves, and muscles.
+
+| Group | Conditions |
+|---|---|
+| Neurodegenerative | Alzheimer's disease and other dementias (frontotemporal, Lewy body), Parkinson's disease, ALS, Huntington's disease, progressive supranuclear palsy, spinocerebellar ataxias, Friedreich's ataxia |
+| Neuroimmune | multiple sclerosis, neuromyelitis optica, myasthenia gravis, CIDP, Guillain-Barré syndrome |
+| Epilepsy | epilepsy and the rare epilepsies (Dravet, Lennox-Gastaut, tuberous sclerosis) |
+| Neuromuscular | spinal muscular atrophy, Duchenne and Becker muscular dystrophy, myotonic dystrophy, Charcot-Marie-Tooth |
+| Headache and movement | migraine, essential tremor, dystonia, Tourette syndrome, tardive dyskinesia, restless legs, narcolepsy |
+| Rare genetic | Rett and Angelman syndromes, leukodystrophies, Batten disease |
+| Acute | stroke, traumatic brain injury |
+
+Out for now: psychiatry (depression, schizophrenia), pain other than migraine and neuropathy, brain cancers (they follow oncology rules), and eye disease. Each is a decision for Aaron (section 10).
+
+### Size of the area (Neon snapshot, keyword match on condition and title, 2026-11-19)
+
+| Measure | All areas | Neurology | Share |
+|---|---|---|---|
+| Active trials | 16,655 | 1,298 | 8% |
+| New registrations, last 90 days | 1,737 | 99 | 6%, about 1 a day |
+| Stories, last 7 days | 294 | 20 | 7%, about 3 a day |
+| Segments in the store | 184 | 16 (11 library) | 9% |
+
+The match is rough: it includes brain tumours and misses conditions not in the list. Phase N1 replaces it with a checked list.
+
+### What this changes
+
+1. **Live is thin.** About 3 stories a day cannot fill 13 live hours. Live shows shrink to three wheels (Morning Dose, Pipeline Close, Patient Desk) and the library carries the rest. Reruns run 21:00 to 07:00 as before.
+2. **The library becomes neurology.** This Day in Approvals keeps only neurology drugs. Blockbuster, The Failure Files, Rare Ones, How It Works, and Future Pipeline get neurology lists (`docs/SHOWS.md`, Neurology library).
+3. **The ticker stays neurology only.** Other areas leave the channel, not just the main screen.
+4. **Analysis gets easier.** A fixed list of about 40 conditions, each checked by hand, replaces open condition terms. That answers Fable's "ambiguous term" refusal for this area (`docs/ANALYSIS.md` section 10).
+5. **Sources stay the same.** The filter runs after ingest, so nothing is lost when an area returns.
+6. **Patient Desk gets easier to screen.** The Reddit and Bluesky allowlists shrink to neurology communities.
+
+### Phases (before Phase 4 soak)
+
+| # | Goal | Done when |
+|---|---|---|
+| N1 | Scope list | `src/lib/channel/scope.ts`: the conditions above as terms with synonyms and MeSH ids, `inScope()` for items, stories, and trials; unit cases for near misses ("nerve block" in surgery, "neuropathy" as a chemotherapy side effect, glioma); counts in section 0 rerun with it |
+| N2 | Filter | stories carry `scope`; writers and the scheduler take in-scope stories only; out-of-scope segments are marked retired, not deleted; next day's playlist is 100% neurology with padding reported |
+| N3 | Library | the launch counts in `docs/SHOWS.md` written by session subagents and through `import-segments`; every fact checked |
+| N4 | Grid | `src/lib/channel/grid.ts` with three live wheels; fill measured again |
+| N5 | Analysis | `docs/ANALYSIS.md` section 9 slice S1 to S5, scoped to the condition list |
+
+Launch on Monday 23 November holds only if N1 to N4 finish by Sunday. N5 can follow launch.
 
 ## 1. What we copy from Scorchball TV
 
@@ -350,6 +403,8 @@ Voices and sound, avatars or video, viewer polls, accounts, market prices, EMA, 
 - EDGAR full-text search field names (`_id`, `file_type`, `sics`, `display_names`) are from memory and untested, because the job needs `DNBC_CONTACT`. The first real run shows whether they are right.
 
 ## 10. Open for Aaron
+
+- Neurology scope (section 0): include psychiatry? brain cancers? Keep the Monday launch with N1 to N4 only?
 
 - Domain.
 - Set the Actions secrets in `saehyunjun/dnbc` (Settings, Secrets and variables, Actions). `DATABASE_URL` is the Neon `DATABASE_URL` in `.env.local` (from `vercel env pull`). `DNBC_CONTACT` is the SEC contact. Optional: `BUSINESSWIRE_FEEDS` (a health feed URL from Business Wire's RSS builder) and `BLUESKY_HANDLE` plus `BLUESKY_APP_PASSWORD`. Until `DATABASE_URL` is set, both workflows start and skip.
