@@ -5229,22 +5229,5 @@
   },
   "fetchedAt": "2026-11-19T07:05:13.242Z",
   "publishedAt": "2026-11-19T07:00:48.478Z"
- },
- {
-  "id": "smoke-1",
-  "url": "",
-  "kind": "other",
-  "text": "x",
-  "tier": "primary",
-  "title": "t",
-  "source": "fixture",
-  "entities": {
-   "drugs": [],
-   "nctIds": [],
-   "sponsors": [],
-   "conditions": []
-  },
-  "fetchedAt": "2026-11-19T07:02:24.624Z",
-  "publishedAt": "2026-11-19T07:02:24.624Z"
  }
 ]

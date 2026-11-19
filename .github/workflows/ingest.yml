@@ -35,3 +35,5 @@ jobs:
         run: npm run job -- ingest
       - if: steps.gate.outputs.ok == '1'
         run: npm run job -- stories
+      - if: steps.gate.outputs.ok == '1'
+        run: npm run job -- write

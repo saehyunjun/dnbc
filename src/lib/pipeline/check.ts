@@ -62,6 +62,7 @@ export function dateKeys(text: string): { keys: Set<string>; stripped: string } 
 	const add = (y: number | undefined, m: number, d?: number) => {
 		if (d) keys.add(`${m}-${d}`);
 		if (y) {
+			keys.add(String(y));
 			keys.add(`${y}-${m}`);
 			if (d) keys.add(`${y}-${m}-${d}`);
 		}
