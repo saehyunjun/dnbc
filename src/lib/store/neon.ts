@@ -171,6 +171,12 @@ export class NeonStore implements Store {
 		return rows[0]?.data;
 	}
 
+	async getLatestPlaylist(day: string) {
+		await this.init();
+		const rows = await this.q<{ data: Playlist }>(`select data from playlists where day <= $1 order by day desc limit 1`, [day]);
+		return rows[0]?.data;
+	}
+
 	async putTrials(trials: Trial[]) {
 		await this.init();
 		for (const c of chunks(unique(trials, (x) => x.nct), 2000)) {

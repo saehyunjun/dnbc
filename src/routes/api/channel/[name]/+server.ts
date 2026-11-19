@@ -4,6 +4,7 @@ import { json, error } from '@sveltejs/kit';
 import { env } from '$env/dynamic/private';
 import { openStore } from '../../../../lib/store/index';
 import { addDays, channelDay } from '../../../../lib/channel/time';
+import { resolvePlaylists, type Resolved } from '../../../../lib/channel/fallback';
 import type { Playlist } from '../../../../lib/types';
 import type { RequestHandler } from './$types';
 
@@ -19,10 +20,14 @@ async function store() {
 	return openStore();
 }
 
-async function playlistsFor(day: string): Promise<Playlist[]> {
+async function resolved(day: string): Promise<Resolved> {
 	const s = await store();
-	const found = await Promise.all([s.getPlaylist(day), s.getPlaylist(addDays(day, 1))]);
-	return found.filter((p): p is Playlist => !!p);
+	const [today, tomorrow] = await Promise.all([s.getPlaylist(day), s.getPlaylist(addDays(day, 1))]);
+	return resolvePlaylists(day, today, tomorrow, today ? undefined : await s.getLatestPlaylist(day));
+}
+
+async function playlistsFor(day: string): Promise<Playlist[]> {
+	return (await resolved(day)).playlists;
 }
 
 function dayParam(url: URL): string {
@@ -37,7 +42,8 @@ export const GET: RequestHandler = async ({ params, url }) => {
 		case 'time':
 			return json({ now: Date.now() }, { headers: { 'Cache-Control': 'no-store', Date: date } });
 		case 'playlist': {
-			return json({ playlists: await playlistsFor(dayParam(url)) }, { headers });
+			const r = await resolved(dayParam(url));
+			return json(r.stale ? { playlists: r.playlists, stale: true, sourceDay: r.sourceDay } : { playlists: r.playlists, stale: false }, { headers });
 		}
 		case 'segments': {
 			const s = await store();

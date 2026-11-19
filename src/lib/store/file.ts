@@ -73,6 +73,11 @@ export class FileStore implements Store {
 	async getPlaylist(day: string) {
 		return this.load<Playlist>('playlists').get(day);
 	}
+	async getLatestPlaylist(day: string) {
+		const days = [...this.load<Playlist>('playlists').keys()].filter((d) => d <= day).sort();
+		const last = days[days.length - 1];
+		return last ? this.load<Playlist>('playlists').get(last) : undefined;
+	}
 	async putTrials(trials: Trial[]) {
 		const m = this.load<Trial>('trials');
 		for (const t of trials) m.set(t.nct, t);

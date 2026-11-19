@@ -34,6 +34,8 @@ export interface Store {
 	getSegments(q?: { ids?: string[]; library?: boolean; since?: string }): Promise<Segment[]>;
 	putPlaylist(p: Playlist): Promise<void>;
 	getPlaylist(day: string): Promise<Playlist | undefined>;
+	/** The newest stored playlist whose day is on or before `day`. */
+	getLatestPlaylist(day: string): Promise<Playlist | undefined>;
 	putTrials(trials: Trial[]): Promise<void>;
 	/** `due`: Phase 3 trials with a full primary completion date in [from, to]. */
 	getTrials(q?: { ncts?: string[]; sponsor?: string; due?: { from: string; to: string } }): Promise<Trial[]>;

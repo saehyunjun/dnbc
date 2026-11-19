@@ -8,11 +8,12 @@ import { applyTiming } from '../../src/lib/channel/timing.ts';
 import { pipelineOf } from '../../src/lib/ingest/ctgov.ts';
 import { citationsFor, isSourceLine } from '../../src/lib/pipeline/citations.ts';
 import { buildPlaylist } from '../../src/lib/pipeline/schedule.ts';
-import { channelDay } from '../../src/lib/channel/time.ts';
+import { addDays, channelDay } from '../../src/lib/channel/time.ts';
 import type { Segment, SourceItem } from '../../src/lib/types.ts';
 import type { Trial } from '../../src/lib/store/index.ts';
 
 const DAY = 86400_000;
+const STALE_MS = 3 * 3600_000;
 
 export const PIPELINE_JOBS: Record<string, Job> = {
 	stories: async (store, [days]) => {
@@ -153,32 +154,54 @@ export const PIPELINE_JOBS: Record<string, Job> = {
 		if (dry !== 'dry') await store.putSegments(segs);
 	},
 
-	/** Build a channel day's playlist (default: today in ET). `dry` prints the fill without saving. */
+	/** Build playlists. No day: today and tomorrow (ET channel days). `schedule <day> [dry]` builds one day. `dry` prints without saving. */
 	schedule: async (store, [dayArg, dry]) => {
 		const now = Date.now();
-		const day = dayArg && dayArg !== '-' ? dayArg : channelDay(now);
+		const days = dayArg && dayArg !== '-' ? [dayArg] : [channelDay(now), addDays(channelDay(now), 1)];
 		const since = new Date(now - 7 * DAY).toISOString();
 		const segments = [...(await store.getSegments({ library: false, since })), ...(await store.getSegments({ library: true }))];
 		const storyIds = [...new Set(segments.map((s) => s.storyId).filter((x): x is string => !!x))];
 		const stories = storyIds.length ? await store.getStories({ ids: storyIds }) : [];
-		const prev = await store.getPlaylist(day);
-		const { playlist, stats } = buildPlaylist(day, {
-			segments,
-			kindOf: new Map(stories.map((s) => [s.id, s.kind])),
-			score: new Map(stories.map((s) => [s.id, s.score])),
-			version: (prev?.version ?? 0) + 1
-		});
-		const total = stats.liveSeconds + stats.librarySeconds + stats.padSeconds;
-		const pct = (x: number) => `${Math.round((100 * x) / total)}%`;
-		console.log(`schedule ${day}: ${stats.wheels} wheels from ${segments.length} segments. Live ${pct(stats.liveSeconds)}, library ${pct(stats.librarySeconds)}, padding ${pct(stats.padSeconds)}`);
-		const byShow = new Map<string, { air: number; pad: number }>();
-		for (const s of playlist.slots) {
-			const v = byShow.get(s.show) ?? { air: 0, pad: 0 };
-			for (const e of s.entries) v[e.kind === 'pad' ? 'pad' : 'air'] += e.duration / 1000;
-			byShow.set(s.show, v);
+		for (const day of days) {
+			const prev = await store.getPlaylist(day);
+			const { playlist, stats } = buildPlaylist(day, {
+				segments,
+				kindOf: new Map(stories.map((s) => [s.id, s.kind])),
+				score: new Map(stories.map((s) => [s.id, s.score])),
+				version: (prev?.version ?? 0) + 1
+			});
+			const total = stats.liveSeconds + stats.librarySeconds + stats.padSeconds;
+			const pct = (x: number) => `${Math.round((100 * x) / total)}%`;
+			console.log(`schedule ${day}: ${stats.wheels} wheels from ${segments.length} segments. Live ${pct(stats.liveSeconds)}, library ${pct(stats.librarySeconds)}, padding ${pct(stats.padSeconds)}`);
+			const byShow = new Map<string, { air: number; pad: number }>();
+			for (const s of playlist.slots) {
+				const v = byShow.get(s.show) ?? { air: 0, pad: 0 };
+				for (const e of s.entries) v[e.kind === 'pad' ? 'pad' : 'air'] += e.duration / 1000;
+				byShow.set(s.show, v);
+			}
+			for (const [show, v] of byShow) console.log(`  ${show.padEnd(16)} ${Math.round((100 * v.air) / (v.air + v.pad))}% filled`);
+			if (dry !== 'dry') await store.putPlaylist(playlist);
 		}
-		for (const [show, v] of byShow) console.log(`  ${show.padEnd(16)} ${Math.round((100 * v.air) / (v.air + v.pad))}% filled`);
-		if (dry !== 'dry') await store.putPlaylist(playlist);
+	},
+
+	/** Alarm: exit non-zero when today's or tomorrow's playlist is missing, or no item was fetched in the last 3 hours. */
+	health: async (store) => {
+		const now = Date.now();
+		const today = channelDay(now);
+		const bad: string[] = [];
+		for (const day of [today, addDays(today, 1)]) {
+			const p = await store.getPlaylist(day);
+			console.log(`health: playlist ${day} ${p ? `ok (v${p.version}, built ${p.builtAt})` : 'MISSING'}`);
+			if (!p) bad.push(`playlist ${day} is missing`);
+		}
+		const recent = await store.getItems({ since: new Date(now - STALE_MS).toISOString() });
+		const newest = recent.map((i) => i.fetchedAt).sort().pop();
+		console.log(`health: ${recent.length} items fetched in the last 3 hours${newest ? `, newest ${newest}` : ''}`);
+		if (!recent.length) bad.push('no item fetched in the last 3 hours');
+		if (bad.length) {
+			console.error(`health: FAILED: ${bad.join('; ')}`);
+			process.exitCode = 1;
+		} else console.log('health: ok');
 	},
 
 	/**

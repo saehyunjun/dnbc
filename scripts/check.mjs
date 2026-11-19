@@ -462,6 +462,27 @@ for (const size of ['desktop', 'phone']) {
 	await ph.ctx.close();
 }
 
+// ---- stale fallback: a day with no stored playlist replays the newest one ----
+{
+	const FAR = '2027-03-10';
+	const st = await api(`playlist?day=${FAR}`);
+	check('API stale: day with no playlist is marked stale with the source day', st.json.stale === true && /^\d{4}-\d{2}-\d{2}$/.test(st.json.sourceDay ?? ''), JSON.stringify({ s: st.json.stale, d: st.json.sourceDay }));
+	check('API stale: playlists are re-dated to the asked day', st.json.playlists[0]?.day === FAR && st.json.playlists[0]?.slots.length > 0, st.json.playlists[0]?.day);
+	const first = st.json.playlists[0]?.slots[0]?.start;
+	check('API stale: slot times fall on the asked day (06:00 ET start)', Math.abs(first - Date.parse(`${FAR}T11:00:00Z`)) <= 3600_000, String(first));
+	check('API fresh: a stored day is not stale', (await api('playlist?day=2026-11-19')).json.stale === false);
+	const sseg = await api(`segments?day=${FAR}`);
+	check('API stale: segments endpoint still returns segments', sseg.json.segments.length > 0, String(sseg.json.segments.length));
+	const t = Date.parse(`${FAR}T17:00:00Z`);
+	const { page, ctx } = await newPage('phone');
+	await page.goto(`${BASE}/?t=${t}`);
+	await ready(page);
+	const d = await readPlayer(page);
+	check('player stale: a day with no playlist still shows a segment or bumper', d.kind === 'segment' || d.kind === 'pad', d.kind);
+	check('player stale: no horizontal scroll', await noHScroll(page));
+	await ctx.close();
+}
+
 // ---- home page timing and errors ----
 {
 	const live = await newPage('phone');

@@ -37,3 +37,7 @@ jobs:
         run: npm run job -- stories
       - if: steps.gate.outputs.ok == '1'
         run: npm run job -- write
+      - if: steps.gate.outputs.ok == '1'
+        run: npm run job -- schedule
+      - if: steps.gate.outputs.ok == '1'
+        run: npm run job -- health
