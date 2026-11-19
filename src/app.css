@@ -46,3 +46,82 @@ body {
 	font-family: var(--font-sans);
 	margin: 0;
 }
+
+/* Beats. Text sizes use --u (1% of the stage width, larger on a narrow stage) and shrink to fit. */
+.beat {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	flex-direction: column;
+	padding: calc(var(--u) * 2.2) calc(var(--u) * 3.5);
+	color: var(--color-stage-text);
+	min-height: 0;
+}
+.beat-body {
+	flex: 1;
+	min-height: 0;
+	min-width: 0;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 0.6em;
+	line-height: 1.22;
+	font-size: var(--fs, calc(var(--u) * 4));
+}
+.chip {
+	display: inline-block;
+	align-self: flex-start;
+	font-size: 0.5em;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	padding: 0.25em 0.7em;
+	border-radius: 999px;
+	border: 1px solid currentColor;
+}
+.rv-hidden {
+	visibility: hidden;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.beat {
+		animation: beat-in 0.25s ease-out;
+	}
+}
+@keyframes beat-in {
+	from {
+		opacity: 0;
+	}
+}
+
+.page-wrap {
+	margin: 0 auto;
+	padding: 0 16px 2rem;
+	max-width: 1280px;
+}
+.site-nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.8rem 0;
+	font-size: 0.9rem;
+}
+.site-nav a {
+	color: var(--page-text);
+	text-decoration: none;
+}
+.site-nav a:hover {
+	text-decoration: underline;
+}
+.site-nav .brand {
+	font-family: var(--font-display);
+	font-weight: 800;
+	letter-spacing: 0.04em;
+}
+.site-foot {
+	margin-top: 1.5rem;
+	font-size: 0.8rem;
+	color: var(--page-muted);
+	max-width: 60ch;
+}

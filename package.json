@@ -9,7 +9,8 @@
 		"preview": "vite preview --port 5322",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"test": "tsx scripts/unit.ts",
-		"job": "tsx scripts/jobs/run.ts"
+		"job": "tsx scripts/jobs/run.ts",
+		"block": "tsx scripts/block.ts"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-vercel": "^5.7.0",

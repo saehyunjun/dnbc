@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-11-19, Phase 3: the player
+
+- Player at `/` (`src/routes/+page.svelte`, state in `src/lib/player/channel.svelte.ts`): clock offset from the server `Date` header (median of the last five reads of `/api/channel/time`), `onAir()` on every animation frame, playlist and blocked refetched every 60 s. A blocked or missing segment airs as a bumper with the show name, "Up next", and the next title.
+- Permanent parts: DNBC bug, show clock ("Morning Dose, 7:42 ET"), live ticker (stills under reduced motion), and an "Up next" strip of three. Show colour on the lower third. Opinion label on forward-looking and Mad Science segments. Cast shown as name plates with an "AI character" tag.
+- One component per beat in `src/lib/components/beats/`, dispatched by `BeatView.svelte`. Text shrinks to fit (`src/lib/player/fit.ts`). Quote attribution follows the PLAN table (Reddit shows community and date only, Bluesky shows handle, date, and link).
+- `/schedule` (today and tomorrow, ET, current show marked), `/study/<beat type>` and `/study/all` (fixed samples, `noindex`).
+- API `src/routes/api/channel/[name]/+server.ts`: `playlist`, `segments`, `blocked` with `Cache-Control: public, s-maxage=60, stale-while-revalidate=30`, and `time` with `no-store`. All take `day` where it applies.
+- Kill switch: `npm run block -- <id> "<reason>"` (`scripts/block.ts`).
+- Test hooks: `?t=<epoch ms>` sets the clock, `?refresh=<ms>` sets the refetch interval.
+- Headless suite `scripts/check.mjs`: 154 of 154. `npm run check` 0 errors, 0 warnings. `npm test` 90 of 90.
+- Screenshots: `docs/screenshots/phase-3/` (player, every beat type, blocked, opinion, schedule, study pages; 1440 x 900 and 390 x 844).
+
 ## 2026-11-19, Phase 2 (part) and the scheduler
 
 - Template writer `src/lib/pipeline/write-templates.ts`: registrations, FDA releases, CRLs, This Day in Approvals, Catalyst Calendar, and Pipeline Profile (one library segment for each of the top 60 sponsors by active trials).

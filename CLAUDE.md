@@ -12,6 +12,9 @@ DNBC is a 24/7 text-only TV channel about drug development, laid out like CNBC's
 | Task | Command |
 |---|---|
 | Dev server | `npm run dev` (port 5321) |
+| Headless suite | `node scripts/check.mjs <out-dir> 5321` with the dev server running (`playwright-core`, system Chrome). Prints "N of M passed" |
+| Block a segment | `npm run block -- <segment or story id> "<reason>"`. The player skips it within 60 s |
+| Test the player at a fixed time | `/?t=<epoch ms>` (UTC). `?refresh=<ms>` sets the refetch interval |
 | Type check | `npm run check` (0 errors, 0 warnings expected) |
 | Unit checks | `npm test` (`scripts/unit.ts` runs every file in `scripts/unit/`) |
 | Build | `npm run build` |
@@ -31,6 +34,11 @@ TypeScript scripts run with `tsx`. Node 20 locally, Node 22 in Actions.
 | `src/lib/channel/cast.ts` | the fictional cast, all tagged "AI character" on screen |
 | `src/lib/channel/timing.ts` | beat hold time, applied when a segment is written and then stored |
 | `src/lib/channel/clock.ts` | `onAir(playlists, segments, now, blocked)` and `clockOffset` from the server `Date` header |
+| `src/routes/+page.svelte` | the player. State in `src/lib/player/channel.svelte.ts`, helpers in `src/lib/player/` (`fit.ts`, `format.ts`, `samples.ts`) |
+| `src/routes/schedule/`, `src/routes/study/[template]/` | the TV guide, and the beat review pages (`noindex`) |
+| `src/routes/api/channel/[name]/+server.ts` | `playlist`, `segments`, `blocked` (60 s cache) and `time` (no cache) |
+| `src/lib/components/` | `StageFrame`, `BeatView`, `Ticker`, `UpNext`, `CastPlate`, and one file per beat in `beats/` |
+| `scripts/check.mjs`, `scripts/block.ts` | headless suite, kill switch |
 | `src/lib/ingest/` | one module per source: `ctgov.ts`, `fda.ts`, `fda-crl.ts`, `drugsfda.ts`, `wires.ts`, `edgar.ts`, `pubmed.ts`, `bluesky.ts`, `quotes.ts`; shared `http.ts` (User-Agent, retries), `rss.ts`, `entities.ts` |
 | `src/lib/pipeline/` | `stories.ts` (grouping and score), `check.ts` (the rule-based fact check, planted cases in `scripts/unit/check.ts`), `write-templates.ts` (segments from structured fields with no model: registrations, FDA releases, CRLs, anniversaries, catalyst calendar, pipeline profiles; failing optional beats drop, failing required beats drop the segment), `write-model.ts` (AI Gateway writer and `checkWritten`, the gate for every non-template segment; `import-segments <file>` saves subagent-written segments through it), `schedule.ts` (playlist from segments, fill rules in `docs/PLAN.md` section 6); the patient screen comes next |
 | `src/lib/store/` | storage. `neon.ts` (tables of id plus jsonb, created on first use) when `DATABASE_URL` is set, `file.ts` in `.data/` otherwise or with `DNBC_STORE=file` |
