@@ -8,6 +8,7 @@ import { writeWithModel, checkWritten, assertPaidRun, Budget, WRITER_MODEL } fro
 import { applyTiming } from '../../src/lib/channel/timing.ts';
 import { pipelineOf } from '../../src/lib/ingest/ctgov.ts';
 import { citationsFor, isSourceLine } from '../../src/lib/pipeline/citations.ts';
+import { verifySource } from '../../src/lib/pipeline/verify-source.ts';
 import { buildPlaylist } from '../../src/lib/pipeline/schedule.ts';
 import { addDays, channelDay } from '../../src/lib/channel/time.ts';
 import type { Segment, SourceItem } from '../../src/lib/types.ts';
@@ -218,7 +219,9 @@ export const PIPELINE_JOBS: Record<string, Job> = {
 	 * File: JSON array of { storyId?, format, title, beats, library?, libraryShow?, items? }.
 	 * `items` are new reference items (for library segments) saved with the segment.
 	 */
-	'import-segments': async (store, [file, dry]) => {
+	'import-segments': async (store, args) => {
+		const noVerify = args.includes('--no-verify'); // fixtures in tests only
+		const [file, dry] = args.filter((a) => a !== '--no-verify');
 		const { readFileSync } = await import('node:fs');
 		const rows = JSON.parse(readFileSync(file, 'utf8')) as Array<{
 			storyId?: string; format: Segment['format']; title: string; beats: unknown[];
@@ -231,10 +234,28 @@ export const PIPELINE_JOBS: Record<string, Job> = {
 		const ids = new Set([...[...stories.values()].flatMap((s) => s.itemIds), ...rows.flatMap((r) => r.beats.flatMap((b) => ((b as { sources?: string[] }).sources ?? [])))]);
 		const items = new Map((ids.size ? await store.getItems({ ids: [...ids] }) : []).map((i) => [i.id, i]));
 		for (const it of newItems) items.set(it.id, it);
+		// G4: every reference item in the file must appear on its own page before anything is saved.
+		const failed = new Map<string, string>();
+		if (!noVerify) {
+			for (const it of new Map(newItems.map((i) => [i.id, i])).values()) {
+				const v = await verifySource(it);
+				if (v.ok) continue;
+				const why = v.reason ?? `not on the page: "${v.missing[0].slice(0, 120)}"${v.missing.length > 1 ? ` (+${v.missing.length - 1} more)` : ''}`;
+				failed.set(it.id, why);
+				console.log(`  verify FAIL ${it.id} ${it.url}\n       x ${why}`);
+			}
+			console.log(`import-segments: verified ${newItems.length - failed.size} of ${newItems.length} items`);
+			for (const it of newItems) if (failed.has(it.id)) items.delete(it.id);
+		}
 		const out: Segment[] = [];
 		let n = 0;
 		for (const r of rows) {
 			n++;
+			const bad = r.beats.flatMap((b) => ((b as { sources?: string[] }).sources ?? [])).find((id) => failed.has(id));
+			if (bad) {
+				console.log(`  drop ${r.title.slice(0, 70)}\n       x source ${bad} failed verification: ${failed.get(bad)}`);
+				continue;
+			}
 			const story = r.storyId ? stories.get(r.storyId) : undefined;
 			if (r.storyId && !story) {
 				console.log(`  drop ${r.title.slice(0, 70)}\n       x story ${r.storyId} not found`);
@@ -254,5 +275,37 @@ export const PIPELINE_JOBS: Record<string, Job> = {
 		const keepItems = newItems.filter((i) => used.has(i.id));
 		if (keepItems.length) await store.putItems(keepItems);
 		await store.putSegments(out);
+	},
+
+	/**
+	 * Audit the library: fetch every reference item cited by a library segment and require its text
+	 * in the page. `verify-library dry` only reports. Without `dry`, failing segments are blocked.
+	 */
+	'verify-library': async (store, [dry]) => {
+		const segs = await store.getSegments({ library: true });
+		const ids = [...new Set(segs.flatMap((s) => s.beats.flatMap((b) => b.sources)))];
+		const items = (ids.length ? await store.getItems({ ids }) : []).filter((i) => i.tier === 'reference');
+		console.log(`verify-library: ${segs.length} library segments, ${items.length} reference items`);
+		const failed = new Map<string, string>();
+		let pass = 0;
+		for (const it of items) {
+			const v = await verifySource(it);
+			if (v.ok) {
+				pass++;
+				console.log(`  pass ${it.id}`);
+				continue;
+			}
+			const why = v.reason ?? `missing: "${v.missing[0].slice(0, 140)}"${v.missing.length > 1 ? ` (+${v.missing.length - 1} more)` : ''}`;
+			failed.set(it.id, why);
+			console.log(`  FAIL ${it.id} ${it.url}\n       ${it.title.slice(0, 80)}\n       ${why}`);
+		}
+		const hit = segs.filter((s) => s.beats.some((b) => b.sources.some((id) => failed.has(id))));
+		console.log(`verify-library: ${pass} pass, ${failed.size} fail; ${hit.length} of ${segs.length} segments cite a failing item`);
+		for (const s of hit) {
+			const id = s.beats.flatMap((b) => b.sources).find((x) => failed.has(x))!;
+			console.log(`  segment ${s.id} "${s.title.slice(0, 70)}" cites ${id}`);
+			if (dry !== 'dry') await store.block(s.id, `source failed verification: ${failed.get(id)}`.slice(0, 300));
+		}
+		if (dry === 'dry') console.log('verify-library: dry run, nothing blocked');
 	}
 };
