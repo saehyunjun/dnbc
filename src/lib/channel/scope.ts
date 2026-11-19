@@ -22,7 +22,7 @@ export interface Condition {
 export const CONDITIONS: Condition[] = [
 	// Neurodegenerative
 	{ id: 'alzheimers', name: "Alzheimer's disease", group: 'neurology', terms: ["alzheimer'?s?"] },
-	{ id: 'dementia', name: 'Dementia', group: 'neurology', terms: ['dementias?', 'frontotemporal', 'lewy bod(?:y|ies)', 'mild cognitive impairment'], cased: ['FTD', 'MCI'] },
+	{ id: 'dementia', name: 'Dementia', group: 'neurology', terms: ['dementias?', 'frontotemporal', 'lewy bod(?:y|ies)', 'mild cognitive impairment'], cased: ['MCI'] },
 	{ id: 'parkinsons', name: "Parkinson's disease", group: 'neurology', terms: ["parkinson'?s?"] },
 	{ id: 'als', name: 'ALS', group: 'neurology', terms: ['amyotrophic lateral sclerosis', 'motor neuron disease'], cased: ['ALS'] },
 	{ id: 'huntingtons', name: "Huntington's disease", group: 'neurology', terms: ["huntington'?s?"] },
@@ -30,7 +30,7 @@ export const CONDITIONS: Condition[] = [
 	{ id: 'ataxia', name: 'Ataxias', group: 'neurology', terms: ['spinocerebellar ataxias?', "friedreich'?s? ataxia", 'ataxias?'] },
 	// Neuroimmune
 	{ id: 'ms', name: 'Multiple sclerosis', group: 'neurology', terms: ['multiple sclerosis'], cased: ['RRMS', 'PPMS', 'SPMS'] },
-	{ id: 'nmosd', name: 'Neuromyelitis optica', group: 'neurology', terms: ['neuromyelitis optica'], cased: ['NMOSD'] },
+	{ id: 'nmosd', name: 'Neuromyelitis optica', group: 'neurology', terms: ['neuromyelitis optica', 'myelin oligodendrocyte glycoprotein'], cased: ['NMOSD', 'MOGAD'] },
 	{ id: 'myasthenia', name: 'Myasthenia gravis', group: 'neurology', terms: ['myasthenia gravis'], cased: ['gMG'] },
 	{ id: 'cidp', name: 'CIDP', group: 'neurology', terms: ['chronic inflammatory demyelinating polyneuropathy', 'guillain[- ]barr[ée]'], cased: ['CIDP'] },
 	// Epilepsy
@@ -40,23 +40,24 @@ export const CONDITIONS: Condition[] = [
 	{ id: 'dmd', name: 'Duchenne and Becker muscular dystrophy', group: 'neurology', terms: ["duchenne'?s?", 'becker muscular dystrophy'], cased: ['DMD'] },
 	{ id: 'dystrophy', name: 'Other muscular dystrophies', group: 'neurology', terms: ['myotonic dystrophy', 'facioscapulohumeral', 'limb[- ]girdle muscular dystrophy'], cased: ['FSHD', 'LGMD'] },
 	{ id: 'cmt', name: 'Charcot-Marie-Tooth disease', group: 'neurology', terms: ['charcot[- ]marie[- ]tooth'] },
-	{ id: 'neuropathy', name: 'Neuropathy', group: 'neurology', terms: ['(?:peripheral |diabetic |painful |small fiber |hereditary )?(?:poly)?neuropath(?:y|ies|ic pain)', 'transthyretin amyloid(?:osis)? (?:with )?polyneuropathy'] },
+	{ id: 'neuropathy', name: 'Neuropathy', group: 'neurology', terms: ['(?:peripheral |diabetic |painful |small fiber |hereditary )?(?:poly)?neuropath(?:y|ies|ic pain)', 'transthyretin amyloid(?:osis)? (?:with )?polyneuropathy'], not: ['(?:ischemic |ischaemic |hereditary |leber )?optic neuropath(?:y|ies)'] },
 	// Headache, movement, sleep
 	{ id: 'migraine', name: 'Migraine', group: 'neurology', terms: ['migraines?', 'cluster headaches?'] },
 	{ id: 'movement', name: 'Movement disorders', group: 'neurology', terms: ['essential tremor', 'dystonias?', "tourette'?s?", 'tardive dyskinesia', 'restless legs'] },
 	{ id: 'narcolepsy', name: 'Narcolepsy', group: 'neurology', terms: ['narcolep(?:sy|tic)', 'idiopathic hypersomnia'] },
 	// Rare genetic
-	{ id: 'rare-neuro', name: 'Rare genetic brain conditions', group: 'neurology', terms: ["rett'?s? syndrome", "angelman'?s? syndrome", 'leukodystroph(?:y|ies)', 'batten disease', 'neuronal ceroid lipofuscinos[ie]s', 'neurofibromatosis', 'fragile x', 'prader[- ]willi'], cased: ['CLN2', 'CLN3'] },
+	{ id: 'rare-neuro', name: 'Rare genetic brain conditions', group: 'neurology', terms: ["rett'?s? syndrome", "angelman'?s? syndrome", '(?:adreno)?leukodystroph(?:y|ies)', 'adrenomyeloneuropathy', 'niemann[- ]pick', 'neuronopathic gaucher', 'gaucher(?:\'s)? disease,? type (?:3|iii)', 'mct8 deficiency', 'allan[- ]herndon[- ]dudley', 'grin[12]?[abd]?[- ]related', 'grin disorders?', 'cdkl5', 'scn2a', 'scn8a', 'dup15q', 'phelan[- ]mcdermid', 'metachromatic', 'krabbe', 'canavan', 'alexander disease', 'mucopolysaccharidosis type (?:ii|iii)', 'sanfilippo', 'hunter syndrome', 'batten disease', 'neuronal ceroid lipofuscinos[ie]s', 'neurofibromatosis', 'fragile x', 'prader[- ]willi'], cased: ['CLN2', 'CLN3'] },
 	// Acute
-	{ id: 'stroke', name: 'Stroke', group: 'neurology', terms: ['(?:ischemic |ischaemic |hemorrhagic |haemorrhagic |acute )?strokes?', 'intracerebral h(?:a)?emorrhage', 'subarachnoid h(?:a)?emorrhage'], not: ['heat ?strokes?', 'stroke volume', 'strokes? of (?:luck|genius)', 'back ?stroke', 'breast ?stroke'] },
+	{ id: 'sci', name: 'Spinal cord injury', group: 'neurology', terms: ['spinal cord injur(?:y|ies)'] },
+	{ id: 'stroke', name: 'Stroke', group: 'neurology', terms: ['(?:ischemic |ischaemic |hemorrhagic |haemorrhagic |acute )?strokes?', 'intracerebral h(?:a)?emorrhage', 'subarachnoid h(?:a)?emorrhage'], not: ['(?:secondary |primary )?(?:prevention of |preventing |prevents? |help(?:s)? prevent )(?:secondary |recurrent )?(?:ischemic |ischaemic )?strokes?', '(?:ischemic |ischaemic )?stroke (?:and systemic embolism|prevention)', '(?:reduce|reduces|reducing|lower|lowers|lowering) (?:the )?risk of (?:ischemic )?stroke', 'secondary stroke', 'heat ?strokes?', 'stroke volume', 'strokes? of (?:luck|genius)', 'back ?stroke', 'breast ?stroke'] },
 	{ id: 'tbi', name: 'Traumatic brain injury', group: 'neurology', terms: ['traumatic brain injur(?:y|ies)', 'concussions?'] },
 	// Psychiatry
 	{ id: 'depression', name: 'Depression', group: 'psychiatry', terms: ['(?:major |treatment[- ]resistant |postpartum |bipolar )?depressi(?:on|ve disorder)'], cased: ['MDD', 'TRD'], not: ['(?:respiratory|bone marrow|myelo|cardiac|cns|st[- ]segment|st) ?depression', 'depression of (?:the )?(?:st|bone)'] },
 	{ id: 'schizophrenia', name: 'Schizophrenia and psychosis', group: 'psychiatry', terms: ['schizophreni[ac]', 'schizoaffective', 'psychos[ie]s', 'psychotic disorders?'] },
-	{ id: 'bipolar', name: 'Bipolar disorder', group: 'psychiatry', terms: ['bipolar(?: [i1]{1,2})? disorder', 'bipolar depression', 'mania'] },
+	{ id: 'bipolar', name: 'Bipolar disorder', group: 'psychiatry', terms: ['bipolar (?:(?:[i1]{1,2}|type [i1]{1,2})(?: (?:or|and) (?:[i1]{1,2}))? )?(?:disorder|depression|mania)', 'manic episodes?', 'mania'] },
 	{ id: 'anxiety', name: 'Anxiety disorders', group: 'psychiatry', terms: ['(?:generali[sz]ed |social )?anxiety disorders?', 'panic disorder'] },
 	{ id: 'ptsd', name: 'PTSD', group: 'psychiatry', terms: ['post[- ]?traumatic stress'], cased: ['PTSD'] },
-	{ id: 'ocd', name: 'OCD', group: 'psychiatry', terms: ['obsessive[- ]compulsive'], cased: ['OCD'] },
+	{ id: 'ocd', name: 'OCD', group: 'psychiatry', terms: ['obsessive[- ]compulsive'] },
 	{ id: 'adhd', name: 'ADHD', group: 'psychiatry', terms: ['attention[- ]deficit'], cased: ['ADHD'] },
 	{ id: 'autism', name: 'Autism', group: 'psychiatry', terms: ['autism', 'autistic'] },
 	{ id: 'substance', name: 'Substance use disorders', group: 'psychiatry', terms: ['(?:opioid|alcohol|substance|cocaine|methamphetamine|stimulant|cannabis|nicotine|tobacco) use disorders?', 'opioid dependence', 'alcohol dependence'], cased: ['OUD', 'AUD'] },
@@ -64,10 +65,44 @@ export const CONDITIONS: Condition[] = [
 	{ id: 'eating', name: 'Eating disorders', group: 'psychiatry', terms: ['anorexia nervosa', 'bulimia', 'binge[- ]eating disorder'] },
 	{ id: 'agitation', name: 'Agitation in dementia', group: 'psychiatry', terms: ["agitation (?:associated with |in )(?:alzheimer'?s?|dementia)"] },
 	// Brain cancers
-	{ id: 'glioma', name: 'Glioblastoma and other gliomas', group: 'brain-cancer', terms: ['glioblastomas?', 'gliomas?', 'astrocytomas?', 'oligodendrogliomas?', 'diffuse (?:intrinsic )?pontine glioma', 'diffuse midline glioma'], cased: ['GBM', 'DIPG'] },
-	{ id: 'brain-tumour', name: 'Other brain tumours', group: 'brain-cancer', terms: ['medulloblastomas?', 'ependymomas?', 'meningiomas?', 'brain tumou?rs?', 'cns tumou?rs?', 'leptomeningeal'] },
+	{ id: 'glioma', name: 'Glioblastoma and other gliomas', group: 'brain-cancer', terms: ['glioblastomas?', 'gliomas?', 'astrocytomas?', 'oligodendrogliomas?', 'diffuse (?:intrinsic )?pontine glioma', 'diffuse midline glioma'], cased: ['GBM', 'DIPG'], not: ['anti[- ]?GBM', 'anti[- ]glomerular basement membrane'] },
+	{ id: 'brain-tumour', name: 'Other brain tumours', group: 'brain-cancer', terms: ['medulloblastomas?', 'ependymomas?', 'meningiomas?', 'brain (?:tumou?rs?|cancers?|neoplasms?)', '(?:cns|central nervous system) (?:tumou?rs?|neoplasms?|cancers?|lymphomas?)', 'primary (?:cns|central nervous system) lymphomas?', 'leptomeningeal', 'atypical teratoid', 'craniopharyngiomas?'] },
 	{ id: 'brain-mets', name: 'Brain metastases', group: 'brain-cancer', terms: ['brain metastas[ie]s', 'cns metastas[ie]s'] }
 ];
+
+
+/** Drug names (generic and brand) that put an item in scope even when the condition is named late
+ * or not at all ("Leqembi three-year data"). From memory, 2026-11-19: add a name only when its main
+ * use is in this area. Drugs with big uses elsewhere (eculizumab, rituximab, buprenorphine) stay out. */
+export const DRUGS: Record<string, string[]> = {
+	alzheimers: ['lecanemab', 'leqembi', 'donanemab', 'kisunla', 'aducanumab', 'aduhelm', 'remternetug', 'trontinemab', 'blarcamesine', 'valiltramiprosate', 'buntanetap', 'posdinemab', 'bepranemab', 'e2814', 'lu af87908'],
+	parkinsons: ['levodopa', 'carbidopa', 'foscarbidopa', 'foslevodopa', 'vyalev', 'tavapadon', 'prasinezumab', 'opicapone', 'istradefylline', 'safinamide', 'bemdaneprocel'],
+	als: ['tofersen', 'qalsody', 'edaravone', 'radicava', 'riluzole', 'ulefnersen', 'pridopidine', 'masitinib'],
+	huntingtons: ['tominersen', 'votoplam', 'valbenazine', 'tetrabenazine', 'deutetrabenazine', 'austedo', 'ingrezza', 'amt-130'],
+	ms: ['ocrelizumab', 'ocrevus', 'ofatumumab', 'kesimpta', 'ublituximab', 'briumvi', 'natalizumab', 'tysabri', 'tolebrutinib', 'fenebrutinib', 'remibrutinib', 'frexalimab', 'fingolimod', 'siponimod', 'ozanimod', 'ponesimod', 'cladribine', 'dimethyl fumarate', 'diroximel fumarate', 'teriflunomide', 'glatiramer'],
+	nmosd: ['inebilizumab', 'uplizna', 'satralizumab', 'enspryng'],
+	myasthenia: ['efgartigimod', 'vyvgart', 'rozanolixizumab', 'rystiggo', 'zilucoplan', 'zilbrysq', 'nipocalimab', 'imaavy', 'batoclimab', 'pozelimab', 'gefurulimab', 'descartes-08'],
+	epilepsy: ['cenobamate', 'xcopri', 'fenfluramine', 'fintepla', 'ganaxolone', 'ztalmy', 'stiripentol', 'epidiolex', 'zorevunersen', 'bexicaserin', 'soticlestat', 'xen1101', 'azetukalner', 'vormatrigine', 'staccato alprazolam', 'diazepam nasal', 'valtoco', 'lacosamide', 'levetiracetam', 'brivaracetam', 'perampanel'],
+	sma: ['nusinersen', 'spinraza', 'risdiplam', 'evrysdi', 'onasemnogene', 'zolgensma', 'itvisma', 'apitegromab', 'taldefgrobep'],
+	dmd: ['eteplirsen', 'golodirsen', 'viltolarsen', 'casimersen', 'delandistrogene', 'elevidys', 'givinostat', 'duvyzat', 'vamorolone', 'agamree', 'deramiocel', 'del-zota', 'rgx-202', 'sat-3247'],
+	dystrophy: ['del-desiran', 'del-brax', 'losmapimod'],
+	neuropathy: ['vutrisiran', 'amvuttra', 'patisiran', 'onpattro', 'eplontersen', 'wainua', 'tafamidis', 'nexiguran ziclumeran', 'suzetrigine'],
+	migraine: ['erenumab', 'aimovig', 'fremanezumab', 'ajovy', 'galcanezumab', 'emgality', 'eptinezumab', 'vyepti', 'ubrogepant', 'ubrelvy', 'rimegepant', 'nurtec', 'atogepant', 'qulipta', 'zavegepant', 'zavzpret', 'lasmiditan'],
+	movement: ['ulixacaltamide', 'suvecaltamide', 'ecopipam'],
+	narcolepsy: ['pitolisant', 'wakix', 'solriamfetol', 'sunosi', 'sodium oxybate', 'xywav', 'lumryz', 'oveporexton', 'alixorexton', 'orexin agonist', 'tak-861', 'alks 2680'],
+	'rare-neuro': ['trofinetide', 'daybue', 'omaveloxolone', 'skyclarys', 'arimoclomol', 'miplyffa', 'levacetylleucine', 'aqneursa', 'cerliponase', 'brineura', 'tiratricol', 'emcitate', 'elivaldogene', 'skysona', 'atidarsagene', 'lenmeldy', 'tideglusib'],
+	stroke: ['tenecteplase', 'alteplase', 'nerinetide', 'glenzocimab'],
+	depression: ['esketamine', 'spravato', 'zuranolone', 'zurzuvae', 'brexanolone', 'zulresso', 'aticaprant', 'navacaprant', 'seltorexant', 'auvelity', 'dextromethorphan-bupropion', 'psilocybin', 'comp360', 'mm120', 'cyb003', 'osavampator', 'vortioxetine', 'esmethadone'],
+	schizophrenia: ['xanomeline', 'trospium', 'cobenfy', 'karxt', 'emraclidine', 'ulotaront', 'iclepertin', 'brilaroxazine', 'lumateperone', 'caplyta', 'cariprazine', 'vraylar', 'brexpiprazole', 'rexulti', 'olanzapine and samidorphan', 'lybalvi', 'paliperidone palmitate', 'invega', 'aripiprazole lauroxil', 'clozapine', 'evenamide', 'nbi-1117568'],
+	anxiety: ['fasedienol', 'mm120'],
+	ptsd: ['brexpiprazole and sertraline', 'mdma-assisted', 'midomafetamine'],
+	adhd: ['centanafadine', 'viloxazine', 'qelbree', 'serdexmethylphenidate', 'methylphenidate', 'lisdexamfetamine'],
+	substance: ['vivitrol', 'lofexidine', 'nalmefene', 'sublocade', 'brixadi'],
+	insomnia: ['suvorexant', 'belsomra', 'lemborexant', 'dayvigo', 'daridorexant', 'quviviq'],
+	glioma: ['vorasidenib', 'voranigo', 'tovorafenib', 'ojemda', 'temozolomide', 'dordaviprone', 'modeyso', 'onc201', 'tumor treating fields', 'tumour treating fields', 'optune', 'lomustine', 'berubicin', 'paxalisib'],
+	'brain-tumour': ['tovorafenib'],
+	agitation: ['axs-05', 'auvelity']
+};
 
 interface Compiled {
 	c: Condition;
@@ -76,12 +111,16 @@ interface Compiled {
 	not?: RegExp;
 }
 
+const esc = (x: string) => x.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/[- ]/g, '[- ]?');
+
 const COMPILED: Compiled[] = CONDITIONS.map((c) => ({
 	c,
-	re: new RegExp(`\\b(?:${c.terms.join('|')})\\b`, 'i'),
+	re: new RegExp(`\\b(?:${[...c.terms, ...(DRUGS[c.id] ?? []).map(esc)].join('|')})\\b`, 'i'),
 	cased: c.cased?.length ? new RegExp(`\\b(?:${c.cased.join('|')})\\b`) : undefined,
 	not: c.not?.length ? new RegExp(c.not.join('|'), 'gi') : undefined
 }));
+
+const CARDIO = /\batrial fibrillation\b|\bmajor adverse cardiovascular\b|\bMACE\b|\bmyocardial infarction\b|\bheart attacks?\b|\bcardiovascular death\b|\bsystemic embolism\b/i;
 
 /** Conditions named in a text. Phrases in `not` are blanked before the terms are matched. */
 export function matchScope(text: string): Condition[] {
@@ -91,6 +130,8 @@ export function matchScope(text: string): Condition[] {
 		const s = k.not ? text.replace(k.not, ' ') : text;
 		if (k.re.test(s) || (k.cased && k.cased.test(s))) out.push(k.c);
 	}
+	// Stroke named beside atrial fibrillation or heart outcomes is a cardiology endpoint, not neurology.
+	if (out.some((c) => c.id === 'stroke') && CARDIO.test(text)) return out.filter((c) => c.id !== 'stroke');
 	return out;
 }
 
@@ -115,9 +156,19 @@ export function storyScope(story: Pick<Story, 'title' | 'entities' | 'itemIds'>,
 	const seen = new Map<string, Condition>();
 	for (const id of story.itemIds) {
 		const it = items.get(id);
-		if (it) for (const c of itemScope(it)) seen.set(c.id, c);
+		// Social posts and derived cards (catalyst, profile) do not decide a story's scope.
+		if (it && it.tier !== 'social' && !isDerivedId(it.id)) for (const c of itemScope(it)) seen.set(c.id, c);
 	}
 	return [...seen.values()];
+}
+
+/** Items we build ourselves from the trials table. They are footnote sources, never story members. */
+export const isDerivedId = (id: string) => /^(?:catalyst|profile)-/.test(id);
+
+/** A segment's conditions: from its story when it has one, else from its own words. */
+export function segmentScope(seg: { title: string; beats: unknown[] }): Condition[] {
+	const words = (seg.beats as Record<string, unknown>[]).flatMap((b) => [b.text, b.title, b.label, b.clue, b.sponsor, b.drug, ...((b.items as string[]) ?? []), ...(((b.lines as { text: string }[]) ?? []).map((l) => l.text))]);
+	return matchScope([seg.title, ...words.filter((x): x is string => typeof x === 'string')].join(' \n '));
 }
 
 export const inScope = (cs: Condition[]) => cs.length > 0;

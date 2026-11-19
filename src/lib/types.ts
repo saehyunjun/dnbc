@@ -68,6 +68,8 @@ export interface Story {
 	firstSeen: string;
 	updatedAt: string;
 	therapyArea?: string;
+	/** Condition ids from src/lib/channel/scope.ts; empty means out of scope. */
+	scope?: string[];
 }
 
 export type CastId = 'anchor-a' | 'anchor-b' | 'clinician' | 'skeptic' | 'advocate' | 'professor';
@@ -174,6 +176,8 @@ export interface Segment {
 	forwardLooking?: boolean;
 	/** Footnotes for every item the beats cite, in first-cited order. Sources are never spoken lines. */
 	citations?: Citation[];
+	/** Condition ids from src/lib/channel/scope.ts; empty means out of scope and the segment does not air. */
+	scope?: string[];
 }
 
 export type ShowId =

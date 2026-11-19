@@ -3,6 +3,7 @@
 // within 3 days. Social items join a story only through a drug or NCT id; on their own they
 // form 'post' stories, which only Patient Desk uses.
 
+import { isDerivedId, storyScope } from '../channel/scope';
 import type { ItemKind, SourceItem, Story } from '../types';
 
 export const KIND_WEIGHT: Record<ItemKind, number> = {
@@ -77,7 +78,8 @@ const DAY = 86400_000;
 
 /** Build stories from items. `now` sets recency. Items should be sorted oldest first for stable ids. */
 export function buildStories(items: SourceItem[], now = Date.now()): Story[] {
-	const sorted = [...items].sort((a, b) => a.publishedAt.localeCompare(b.publishedAt) || a.id.localeCompare(b.id));
+	// Derived cards (catalyst, profile) share the registry URL and would glue unrelated stories together.
+	const sorted = items.filter((it) => !isDerivedId(it.id)).sort((a, b) => a.publishedAt.localeCompare(b.publishedAt) || a.id.localeCompare(b.id));
 	const uf = new UnionFind(sorted.length);
 	const byKey = new Map<string, number>();
 	const link = (key: string, i: number) => {
@@ -148,7 +150,12 @@ export function buildStories(items: SourceItem[], now = Date.now()): Story[] {
 			score,
 			firstSeen: g[0].publishedAt,
 			updatedAt: new Date(newest || now).toISOString(),
-			therapyArea: therapyArea(text)
+			therapyArea: therapyArea(text),
+			// Scope from the lead and the other primary items only: a social post cannot pull a story in.
+			scope: storyScope(
+				{ title: lead.title, itemIds: primary.map((i) => i.id), entities: { drugs: [], sponsors: [], nctIds: [], conditions: uniq(primary.flatMap((i) => i.entities.conditions)) } },
+				new Map(primary.map((i) => [i.id, i]))
+			).map((c) => c.id)
 		});
 	}
 	return stories.sort((a, b) => b.score - a.score);
