@@ -1,6 +1,6 @@
 // Pipeline jobs (stories, and later write, check, schedule). Ingest jobs live in registry.ts.
 
-import { itemScope, segmentInScope, storyInScope } from '../../src/lib/channel/scope.ts';
+import { airPool, itemScope, storyInScope } from '../../src/lib/channel/scope.ts';
 import type { Job } from './registry.ts';
 import { buildStories, airable } from '../../src/lib/pipeline/stories.ts';
 import { writeStory, writeCatalyst, catalystItem, pickCatalysts, shortDrug, topSponsors, profileItem, writeProfile, type PipelineCounts } from '../../src/lib/pipeline/write-templates.ts';
@@ -187,7 +187,7 @@ export const PIPELINE_JOBS: Record<string, Job> = {
 		const stories = storyIds.length ? await store.getStories({ ids: storyIds }) : [];
 		// Scope (docs/PLAN.md section 0): out-of-scope segments stay in the store but never air.
 		const storyById = new Map(stories.map((s) => [s.id, s]));
-		const segments = pool.filter((g) => segmentInScope(g, g.storyId ? storyById.get(g.storyId) : undefined));
+		const segments = airPool(pool, (id) => storyById.get(id));
 		console.log(`schedule: ${segments.length} of ${pool.length} segments in scope`);
 		for (const day of days) {
 			const prev = await store.getPlaylist(day);

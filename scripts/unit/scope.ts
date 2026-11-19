@@ -94,3 +94,17 @@ checks.push(['stroke as a heart endpoint is out', () => {
 	assert.deepEqual(ids('Same-day genetic testing in the prevention of secondary stroke'), []);
 	assert.ok(ids('Tenecteplase for acute ischemic stroke within 4.5 hours').includes('stroke'));
 }]);
+import { airPool } from '../../src/lib/channel/scope.ts';
+checks.push(['air pool keeps the newest dated card and drops all-area cards', () => {
+	const seg = (id: string, createdAt: string, text = 'Nusinersen for SMA.') => ({ id, createdAt, title: 't', beats: [{ type: 'anchor', text }] });
+	const out = airPool([
+		seg('seg-landscape-sma-2026-11-18', '2026-11-18T10:00:00Z'),
+		seg('seg-landscape-sma-2026-11-19', '2026-11-19T10:00:00Z'),
+		seg('seg-catalyst-immunology-2026-11-19', '2026-11-19T10:00:00Z'),
+		seg('seg-catalyst-neurology-2026-11-19', '2026-11-19T10:00:00Z'),
+		seg('seg-profile-biogen-2026-11-19', '2026-11-19T10:00:00Z'),
+		seg('seg-profile-scope-biogen-2026-11-19', '2026-11-19T10:00:00Z'),
+		seg('seg-lib-psoriasis', '2026-11-19T10:00:00Z', 'Psoriasis plaques.')
+	]).map((x) => x.id).sort();
+	assert.deepEqual(out, ['seg-catalyst-neurology-2026-11-19', 'seg-landscape-sma-2026-11-19', 'seg-profile-scope-biogen-2026-11-19']);
+}]);

@@ -183,5 +183,26 @@ export function segmentInScope(seg: { title: string; beats: unknown[]; scope?: s
 	return segmentScope(seg).length > 0;
 }
 
+/** Daily library cards carry the date in their id (`seg-landscape-als-2026-11-19`). Only the newest of each airs. */
+const DATED = /-\d{4}-\d{2}-\d{2}$/;
+/** Whole-area cards written before the scope change. They name an in-scope drug now and then but are not about the area. */
+const ALL_AREA = /^seg-(?:catalyst-(?!neurology-|psychiatry-)|profile-(?!scope-))/;
+
+/** The segments that may air: in scope, not an all-area card, and the newest copy of each dated card. */
+export function airPool<T extends { id: string; createdAt: string; title: string; beats: unknown[]; scope?: string[]; storyId?: string }>(
+	segments: T[],
+	storyOf: (id: string) => Story | undefined = () => undefined
+): T[] {
+	const newest = new Map<string, T>();
+	for (const g of segments) {
+		if (ALL_AREA.test(g.id)) continue;
+		if (!segmentInScope(g, g.storyId ? storyOf(g.storyId) : undefined)) continue;
+		const base = g.id.replace(DATED, '');
+		const had = newest.get(base);
+		if (!had || g.createdAt > had.createdAt) newest.set(base, g);
+	}
+	return [...newest.values()];
+}
+
 export const inScope = (cs: Condition[]) => cs.length > 0;
 export const scopeGroups = groups;
