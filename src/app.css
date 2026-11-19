@@ -1,0 +1,48 @@
+@import 'tailwindcss';
+
+/* DNBC tokens. The stage is always dark, like a TV picture; the page around it follows the theme. */
+@theme {
+	--font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+	--font-display: 'Archivo', 'Inter', ui-sans-serif, sans-serif;
+	--font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+	--color-stage: #07111f;
+	--color-stage-raised: #0e1f36;
+	--color-stage-line: #1d3557;
+	--color-stage-text: #f2f5fa;
+	--color-stage-muted: #9fb0c8;
+	--color-brand: #f5b700;
+	--color-ticker: #0b1f3a;
+}
+
+:root {
+	--page: #f4f6f9;
+	--page-text: #0b1f3a;
+	--page-muted: #4a5a72;
+	--page-line: #d6dde8;
+	color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+	:root:not([data-theme='light']) {
+		--page: #03070d;
+		--page-text: #e8edf5;
+		--page-muted: #93a3bb;
+		--page-line: #1a2738;
+		color-scheme: dark;
+	}
+}
+:root[data-theme='dark'] {
+	--page: #03070d;
+	--page-text: #e8edf5;
+	--page-muted: #93a3bb;
+	--page-line: #1a2738;
+	color-scheme: dark;
+}
+
+html,
+body {
+	background: var(--page);
+	color: var(--page-text);
+	font-family: var(--font-sans);
+	margin: 0;
+}
