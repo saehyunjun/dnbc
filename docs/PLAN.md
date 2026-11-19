@@ -102,7 +102,7 @@ Five formats ship at launch. The other shows are grid entries that reuse a launc
 | 18:00–19:00 | Mad Money | **Mad Science** | Panel (one host) | one story, labelled Opinion | story pool |
 | 19:00–20:00 | (new) | **Patient Desk** | Voices | screened patient and Bluesky quotes | Bluesky, hand-filled Reddit file |
 | 20:00–21:00 | (new) | **Lab Notes** | Headlines | journal papers of the day | PubMed |
-| 21:00–06:00 | overnight reruns | **Rerun wheel** | — | the day's shows again, in order | archive |
+| 21:00–06:00 | overnight reruns | **Rerun wheel** | none | the day's shows again, in order | archive |
 
 Weekends and Thanksgiving (Thursday 26 and Friday 27 November): reruns of the latest weekday shows. Cut from launch: Pipeline Week, the Friday long-form show, and "Approvals of the Year".
 
