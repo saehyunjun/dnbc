@@ -7,8 +7,10 @@ import { getJson, hashId, userAgent } from './http';
 import { guessEntities } from './entities';
 
 export const KEYWORDS = [
-	'clinical trial', 'phase 3 trial', 'FDA approval', 'FDA approves', 'complete response letter', 'PDUFA',
-	'rare disease', 'patient advocacy', 'gene therapy', 'GLP-1', 'oncology drug', 'biotech'
+	// Scope since 2026-11-19 (docs/PLAN.md section 0). Posts still pass `screenQuote` and `storyScope`.
+	"Alzheimer's trial", "Parkinson's trial", 'ALS trial', 'multiple sclerosis trial', 'epilepsy trial', 'migraine drug',
+	'Duchenne', 'spinal muscular atrophy', 'myasthenia gravis', 'Huntington disease', 'glioblastoma trial',
+	'schizophrenia drug', 'depression trial', 'psychedelic trial', 'neurology FDA', 'psychiatry FDA'
 ];
 
 export interface BskyPost {

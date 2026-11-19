@@ -5,7 +5,14 @@ import { getJson, getText, hashId, plainText } from './http';
 import { guessEntities } from './entities';
 
 const EU = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils';
-export const JOURNALS = ['N Engl J Med', 'Lancet', 'JAMA', 'Nat Med', 'Lancet Oncol', 'J Clin Oncol', 'Blood', 'Nature', 'Science'];
+// Scope since 2026-11-19: neurology, psychiatry, and brain cancers (docs/PLAN.md section 0). The four general
+// journals stay; `storyScope` drops their off-topic papers.
+export const JOURNALS = [
+	'N Engl J Med', 'Lancet', 'JAMA', 'Nat Med',
+	'Lancet Neurol', 'JAMA Neurol', 'Neurology', 'Brain', 'Ann Neurol', 'Alzheimers Dement', 'Mov Disord', 'Mult Scler', 'Epilepsia',
+	'Lancet Psychiatry', 'JAMA Psychiatry', 'Am J Psychiatry',
+	'Neuro Oncol'
+];
 const TERMS = '(trial[Title/Abstract] OR phase[Title/Abstract] OR randomized[Title/Abstract] OR randomised[Title/Abstract])';
 
 export function buildTerm(): string {
