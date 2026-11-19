@@ -1,5 +1,6 @@
 // Hand-filled social quotes: data/quotes/reddit.json and data/quotes/linkedin.json.
 import { readFile } from 'node:fs/promises';
+import { screenQuote } from '../pipeline/screen';
 import type { SourceItem } from '../types';
 import type { Store } from '../store/index';
 import { hashId } from './http';
@@ -58,11 +59,13 @@ export async function fetchItems(_store?: Store): Promise<SourceItem[]> {
 	const out: SourceItem[] = [];
 	for (const r of await load('reddit.json')) {
 		const it = toItem(r, 'reddit', now);
-		if (it) out.push(it);
+		if (it && screenQuote(it.text).ok) out.push(it);
+		else if (it) console.warn(`quotes: reddit quote dropped by the screen: ${screenQuote(it.text).reasons.join(', ')}`);
 	}
 	for (const r of await load('linkedin.json')) {
 		const it = toItem(r, 'linkedin', now);
-		if (it) out.push(it);
+		if (it && screenQuote(it.text).ok) out.push(it);
+		else if (it) console.warn(`quotes: linkedin quote dropped by the screen: ${screenQuote(it.text).reasons.join(', ')}`);
 	}
 	return out;
 }

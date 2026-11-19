@@ -1,5 +1,6 @@
 // Bluesky search. Uses an app-password session when BLUESKY_HANDLE and BLUESKY_APP_PASSWORD are set,
 // otherwise the public search endpoint. Returns [] with a warning if both fail.
+import { screenQuote } from '../pipeline/screen';
 import type { SourceItem } from '../types';
 import type { Store } from '../store/index';
 import { getJson, hashId, userAgent } from './http';
@@ -73,7 +74,7 @@ export async function fetchItems(store: Store, opts: { keywords?: string[]; limi
 			const res = await getJson<{ posts?: BskyPost[] }>(`${base}/app.bsky.feed.searchPosts?${q}`, { headers, retries: 1 });
 			for (const p of res.posts ?? []) {
 				const it = toItem(p, kw, now);
-				if (it && !byId.has(it.id)) byId.set(it.id, it);
+				if (it && !byId.has(it.id) && screenQuote(it.text).ok) byId.set(it.id, it);
 			}
 		} catch (e) {
 			console.warn(`bluesky: search "${kw}" failed: ${(e as Error).message}`);
