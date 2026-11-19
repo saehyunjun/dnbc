@@ -20,13 +20,13 @@ DNBC is a 24/7 text-only TV channel about drug development, laid out like CNBC's
 | Build | `npm run build` |
 | Run a job locally | `npm run job -- <name>` (`scripts/jobs/run.ts`). Reads `.env` and `.env.local`, so it writes to Neon. Prefix `DNBC_STORE=file DNBC_DATA_DIR=<dir>` to test against local files |
 | Pull env vars | `vercel env pull .env.local` (git-ignored; never print or commit it) |
-| Jobs | ingest: `ingest` (fda, wires, edgar, bluesky), `daily` (ctgov-daily, drugsfda, fda-crl, pubmed, quotes), `stories`, `write` (template segments, `write 7 dry` prints without saving), `ctgov-seed` (one time, about 110 s). Each source is also its own job name |
+| Jobs | ingest: `ingest` (fda, wires, edgar, bluesky), `daily` (ctgov-daily, drugsfda, fda-crl, pubmed, quotes), `stories`, `write` (template segments, `write 7 dry` prints without saving), `write-library` (catalysts, condition landscapes `src/lib/pipeline/write-landscape.ts`, in-scope sponsor profiles), `schedule [day|-] [dry]` (today and tomorrow by default, from `airPool`), `health` (fails when a playlist is missing or nothing was fetched in 3 hours), `import-segments` (verifies every reference item against its live page, `src/lib/pipeline/verify-source.ts`), `verify-library [dry]`, `ctgov-seed` (one time, about 110 s). Each source is also its own job name |
 
 TypeScript scripts run with `tsx`. Node 20 locally, Node 22 in Actions.
 
 ## Scope
 
-Neurology, psychiatry, and brain cancers only since 2026-11-19 (`docs/PLAN.md` section 0). The condition list is `src/lib/channel/scope.ts` (38 conditions; `trialScope`, `itemScope`, `storyScope`; cases in `scripts/unit/scope.ts`). Add a condition there, never a second list. New content outside it does not air.
+Neurology, psychiatry, and brain cancers only since 2026-11-19 (`docs/PLAN.md` section 0). The condition list is `src/lib/channel/scope.ts` (38 conditions; `trialScope`, `itemScope`, `storyScope`; cases in `scripts/unit/scope.ts`). Add a condition there, never a second list. New content outside it does not air: `airPool` in the same file decides what the scheduler may use. Segments that mention suicide, self-harm, or overdose show the 988 crisis line (`needsCrisisLine` in `src/lib/pipeline/screen.ts`); `/about` holds the crisis line and the corrections link.
 
 ## File map
 
