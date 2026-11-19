@@ -1,6 +1,6 @@
 # CLAUDE.md: DNBC
 
-DNBC is a 24/7 text-only TV channel about drug development, laid out like CNBC's schedule. It is a public hobby demo. SvelteKit 2, Svelte 5 runes, Tailwind v4, Vercel Hobby, GitHub Actions for jobs, and Neon for storage (a local file store until Neon is set up).
+DNBC is a 24/7 text-only TV channel about drug development, laid out like CNBC's schedule. It is a public hobby demo. SvelteKit 2, Svelte 5 runes, Tailwind v4, Vercel Hobby, GitHub Actions for jobs, and Neon for storage (Vercel Marketplace store `dnbc-db`, free plan).
 
 - Plan, phases, and every rule: `docs/PLAN.md`. Read it before changing behaviour.
 - Short version for handoff: `docs/HANDOFF.md`.
@@ -15,7 +15,9 @@ DNBC is a 24/7 text-only TV channel about drug development, laid out like CNBC's
 | Type check | `npm run check` (0 errors, 0 warnings expected) |
 | Unit checks | `npm test` (`scripts/unit.ts` runs every file in `scripts/unit/`) |
 | Build | `npm run build` |
-| Run a job locally | `npm run job -- <name>` (`scripts/jobs/run.ts`) |
+| Run a job locally | `npm run job -- <name>` (`scripts/jobs/run.ts`). Reads `.env` and `.env.local`, so it writes to Neon. Prefix `DNBC_STORE=file DNBC_DATA_DIR=<dir>` to test against local files |
+| Pull env vars | `vercel env pull .env.local` (git-ignored; never print or commit it) |
+| Jobs | ingest: `ingest` (fda, wires, edgar, bluesky), `daily` (ctgov-daily, drugsfda, fda-crl, pubmed, quotes), `stories`, `ctgov-seed` (one time, about 110 s). Each source is also its own job name |
 
 TypeScript scripts run with `tsx`. Node 20 locally, Node 22 in Actions.
 
@@ -29,10 +31,11 @@ TypeScript scripts run with `tsx`. Node 20 locally, Node 22 in Actions.
 | `src/lib/channel/cast.ts` | the fictional cast, all tagged "AI character" on screen |
 | `src/lib/channel/timing.ts` | beat hold time, applied when a segment is written and then stored |
 | `src/lib/channel/clock.ts` | `onAir(playlists, segments, now, blocked)` and `clockOffset` from the server `Date` header |
-| `src/lib/ingest/` | one module per source (Phase 1) |
-| `src/lib/pipeline/` | stories, write, check, screen, schedule (Phases 1 to 4) |
-| `src/lib/store/` | storage. File store in `.data/` when `DATABASE_URL` is unset |
-| `scripts/jobs/` | entry points the Actions workflows run |
+| `src/lib/ingest/` | one module per source: `ctgov.ts`, `fda.ts`, `fda-crl.ts`, `drugsfda.ts`, `wires.ts`, `edgar.ts`, `pubmed.ts`, `bluesky.ts`, `quotes.ts`; shared `http.ts` (User-Agent, retries), `rss.ts`, `entities.ts` |
+| `src/lib/pipeline/` | `stories.ts` (grouping and score), `check.ts` (the rule-based fact check, planted cases in `scripts/unit/check.ts`); write, screen, and schedule come in Phases 2 to 4 |
+| `src/lib/store/` | storage. `neon.ts` (tables of id plus jsonb, created on first use) when `DATABASE_URL` is set, `file.ts` in `.data/` otherwise or with `DNBC_STORE=file` |
+| `scripts/jobs/` | `run.ts` runner, `registry.ts` ingest jobs, `pipeline-jobs.ts` pipeline jobs |
+| `.github/workflows/` | `ingest.yml` (minutes 7, 22, 37, 52) and `daily.yml` (11:17 UTC). Both skip until the `DATABASE_URL` secret is set |
 | `data/` | hand-filled quotes, library briefs, and allowlists |
 | `fixtures/` | a frozen day for offline tests and the day-one fallback |
 

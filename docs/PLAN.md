@@ -190,15 +190,15 @@ All requests send `User-Agent: DNBC/0.1 (<DNBC_CONTACT>)`. SEC requires a contac
 |---|---|---|---|---|
 | ClinicalTrials.gov API v2 | primary | `query.term=AREA[LastUpdatePostDate]RANGE[<yesterday>,MAX]` | 24 h (data refreshes once a day) | seed a slim snapshot (NCT id, sponsor, phase, status, interventions, conditions, and dates) of the about 115,000 industry interventional studies first, in Phase 1. Records rarely change phase, so a **phase move** is a new registration at a later phase for the same drug and sponsor. Also status changes and results posted |
 | FDA press releases and novel approvals | primary | RSS (returns 200) | 1 h | |
-| FDA CRLs | primary | openFDA `transparency/crl.json` | 24 h | |
+| FDA CRLs | primary | openFDA `transparency/crl.json` | 24 h | `letter_date` is an MM/DD/YYYY string, so range and sort fail. Pull this year and last by `letter_year` and filter dates in code |
 | PDUFA and adcomm dates | primary | parsed from company releases and the FDA adcomm calendar page | with the wires | FDA publishes no PDUFA calendar |
 | SEC EDGAR 8-Ks for a list of biotech CIKs | primary | full-text search (returns 200 with a User-Agent), then Exhibit 99.1 for the news text | 15 min | the 8-K atom feed returned 0 entries in review, so it's not used |
-| PR Newswire and Business Wire health feeds | primary | RSS (both return 200) | 15 min | GlobeNewswire dropped, because it returned 403 |
+| PR Newswire and Business Wire health feeds | primary | RSS. PR Newswire: `health-latest-news-list`, `biotechnology-list`, and `pharmaceuticals-list` all return 200 | 15 min | GlobeNewswire dropped, because it returned 403. Business Wire feeds are keyed by an id, and a wrong id returns 200 with an empty feed. No health id found yet, so Business Wire reads the `BUSINESSWIRE_FEEDS` secret (comma list) and is skipped until it is set |
 | PubMed | primary | E-utilities, a fixed journal list | 24 h | preprints cut from launch |
-| Drugs@FDA | primary | openFDA `drug/drugsfda.json` | 24 h | approval dates for This Day in Approvals |
+| Drugs@FDA | primary | openFDA `drug/drugsfda.json` | 24 h | approval dates for This Day in Approvals. openFDA has no month-day search, so each past year's exact date is queried (about 80 requests, about 80 s), cached per day. BLAs appear too |
 | FDA Orange and Purple Books | primary | the published data files | weekly | Patent Cliff Countdown |
 | FDA guidance, history pages, Federal Register, and Nobel Prize pages | reference | fetched by hand per library segment and stored as items | by hand | library only |
-| Bluesky | social | `app.bsky.feed.searchPosts` with an app-password session | 30 min | unauthenticated public search returned 403 |
+| Bluesky | social | `app.bsky.feed.searchPosts`, with an app-password session when `BLUESKY_HANDLE` is set | 30 min | on 2026-11-18 unauthenticated public search returned 200 with posts (an earlier test got 403), so the app password is a fallback |
 | Reddit | social | `data/quotes/reddit.json`, hand-filled from an allowlist of subreddits, stored without usernames | by hand | unauthenticated `.json` returned 403, and new OAuth apps need Reddit approval (reported as 1 to 4 weeks). Apply anyway, for after launch |
 | LinkedIn | social | `data/quotes/linkedin.json`, hand-filled | by hand | posts sit behind login |
 
@@ -258,7 +258,7 @@ Vercel Pro is not needed, because no work runs on Vercel's timer. Checked on 202
 | App | SvelteKit 2, Svelte 5, TypeScript, Tailwind v4 (same as PIQHome) |
 | Host | Vercel Hobby, its own project in "saehyunjun's projects". It serves the player page and the one cached function |
 | Database | Neon Postgres, free plan (through the Vercel Marketplace), for items, stories, segments, the schedule, and `blocked`. The CT.gov snapshot is slim, so storage stays well under the free limit (to confirm in Phase 0) |
-| Jobs | GitHub Actions workflows in `.github/workflows/`: `ingest.yml` (every 15 min), `daily.yml` (CT.gov, Drugs@FDA, openFDA, and PubMed), and `produce.yml` (stories, write, check, and schedule, every 15 min). Each uses a `concurrency` group so runs never overlap. They run `node scripts/jobs/<name>.mjs`, which calls `src/lib/pipeline/` |
+| Jobs | GitHub Actions workflows in `.github/workflows/`: `ingest.yml` (every 15 min), `daily.yml` (CT.gov, Drugs@FDA, openFDA, and PubMed), and `produce.yml` (stories, write, check, and schedule, every 15 min). Each uses a `concurrency` group so runs never overlap. They run `npm run job -- <name>` (`scripts/jobs/run.ts`), which calls `src/lib/ingest/` and `src/lib/pipeline/` |
 | Secrets | Actions secrets: `DATABASE_URL`, `AI_GATEWAY_API_KEY`, `BLUESKY_HANDLE`, `BLUESKY_APP_PASSWORD`, and `DNBC_CONTACT`. Vercel holds only `DATABASE_URL` |
 | LLM | AI Gateway. `anthropic/claude-sonnet-5.5` for writing, `anthropic/claude-haiku-5.5` for tagging and the patient screen. Daily spend cap set in the gateway |
 | Checks | `playwright-core` headless suite, `node scripts/check.mjs <out-dir> <port>` |
@@ -296,7 +296,7 @@ Each phase ends with `npm run check` (0 errors), the headless suite, screenshots
 | # | Day | Goal | Done when |
 |---|---|---|---|
 | 0 | Wed 18 | Plan | v3 written. `CLAUDE.md` and `docs/SHOWS.md` written. Neon free limits confirmed. Public GitHub repo created and pushed. Aaron has set the Actions secrets |
-| 1 | Thu 19 | Ingest | 9 automated sources write `SourceItem`s to Neon, and the CT.gov snapshot is seeded. A dry run makes at least 50 stories with entities. The fixture day is frozen. **`ingest.yml` and `daily.yml` run on schedule from Thursday night**, so stories build up before launch |
+| 1 | Thu 19 | Ingest | 9 automated sources write `SourceItem`s to Neon, and the CT.gov snapshot is seeded. A dry run makes at least 50 stories with entities. The fixture day is frozen. **`ingest.yml` and `daily.yml` run on schedule from Thursday night**, so stories build up before launch. **Status 2026-11-18:** built a day early. 7 of 9 sources live, 180 stories (129 airable), fixture day frozen. The schedule waits on the Actions secrets (section 10). Business Wire and EDGAR not live |
 | 2 | Fri 20 | Write and check | the 5 live formats and 4 library formats. 120 live segments from the fixture day pass the check, and the check catches 15 planted bad segments (one per rule, plus wrong speaker, reversed outcome, and social-only fact). The patient screen drops 5 planted bad quotes. The 30 written-ahead library segments pass. Reddit and LinkedIn files have 20 quotes each |
 | 3 | Sat 21 | Player | every beat type and format draws at both sizes. Two browsers with clocks set 90 s apart land on the same beat. The ticker, up-next strip, `/schedule`, and kill switch work |
 | 4 | Sun 22 | Schedule and soak | `soak.mjs` on a simulated 24 hours of fixtures finds no empty wheel, no repeat that breaks the live or library rules, and no blocked or failed segment on air. The same check passes on the weekend and holiday grids. `produce.yml` runs on schedule from Sunday morning, and Sunday evening's wheels are watched live. Watch notes are fixed |
@@ -339,11 +339,12 @@ Voices and sound, avatars or video, viewer polls, accounts, market prices, EMA, 
 - Reddit OAuth approval time.
 - Why the EDGAR 8-K atom feed returned 0 entries, and whether GlobeNewswire answers a real User-Agent.
 - Bluesky search from GitHub's runners.
+- EDGAR full-text search field names (`_id`, `file_type`, `sics`, `display_names`) are from memory and untested, because the job needs `DNBC_CONTACT`. The first real run shows whether they are right.
 
 ## 10. Open for Aaron
 
 - Domain.
-- Set the Actions secrets, `DNBC_CONTACT` among them, once the GitHub repo exists.
+- Set the Actions secrets in `saehyunjun/dnbc` (Settings, Secrets and variables, Actions). `DATABASE_URL` is the Neon `DATABASE_URL` in `.env.local` (from `vercel env pull`). `DNBC_CONTACT` is the SEC contact. Optional: `BUSINESSWIRE_FEEDS` (a health feed URL from Business Wire's RSS builder) and `BLUESKY_HANDLE` plus `BLUESKY_APP_PASSWORD`. Until `DATABASE_URL` is set, both workflows start and skip.
 
 ## 11. Review log
 

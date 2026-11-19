@@ -1,0 +1,4017 @@
+[
+ {
+  "id": "story-fda-tz360os9tshu",
+  "kind": "approval",
+  "score": 7.09,
+  "title": "FDA Approves First Drug to Treat Neurological Symptoms of Type 3 Gaucher Disease",
+  "itemIds": [
+   "fda-tz360os9tshu"
+  ],
+  "entities": {
+   "drugs": [
+    "venglustat"
+   ],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-18T19:13:26.000Z",
+  "updatedAt": "2026-11-18T19:13:26.000Z",
+  "therapyArea": "Rare disease"
+ },
+ {
+  "id": "story-prnewswire-16zjzlntsmjip",
+  "kind": "readout",
+  "score": 5.99,
+  "title": "Eloxx Pharmaceuticals Announces Publication of Phase 2a Exaluren Data in Nonsense Mutation Alport Syndrome in the Journal of Clinical Investigation",
+  "itemIds": [
+   "prnewswire-16zjzlntsmjip"
+  ],
+  "entities": {
+   "drugs": [
+    "ZKN-013"
+   ],
+   "nctIds": [
+    "NCT05448755",
+    "NCT07523581"
+   ],
+   "sponsors": [
+    "Eloxx Pharmaceuticals, Inc."
+   ],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-18T21:05:00.000Z",
+  "updatedAt": "2026-11-18T21:05:00.000Z",
+  "therapyArea": "Neurology"
+ },
+ {
+  "id": "story-prnewswire-8uqwvf6uh9vp",
+  "kind": "readout",
+  "score": 5.94,
+  "title": "/C O R R E C T I O N - Cytonics Corporation/",
+  "itemIds": [
+   "prnewswire-8uqwvf6uh9vp"
+  ],
+  "entities": {
+   "drugs": [
+    "CYT-108"
+   ],
+   "nctIds": [],
+   "sponsors": [
+    "Cytonics Corporation"
+   ],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-18T20:50:00.000Z",
+  "updatedAt": "2026-11-18T20:50:00.000Z"
+ },
+ {
+  "id": "story-prnewswire-y6e3c3jnzja9",
+  "kind": "readout",
+  "score": 5.26,
+  "title": "New Diranersen Data at CTAD Mark Continued Progress Toward Combination Therapies for Alzheimer's, Says the ADDF",
+  "itemIds": [
+   "prnewswire-y6e3c3jnzja9"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [
+    "Alzheimer's Drug Discovery Foundation"
+   ],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-18T16:36:00.000Z",
+  "updatedAt": "2026-11-18T16:36:00.000Z",
+  "therapyArea": "Neurology"
+ },
+ {
+  "id": "story-prnewswire-qvmc541ye15oi",
+  "kind": "readout",
+  "score": 5.02,
+  "title": "Dignify Therapeutics Doses First Healthy Participant in Phase 1 Study of DTI-117 for Neurogenic Bowel Dysfunction",
+  "itemIds": [
+   "prnewswire-qvmc541ye15oi"
+  ],
+  "entities": {
+   "drugs": [
+    "peptide",
+    "DTI-117"
+   ],
+   "nctIds": [
+    "NCT07882472"
+   ],
+   "sponsors": [
+    "Dignify Therapeutics"
+   ],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-18T15:00:00.000Z",
+  "updatedAt": "2026-11-18T15:00:00.000Z"
+ },
+ {
+  "id": "story-prnewswire-oh4cz51g4giqz",
+  "kind": "readout",
+  "score": 4.83,
+  "title": "Florida Cancer Specialists & Research Institute Accelerates Next Generation of Targeted Cancer Therapies",
+  "itemIds": [
+   "prnewswire-oh4cz51g4giqz"
+  ],
+  "entities": {
+   "drugs": [
+    "ERAS-0015",
+    "ACZO-1418"
+   ],
+   "nctIds": [],
+   "sponsors": [
+    "Florida Cancer Specialists & Research Institute"
+   ],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-18T13:41:00.000Z",
+  "updatedAt": "2026-11-18T13:41:00.000Z",
+  "therapyArea": "Oncology"
+ },
+ {
+  "id": "story-fda-1p3xnvnt7pfid",
+  "kind": "approval",
+  "score": 3.55,
+  "title": "FDA Approves First Drug Shown to Help Patients with Infantile-Onset Niemann-Pick Disease Type C Live Longer",
+  "itemIds": [
+   "fda-1p3xnvnt7pfid"
+  ],
+  "entities": {
+   "drugs": [
+    "miglustat"
+   ],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-17T19:15:22.000Z",
+  "updatedAt": "2026-11-17T19:15:22.000Z"
+ },
+ {
+  "id": "story-ctgov-NCT07946913-registration-2026-11-18",
+  "kind": "registration",
+  "score": 2.44,
+  "title": "A Study to Evaluate the Efficacy and Safety of LP-003 Injection in Patients With Chronic Spontaneous Urticaria Who Remain Symptomatic Despite Treatment With H1 Antihistamines",
+  "itemIds": [
+   "ctgov-NCT07946913-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [
+    "LP-003 Injection",
+    "Omalizumab"
+   ],
+   "nctIds": [
+    "NCT07946913"
+   ],
+   "sponsors": [
+    "Longbio Pharma"
+   ],
+   "conditions": [
+    "Chronic Spontaneous Urticaria (CSU)"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "story-prnewswire-1xb6tiz1ltccrh",
+  "kind": "other",
+  "score": 2.17,
+  "title": "Anixa Biosciences and Curia will Develop Final Formulation for Breast Cancer Vaccine in Preparation for Phase 2 Clinical Trial",
+  "itemIds": [
+   "prnewswire-1xb6tiz1ltccrh",
+   "bsky-8i0ia6bg6t9c"
+  ],
+  "entities": {
+   "drugs": [
+    "peptide",
+    "liraltagene",
+    "autoleucel",
+    "rapcabtagene"
+   ],
+   "nctIds": [],
+   "sponsors": [
+    "Anixa Biosciences, Inc."
+   ],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-18T13:25:00.000Z",
+  "updatedAt": "2026-11-19T04:48:45.958Z",
+  "therapyArea": "Oncology"
+ },
+ {
+  "id": "story-smoke-1",
+  "kind": "other",
+  "score": 2,
+  "title": "t",
+  "itemIds": [
+   "smoke-1"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T07:02:24.624Z",
+  "updatedAt": "2026-11-19T07:02:24.624Z"
+ },
+ {
+  "id": "story-ctgov-NCT07940686-registration-2026-11-17",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "Evaluating Posterior Nasal Nerve Neurolysis for Migraine Relief",
+  "itemIds": [
+   "ctgov-NCT07940686-registration-2026-11-17"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [
+    "NCT07940686"
+   ],
+   "sponsors": [
+    "Aerin Medical"
+   ],
+   "conditions": [
+    "Migraine Headache"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z",
+  "therapyArea": "Neurology"
+ },
+ {
+  "id": "story-ctgov-NCT07944092-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "Ph 1/2 Study to Evaluate Safety & Tolerability of FMC-242 Alone and in Combination in Adults With Advanced Solid Tumors",
+  "itemIds": [
+   "ctgov-NCT07944092-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [
+    "FMC-242",
+    "Trastuzumab (or biosimilar)",
+    "Fulvestrant (or generic)",
+    "Pan (K)RAS inhibitor",
+    "FMC-376"
+   ],
+   "nctIds": [
+    "NCT07944092"
+   ],
+   "sponsors": [
+    "Frontier Medicines Corporation"
+   ],
+   "conditions": [
+    "Locally Advanced Solid Tumor"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z",
+  "therapyArea": "Oncology"
+ },
+ {
+  "id": "story-ctgov-NCT07944118-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "Examination of How the Duration of Fasting and Temporary Stopping of Zenagamtide Dosing Affect the Amount of Food Left in the Stomach in Adults With Overweight or Obesity, With or Without Type 2 Diabetes",
+  "itemIds": [
+   "ctgov-NCT07944118-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [
+    "Zenagamtide"
+   ],
+   "nctIds": [
+    "NCT07944118"
+   ],
+   "sponsors": [
+    "Novo Nordisk A/S"
+   ],
+   "conditions": [
+    "Overweight",
+    "Obesity",
+    "Type 2 Diabetes"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z",
+  "therapyArea": "Cardiometabolic"
+ },
+ {
+  "id": "story-ctgov-NCT07944144-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "A Phase I/II Study to Learn About the Safety and Effects of a New Medicine Called IPN60350 Alone or in Combination With Other Anticancer Therapies in Adults With Locally Advanced or Metastatic Solid Tumors",
+  "itemIds": [
+   "ctgov-NCT07944144-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [
+    "IPN60350"
+   ],
+   "nctIds": [
+    "NCT07944144"
+   ],
+   "sponsors": [
+    "Ipsen"
+   ],
+   "conditions": [
+    "Neoplasms",
+    "Neoplasm Metastasis",
+    "Neoplastic Processes",
+    "Pathologic Processes"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z",
+  "therapyArea": "Oncology"
+ },
+ {
+  "id": "story-ctgov-NCT07944378-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "A Study Evaluating the Safety and Effectiveness of Lokelma in Indian Patients With Hyperkalaemia",
+  "itemIds": [
+   "ctgov-NCT07944378-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [
+    "Lokelma"
+   ],
+   "nctIds": [
+    "NCT07944378"
+   ],
+   "sponsors": [
+    "AstraZeneca"
+   ],
+   "conditions": [
+    "Hyperkalemia"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "story-ctgov-NCT07944417-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "AI-Guided Bronchoscopy Using the Broncho AI Navigator",
+  "itemIds": [
+   "ctgov-NCT07944417-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [
+    "NCT07944417"
+   ],
+   "sponsors": [
+    "Ambu A/S"
+   ],
+   "conditions": [
+    "Bronchoscopy"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "story-ctgov-NCT07944482-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "A Study on the Pharmacokinetics and Safety of GST-HG141 Tablets in Participants With Hepatic Impairment and Normal Liver Function",
+  "itemIds": [
+   "ctgov-NCT07944482-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [
+    "GST-HG141"
+   ],
+   "nctIds": [
+    "NCT07944482"
+   ],
+   "sponsors": [
+    "Fujian Akeylink Biotechnology Co., Ltd."
+   ],
+   "conditions": [
+    "Chronic Hepatitis b"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z",
+  "therapyArea": "Infectious disease"
+ },
+ {
+  "id": "story-ctgov-NCT07944508-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "A Phase 1 Study of MVB-101 Administered Intraprostatically in Patients With Localized Prostate Cancer Who Are Scheduled for Radical Prostatectomy",
+  "itemIds": [
+   "ctgov-NCT07944508-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [
+    "MVB-101"
+   ],
+   "nctIds": [
+    "NCT07944508"
+   ],
+   "sponsors": [
+    "MultiValent Biotherapies, Inc."
+   ],
+   "conditions": [
+    "Localized Prostate Adenocarcinoma"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z",
+  "therapyArea": "Oncology"
+ },
+ {
+  "id": "story-ctgov-NCT07944625-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "Clinical Trial to Evaluate the Protective Effect of Larazotide Acetate in Individuals With Well-Controlled Celiac Disease",
+  "itemIds": [
+   "ctgov-NCT07944625-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [
+    "Larazotide Acetate"
+   ],
+   "nctIds": [
+    "NCT07944625"
+   ],
+   "sponsors": [
+    "Interlude Biopharma Co."
+   ],
+   "conditions": [
+    "Celiac Disease",
+    "Celiac Disease in Adolescents"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z",
+  "therapyArea": "Neurology"
+ },
+ {
+  "id": "story-ctgov-NCT07944690-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "A Phase I Study to Evaluate the Safety, Tolerability, and PK of HLX49 in Advanced/Metastatic Solid Tumors",
+  "itemIds": [
+   "ctgov-NCT07944690-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [
+    "HLX49",
+    "Trastuzumab Deruxtecan for Injection (T-DXd)"
+   ],
+   "nctIds": [
+    "NCT07944690"
+   ],
+   "sponsors": [
+    "Shanghai Henlius Biotech"
+   ],
+   "conditions": [
+    "Advanced/Metastatic Solid Tumors"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z",
+  "therapyArea": "Oncology"
+ },
+ {
+  "id": "story-ctgov-NCT07944885-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "First-in-human Study of SAR448632 in Healthy Adult Participants",
+  "itemIds": [
+   "ctgov-NCT07944885-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [
+    "SAR448632"
+   ],
+   "nctIds": [
+    "NCT07944885"
+   ],
+   "sponsors": [
+    "Sanofi"
+   ],
+   "conditions": [
+    "Healthy Volunteer"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "story-ctgov-NCT07945119-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "Safety, Tolerability, and Efficacy of a Therapeutic Intervention for HPV16/18 Infection",
+  "itemIds": [
+   "ctgov-NCT07945119-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [
+    "AVL-1100"
+   ],
+   "nctIds": [
+    "NCT07945119"
+   ],
+   "sponsors": [
+    "Beijing Xunsheng Biomedical Research Co., Ltd."
+   ],
+   "conditions": [
+    "Positive for HPV16/18 Infection"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z",
+  "therapyArea": "Infectious disease"
+ },
+ {
+  "id": "story-ctgov-NCT07945145-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "A Pharmacokinetics Study of GZR33 Injection at Different Injection Sites",
+  "itemIds": [
+   "ctgov-NCT07945145-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [
+    "GZR33 Injection"
+   ],
+   "nctIds": [
+    "NCT07945145"
+   ],
+   "sponsors": [
+    "Gan & Lee Pharmaceuticals."
+   ],
+   "conditions": [
+    "Healthy Participants"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "story-ctgov-NCT07945314-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "A Study to Evaluate Safety, Tolerability, and Pharmacokinetics of LY3839056 in Healthy Participants",
+  "itemIds": [
+   "ctgov-NCT07945314-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [
+    "LY3839056 IV",
+    "LY3839056 SC"
+   ],
+   "nctIds": [
+    "NCT07945314"
+   ],
+   "sponsors": [
+    "Eli Lilly and Company"
+   ],
+   "conditions": [
+    "Healthy Participants"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "story-ctgov-NCT07945431-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "A Study Evaluating the Efficacy and Safety of Novel Non-Opioid SRP-001 in Acute Pain After Molar Extraction",
+  "itemIds": [
+   "ctgov-NCT07945431-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [
+    "SRP-001",
+    "Matching Placebo for SRP-001"
+   ],
+   "nctIds": [
+    "NCT07945431"
+   ],
+   "sponsors": [
+    "South Rampart Pharma, Inc."
+   ],
+   "conditions": [
+    "Acute Pain",
+    "Postoperative Pain",
+    "Pain",
+    "Dental Pain"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "story-ctgov-NCT07945665-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "Diagnostic Performance and Safety of Ragweed Pollen and Dog Dander Skin Prick Test Solutions",
+  "itemIds": [
+   "ctgov-NCT07945665-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [
+    "NCT07945665"
+   ],
+   "sponsors": [
+    "Zhejiang Wolwo Bio-Pharmaceutical Co., Ltd."
+   ],
+   "conditions": [
+    "Allergic Disorder"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "story-ctgov-NCT07945821-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "A Study of Tagmokitug in Combination With Other Treatments in Participants With Advanced or Metastatic Solid Tumors",
+  "itemIds": [
+   "ctgov-NCT07945821-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [
+    "Tagmokitug",
+    "Pasritamig"
+   ],
+   "nctIds": [
+    "NCT07945821"
+   ],
+   "sponsors": [
+    "Coherus Oncology, Inc."
+   ],
+   "conditions": [
+    "Solid Tumor"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z",
+  "therapyArea": "Oncology"
+ },
+ {
+  "id": "story-ctgov-NCT07946042-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "Safety, Tolerability, and Pharmacokinetic Study of Single and Multiple Ascending Dose of YY524051 Tablets in Healthy Adults.",
+  "itemIds": [
+   "ctgov-NCT07946042-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [
+    "YY524051 tablets"
+   ],
+   "nctIds": [
+    "NCT07946042"
+   ],
+   "sponsors": [
+    "Beijing Baheal Wisart Medical Research Co., Ltd"
+   ],
+   "conditions": [
+    "Healthy Adult"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "story-ctgov-NCT07946068-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "Aleniglipron Renal Impairment Study",
+  "itemIds": [
+   "ctgov-NCT07946068-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [
+    "Aleniglipron"
+   ],
+   "nctIds": [
+    "NCT07946068"
+   ],
+   "sponsors": [
+    "Gasherbrum Bio, Inc., a wholly owned subsidiary of Structure Therapeutics"
+   ],
+   "conditions": [
+    "Renal Impairment",
+    "Severe Renal Impairment"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z",
+  "therapyArea": "Cardiometabolic"
+ },
+ {
+  "id": "story-ctgov-NCT07946107-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "BHB-1893 vs. Placebo for Symptomatic Non-obstructive Hypertrophic Cardiomyopathy",
+  "itemIds": [
+   "ctgov-NCT07946107-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [
+    "BHB-1893"
+   ],
+   "nctIds": [
+    "NCT07946107"
+   ],
+   "sponsors": [
+    "Braveheart Bio, Inc."
+   ],
+   "conditions": [
+    "Cardiomyopathy, Hypertrophic Non-Obstructive"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z",
+  "therapyArea": "Cardiometabolic"
+ },
+ {
+  "id": "story-ctgov-NCT07946250-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "A Clinical Trial to Evaluate the Effects of Broc Shot Capsules on Skin Appearance and Comfort in Adults With Reactive, Blemish-Prone, or Hormonally Affected Skin",
+  "itemIds": [
+   "ctgov-NCT07946250-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [
+    "NCT07946250"
+   ],
+   "sponsors": [
+    "BrocShot Inc"
+   ],
+   "conditions": [
+    "Reactive Skin",
+    "Blemish-Prone Skin",
+    "Hormonally Affected Skin",
+    "Acne",
+    "Rosacea",
+    "Eczema",
+    "Psoriasis",
+    "Skin Irritation"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z",
+  "therapyArea": "Immunology"
+ },
+ {
+  "id": "story-ctgov-NCT07946302-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "A Phase I Dose-Escalation Study of CUG279 in Participants With Select Advanced or Metastatic Solid Tumors",
+  "itemIds": [
+   "ctgov-NCT07946302-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [
+    "CUG279"
+   ],
+   "nctIds": [
+    "NCT07946302"
+   ],
+   "sponsors": [
+    "Cugene Inc."
+   ],
+   "conditions": [
+    "Advanced Solid Tumor (Phase 1)"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z",
+  "therapyArea": "Oncology"
+ },
+ {
+  "id": "story-ctgov-NCT07946367-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "Dual-targeting of B & T Cell Pathways Evaluation Trial",
+  "itemIds": [
+   "ctgov-NCT07946367-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [
+    "DFI205 bispecific antibody"
+   ],
+   "nctIds": [
+    "NCT07946367"
+   ],
+   "sponsors": [
+    "Diabetes Free, Inc."
+   ],
+   "conditions": [
+    "Rheumatoid Arthritis (RA)",
+    "Systemic Lupus Erythematosus (SLE)",
+    "Systemic Sclerosis (SSc)",
+    "Idiopathic Inflammatory Myopathies (IIM)"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z",
+  "therapyArea": "Immunology"
+ },
+ {
+  "id": "story-ctgov-NCT07946471-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "A Clinical Trial to Evaluate the Effects of Glow Shakes Premium Collagen Meal Replacement on Body Composition, Weight Management, Skin, Hair, Nail, Gut, and Overall Health Outcomes",
+  "itemIds": [
+   "ctgov-NCT07946471-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [
+    "NCT07946471"
+   ],
+   "sponsors": [
+    "The Collagen Co. - GLP-1 Users"
+   ],
+   "conditions": [
+    "Weight Management",
+    "Body Composition",
+    "Overweight",
+    "Skin Health",
+    "Hair Health",
+    "Nail Health",
+    "Gut Health"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "story-ctgov-NCT07946536-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "A Clinical Trial to Evaluate the Effects of Glow Shakes Premium Collagen Meal Replacement on Nutritional Adequacy, Body Composition, Skin Health, Satiety, and Overall Wellness in Adults Using GLP-1 or Dual-Incretin Medications for Weight Management",
+  "itemIds": [
+   "ctgov-NCT07946536-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [
+    "NCT07946536"
+   ],
+   "sponsors": [
+    "The Collagen Co. - GLP-1 Users"
+   ],
+   "conditions": [
+    "Weight Management",
+    "Obesity",
+    "Nutritional Adequacy",
+    "Body Composition",
+    "Skin Health",
+    "Hunger and Satiety",
+    "GLP-1 Receptor Agonist Use"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z",
+  "therapyArea": "Cardiometabolic"
+ },
+ {
+  "id": "story-ctgov-NCT07946549-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "A Study to Evaluate the Safety and Efficacy of CID-103 in Adults With Chronic Immune Thrombocytopenia",
+  "itemIds": [
+   "ctgov-NCT07946549-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [
+    "CID-103"
+   ],
+   "nctIds": [
+    "NCT07946549"
+   ],
+   "sponsors": [
+    "CASI pharmaceuticals, Inc."
+   ],
+   "conditions": [
+    "Chronic Immune Thrombocytopenia"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z",
+  "therapyArea": "Hematology"
+ },
+ {
+  "id": "story-ctgov-NCT07946575-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "A Study of the Potential Pharmacokinetic Interaction Between Quinidine Sulfate and Nalbuphine Extended-Release Tablets (NAL ER) in Healthy Participants",
+  "itemIds": [
+   "ctgov-NCT07946575-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [
+    "NAL ER",
+    "Quinidine Sulfate"
+   ],
+   "nctIds": [
+    "NCT07946575"
+   ],
+   "sponsors": [
+    "Trevi Therapeutics"
+   ],
+   "conditions": [
+    "Healthy Participants"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "story-ctgov-NCT07946640-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "A Clinical Study to Evaluate the Effects of Driscoll's Raspberries and Driscoll's Blackberries on Postprandial Glycemic Response, Satiety, and Consumer Appeal in Healthy Adults",
+  "itemIds": [
+   "ctgov-NCT07946640-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [
+    "NCT07946640"
+   ],
+   "sponsors": [
+    "Driscoll's"
+   ],
+   "conditions": [
+    "Postprandial Glycemic Response",
+    "Satiety",
+    "Blood Glucose"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "story-ctgov-NCT07946666-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "A Clinical Trial to Evaluate the Effects of the Synbiotic Dual Cap® on Gastrointestinal Comfort in Adults Initiating GLP-1 or Dual-Incretin Therapy for Weight Loss.",
+  "itemIds": [
+   "ctgov-NCT07946666-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [
+    "NCT07946666"
+   ],
+   "sponsors": [
+    "Epetome"
+   ],
+   "conditions": [
+    "Gastrointestinal Discomfort",
+    "Nausea",
+    "Bloating",
+    "Constipation",
+    "Diarrhea",
+    "GLP-1 Receptor Agonist Therapy-Associated Gastrointestinal Symptoms",
+    "Obesity",
+    "Type 2 Diabetes"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z",
+  "therapyArea": "Cardiometabolic"
+ },
+ {
+  "id": "story-ctgov-NCT07946757-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "Phase Ib Clinical Trial of ACT201 Injection in Participants With Treatment-Naïve Chronic Hepatitis B",
+  "itemIds": [
+   "ctgov-NCT07946757-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [
+    "ACT201 Injection",
+    "PegIFNα-2b Injection",
+    "Tenofovir Alafenamide Fumarate（TAF）"
+   ],
+   "nctIds": [
+    "NCT07946757"
+   ],
+   "sponsors": [
+    "Xiamen Amoytop Biotech Co., Ltd."
+   ],
+   "conditions": [
+    "Chronic Hepaititis B"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z",
+  "therapyArea": "Infectious disease"
+ },
+ {
+  "id": "story-ctgov-NCT07946783-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "A Phase I Clinical Study of Oral ZL-65 Tablets in Healthy and Obese Participants With Cardiovascular Risk",
+  "itemIds": [
+   "ctgov-NCT07946783-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [
+    "Single-ascending Dose (SAD) study and Food Effect (FE) study",
+    "Multiple-ascending Doses (MAD) study",
+    "Obesity with cardiovascular risk study"
+   ],
+   "nctIds": [
+    "NCT07946783"
+   ],
+   "sponsors": [
+    "Chengdu Zenitar Biomedical Technology Co., Ltd"
+   ],
+   "conditions": [
+    "Obesity With Cardiovascular Risk Study"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z",
+  "therapyArea": "Cardiometabolic"
+ },
+ {
+  "id": "story-ctgov-NCT07946848-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "Phase 2 Study to Evaluate Dose Optimization and Anti-tumor Activity of Atebimetinib in Participants With Advanced or Metastatic NSCLC.",
+  "itemIds": [
+   "ctgov-NCT07946848-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [
+    "Atebimetinib",
+    "Cemiplimab",
+    "Carboplatin",
+    "Pemetrexed (500 mg/m²)"
+   ],
+   "nctIds": [
+    "NCT07946848"
+   ],
+   "sponsors": [
+    "Immuneering Corporation"
+   ],
+   "conditions": [
+    "NSCLC (Advanced Non-small Cell Lung Cancer)",
+    "Non-Squamous Non Small Cell Lung Cancer",
+    "Metastatic Non-Small Lung Cell Cancer",
+    "Locally Advanced Non-Small Cell Lung Cancer",
+    "Lung Cancer (NSCLC)"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z",
+  "therapyArea": "Oncology"
+ },
+ {
+  "id": "story-ctgov-NCT07946978-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "A Clinical Trial to Evaluate the Effects of a Supplement on Appetite, Gut Health, and Blood Sugar",
+  "itemIds": [
+   "ctgov-NCT07946978-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [
+    "NCT07946978"
+   ],
+   "sponsors": [
+    "Etta Vita"
+   ],
+   "conditions": [
+    "Overweight",
+    "Obesity",
+    "Appetite Dysregulation",
+    "Blood Sugar",
+    "Gut Health"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z",
+  "therapyArea": "Cardiometabolic"
+ },
+ {
+  "id": "story-ctgov-NCT07947095-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "Investigating the Effectiveness of Calisda, a Digital Health Intervention for Patients With Menopause Symptoms",
+  "itemIds": [
+   "ctgov-NCT07947095-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [
+    "NCT07947095"
+   ],
+   "sponsors": [
+    "Gaia AG"
+   ],
+   "conditions": [
+    "Menopause Symptoms"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "story-ctgov-NCT07947108-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "A Clinical Trial to Evaluate the Effects of a Supplement on Urinary Symptoms",
+  "itemIds": [
+   "ctgov-NCT07947108-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [
+    "NCT07947108"
+   ],
+   "sponsors": [
+    "Good Kitty Co"
+   ],
+   "conditions": [
+    "Urinary Tract Infection",
+    "Recurrent Urinary Tract Infection",
+    "Urinary Symptoms"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z",
+  "therapyArea": "Infectious disease"
+ },
+ {
+  "id": "story-ctgov-NCT07947121-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "A Study of Risvutatug Rezetecan in Combination With Atezolizumab in Participants With Extensive Stage Small Cell Lung Cancer (EMBOLD-SCLC-303)",
+  "itemIds": [
+   "ctgov-NCT07947121-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [
+    "Ris-Rez",
+    "Atezolizumab",
+    "Etoposide",
+    "Carboplatin",
+    "Lurbinectedin"
+   ],
+   "nctIds": [
+    "NCT07947121"
+   ],
+   "sponsors": [
+    "GlaxoSmithKline"
+   ],
+   "conditions": [
+    "Lung Neoplasm"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z",
+  "therapyArea": "Oncology"
+ },
+ {
+  "id": "story-ctgov-NCT07947134-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "A Study of GSK5864399 Administered Alone or in Combination With Other Anti-cancer Agents in Participants With Solid Tumours",
+  "itemIds": [
+   "ctgov-NCT07947134-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [
+    "GSK5864399"
+   ],
+   "nctIds": [
+    "NCT07947134"
+   ],
+   "sponsors": [
+    "GlaxoSmithKline"
+   ],
+   "conditions": [
+    "Solid Tumours"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z",
+  "therapyArea": "Oncology"
+ },
+ {
+  "id": "story-ctgov-NCT07947173-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "Phase 1 Trial to Assess Safety and Immunogenicity of Self-replicating RNA (srRNA) Herpes Zoster Vaccine (JCXH-105)",
+  "itemIds": [
+   "ctgov-NCT07947173-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [
+    "JCXH-105"
+   ],
+   "nctIds": [
+    "NCT07947173"
+   ],
+   "sponsors": [
+    "Immorna Biotherapeutics, Inc."
+   ],
+   "conditions": [
+    "Herpes Zoster (HZ)"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z",
+  "therapyArea": "Infectious disease"
+ },
+ {
+  "id": "story-ctgov-NCT07947290-registration-2026-11-18",
+  "kind": "registration",
+  "score": 1.63,
+  "title": "Effects of PosBion® Supplementation on Intestinal Barrier Function in Adults With Irritable Bowel Syndrome",
+  "itemIds": [
+   "ctgov-NCT07947290-registration-2026-11-18"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [
+    "NCT07947290"
+   ],
+   "sponsors": [
+    "My Myracle Sdn.Bhd"
+   ],
+   "conditions": [
+    "Irritable Bowel Syndrome (IBS)"
+   ]
+  },
+  "firstSeen": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "story-prnewswire-192nfh4kzhdmy",
+  "kind": "other",
+  "score": 1.63,
+  "title": "Harbour BioMed Announces NMPA Acceptance of IND Application for Its First AI-Enabled Drug Candidate LET003 for the Treatment of Overweight or Obesity",
+  "itemIds": [
+   "prnewswire-192nfh4kzhdmy"
+  ],
+  "entities": {
+   "drugs": [
+    "semaglutide",
+    "bimagrumab"
+   ],
+   "nctIds": [],
+   "sponsors": [
+    "Harbour BioMed"
+   ],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T00:01:00.000Z",
+  "updatedAt": "2026-11-19T00:01:00.000Z",
+  "therapyArea": "Cardiometabolic"
+ },
+ {
+  "id": "story-prnewswire-8adlqsz8rjwy",
+  "kind": "other",
+  "score": 1.5,
+  "title": "Systech Expands Pharmaceutical Manufacturing Offering with Automated Serialization Stations for High-Performance Packaging Lines",
+  "itemIds": [
+   "prnewswire-8adlqsz8rjwy"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [
+    "Dover"
+   ],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-18T21:15:00.000Z",
+  "updatedAt": "2026-11-18T21:15:00.000Z"
+ },
+ {
+  "id": "story-prnewswire-mz9g6q1m1xdao",
+  "kind": "other",
+  "score": 1.49,
+  "title": "IM Cannabis Announces Intention to Complete 3:1 Share Consolidation to Support Nasdaq Minimum Bid Price Compliance",
+  "itemIds": [
+   "prnewswire-mz9g6q1m1xdao"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [
+    "IM Cannabis Corp."
+   ],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-18T21:01:00.000Z",
+  "updatedAt": "2026-11-18T21:01:00.000Z"
+ },
+ {
+  "id": "story-prnewswire-14dydwj1tliu7x",
+  "kind": "other",
+  "score": 1.35,
+  "title": "New Treatment Strategy for Down Syndrome Shows Promise in Phase 2 Clinical Trial",
+  "itemIds": [
+   "prnewswire-14dydwj1tliu7x"
+  ],
+  "entities": {
+   "drugs": [
+    "tofacitinib"
+   ],
+   "nctIds": [
+    "NCT04246372"
+   ],
+   "sponsors": [
+    "University of Colorado Anschutz"
+   ],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-18T17:25:00.000Z",
+  "updatedAt": "2026-11-18T17:25:00.000Z"
+ },
+ {
+  "id": "story-prnewswire-18dt4c1vxm2ie",
+  "kind": "other",
+  "score": 1.34,
+  "title": "Biocons Pertuzumab erhält Marktzulassung in der EU - Erstes Biosimilar, das im Rahmen des neuen, fokussierten klinischen Ansatzes der EMA zugelassen wurde",
+  "itemIds": [
+   "prnewswire-18dt4c1vxm2ie",
+   "prnewswire-1ws1o8f1f4d63x",
+   "prnewswire-1f3uxb11n6e2sr"
+  ],
+  "entities": {
+   "drugs": [
+    "pertuzumab",
+    "trastuzumab"
+   ],
+   "nctIds": [],
+   "sponsors": [
+    "Biocon"
+   ],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-18T14:08:00.000Z",
+  "updatedAt": "2026-11-18T17:10:00.000Z"
+ },
+ {
+  "id": "story-prnewswire-ac0lnd1s26hlj",
+  "kind": "other",
+  "score": 1.34,
+  "title": "Ten63 Therapeutics Launches BEYOND-Alpha, with Chugai Pharmaceutical as First Participant",
+  "itemIds": [
+   "prnewswire-ac0lnd1s26hlj"
+  ],
+  "entities": {
+   "drugs": [
+    "marcel"
+   ],
+   "nctIds": [],
+   "sponsors": [
+    "Ten63 Therapeutics"
+   ],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-18T17:10:00.000Z",
+  "updatedAt": "2026-11-18T17:10:00.000Z"
+ },
+ {
+  "id": "story-prnewswire-7p8m9211hsm70",
+  "kind": "other",
+  "score": 1.29,
+  "title": "New Three-Year Real-World LEQEMBI® Data Presented at CTAD 2026",
+  "itemIds": [
+   "prnewswire-7p8m9211hsm70"
+  ],
+  "entities": {
+   "drugs": [
+    "lecanemab"
+   ],
+   "nctIds": [],
+   "sponsors": [
+    "Eisai Inc."
+   ],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-18T16:00:00.000Z",
+  "updatedAt": "2026-11-18T16:00:00.000Z"
+ },
+ {
+  "id": "story-prnewswire-cm46i2l4875c",
+  "kind": "other",
+  "score": 1.26,
+  "title": "Akagera Medicines Receives $7.8 Million Grant Expansion to Advance Dendritic Cell-Targeted mRNA Tuberculosis Vaccine Toward First-in-Human Trial",
+  "itemIds": [
+   "prnewswire-cm46i2l4875c"
+  ],
+  "entities": {
+   "drugs": [
+    "AKG-100"
+   ],
+   "nctIds": [],
+   "sponsors": [
+    "Akagera Medicines Inc"
+   ],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-18T15:00:00.000Z",
+  "updatedAt": "2026-11-18T15:00:00.000Z",
+  "therapyArea": "Infectious disease"
+ },
+ {
+  "id": "story-prnewswire-1gkwryjeohz5x",
+  "kind": "other",
+  "score": 1.26,
+  "title": "Sino Biological Introduces AI-Trusted and Qualified Target Protein Collections for AI-Driven Discovery",
+  "itemIds": [
+   "prnewswire-1gkwryjeohz5x",
+   "prnewswire-zi8ep14v0lhr"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [
+    "Sino Biological"
+   ],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-18T15:05:00.000Z",
+  "updatedAt": "2026-11-18T15:05:00.000Z"
+ },
+ {
+  "id": "story-ctgov-NCT07943585-registration-2026-11-17",
+  "kind": "registration",
+  "score": 1.22,
+  "title": "A Phase Ⅲ Clinical Trial of an Investigative 24-valent Pneumococcal Polysaccharide Conjugate Vaccine",
+  "itemIds": [
+   "ctgov-NCT07943585-registration-2026-11-17"
+  ],
+  "entities": {
+   "drugs": [
+    "Prevention of pneumococcal disease from 24 serotypes with the administration of Reinovax's PCV24",
+    "PPSV23"
+   ],
+   "nctIds": [
+    "NCT07943585"
+   ],
+   "sponsors": [
+    "Reinovax Biologics Co., LTD"
+   ],
+   "conditions": [
+    "Pneumococcal Infectious Disease"
+   ]
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z",
+  "therapyArea": "Infectious disease"
+ },
+ {
+  "id": "story-prnewswire-1e4m87kbxrg8u",
+  "kind": "other",
+  "score": 1.22,
+  "title": "BioLineRx to Report Third Quarter 2026 Results on November 23, 2026",
+  "itemIds": [
+   "prnewswire-1e4m87kbxrg8u"
+  ],
+  "entities": {
+   "drugs": [
+    "motixafortide"
+   ],
+   "nctIds": [],
+   "sponsors": [
+    "BioLineRx Ltd."
+   ],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-18T14:00:00.000Z",
+  "updatedAt": "2026-11-18T14:00:00.000Z"
+ },
+ {
+  "id": "story-prnewswire-3uo14i8tm8tg",
+  "kind": "other",
+  "score": 1.2,
+  "title": "PharmaResearch Global Symposium Draws More Than 750 Clinicians From 64 Countries",
+  "itemIds": [
+   "prnewswire-3uo14i8tm8tg"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [
+    "PharmaResearch"
+   ],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-18T13:30:00.000Z",
+  "updatedAt": "2026-11-18T13:30:00.000Z"
+ },
+ {
+  "id": "story-bsky-1aufkqb1n8je5h",
+  "kind": "post",
+  "score": 1,
+  "title": "💊 Access to antibiotics starts long before approval.\n\nThis #WAAW, discover how zoliflodacin’s phase 3 trial helped gene",
+  "itemIds": [
+   "bsky-1aufkqb1n8je5h"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T07:00:48.478Z",
+  "updatedAt": "2026-11-19T07:00:48.478Z"
+ },
+ {
+  "id": "story-bsky-qgc1h6111t2zo",
+  "kind": "post",
+  "score": 0.99,
+  "title": "BIOTECH · Hone Health raises $228M for longevity care\n\nThe telehealth startup's $228 million round is mostly growth fina",
+  "itemIds": [
+   "bsky-qgc1h6111t2zo"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T06:36:21.535Z",
+  "updatedAt": "2026-11-19T06:36:21.535Z"
+ },
+ {
+  "id": "story-bsky-5wsoitim7s5n",
+  "kind": "post",
+  "score": 0.99,
+  "title": "A new UK trial, AD-SMART, will test several treatments for Alzheimer’s at once, starting with two repurposed NHS drugs: ",
+  "itemIds": [
+   "bsky-5wsoitim7s5n"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T06:36:32.057Z",
+  "updatedAt": "2026-11-19T06:36:32.057Z",
+  "therapyArea": "Neurology"
+ },
+ {
+  "id": "story-bsky-1fwmw6opyb54e",
+  "kind": "post",
+  "score": 0.99,
+  "title": "WHO recommends two Bundibugyo-specific vaccine candidates for DRC's Tumaini trial as outbreak hits 5,568 deaths and 11,3",
+  "itemIds": [
+   "bsky-1fwmw6opyb54e"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T06:40:03.572381+00:00",
+  "updatedAt": "2026-11-19T06:40:03.572Z",
+  "therapyArea": "Infectious disease"
+ },
+ {
+  "id": "story-bsky-1vnnes9fdg8uv",
+  "kind": "post",
+  "score": 0.99,
+  "title": "Absolutely - statistically across all clinical trials, patients actually have better outcomes than those on standard of ",
+  "itemIds": [
+   "bsky-1vnnes9fdg8uv"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T06:49:00.738Z",
+  "updatedAt": "2026-11-19T06:49:00.738Z",
+  "therapyArea": "Neurology"
+ },
+ {
+  "id": "story-bsky-1109e1znb7ush",
+  "kind": "post",
+  "score": 0.99,
+  "title": "Pioneering UK trial to use repurposed drugs to treat Alzheimer’s\n\nhttps://www.byteseu.com/2532368/\n\nA first-of-its-kind ",
+  "itemIds": [
+   "bsky-1109e1znb7ush"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T06:52:02+00:00",
+  "updatedAt": "2026-11-19T06:52:02.000Z",
+  "therapyArea": "Neurology"
+ },
+ {
+  "id": "story-bsky-1vu1pv8159j902",
+  "kind": "post",
+  "score": 0.97,
+  "title": "International Federation on Ageing joins Speak Up for COPD and backs Time to Act Joint Declaration\n\n#WorldCOPDDay #COPD",
+  "itemIds": [
+   "bsky-1vu1pv8159j902"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T06:05:27.720878Z",
+  "updatedAt": "2026-11-19T06:05:27.720Z",
+  "therapyArea": "Respiratory"
+ },
+ {
+  "id": "story-bsky-1oggo5m1usm7xg",
+  "kind": "post",
+  "score": 0.97,
+  "title": "Researchers unveiled new AI-designed CRISPR rice varieties this week, engineered to survive extreme climate shifts. This",
+  "itemIds": [
+   "bsky-1oggo5m1usm7xg"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T06:13:21.931651+00:00",
+  "updatedAt": "2026-11-19T06:13:21.931Z"
+ },
+ {
+  "id": "story-bsky-20o4ll14nxi7b",
+  "kind": "post",
+  "score": 0.96,
+  "title": "Yeah, the thing people who've never done biotech don't realize I guess is that the computational modeling really doesn't",
+  "itemIds": [
+   "bsky-20o4ll14nxi7b"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T05:52:04.193Z",
+  "updatedAt": "2026-11-19T05:52:04.193Z"
+ },
+ {
+  "id": "story-bsky-hbya4u1tfbgr4",
+  "kind": "post",
+  "score": 0.96,
+  "title": "\"estimates suggest that GLP-1 usage is likely to surpass 10% of households in Great Britain in 2027. “This is not a flas",
+  "itemIds": [
+   "bsky-hbya4u1tfbgr4"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T05:49:53.204Z",
+  "updatedAt": "2026-11-19T05:49:53.204Z"
+ },
+ {
+  "id": "story-bsky-qsg1bv72kxjx",
+  "kind": "post",
+  "score": 0.95,
+  "title": "I expect AI companies will be successful at breaking into biotech software products, and that they'll have to leave most",
+  "itemIds": [
+   "bsky-qsg1bv72kxjx"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T05:19:31.587Z",
+  "updatedAt": "2026-11-19T05:19:31.587Z"
+ },
+ {
+  "id": "story-bsky-fxf9fv17hd1yl",
+  "kind": "post",
+  "score": 0.95,
+  "title": "I love people who have never done biotech in their life telling us that their chatbots will solve drug development lmao\n",
+  "itemIds": [
+   "bsky-fxf9fv17hd1yl"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T05:20:56.056Z",
+  "updatedAt": "2026-11-19T05:20:56.056Z"
+ },
+ {
+  "id": "story-bsky-9se84e1glwqbs",
+  "kind": "post",
+  "score": 0.95,
+  "title": "My partner does gene therapy research and she basically describe the AI tools they use as \"a really fast research assist",
+  "itemIds": [
+   "bsky-9se84e1glwqbs"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T05:21:27.451Z",
+  "updatedAt": "2026-11-19T05:21:27.451Z"
+ },
+ {
+  "id": "story-bsky-1l44yukenkh1m",
+  "kind": "post",
+  "score": 0.94,
+  "title": "The FDA approved Sanofi's Infilbray, the first oral medication for neurological symptoms in type 3 Gaucher disease. The ",
+  "itemIds": [
+   "bsky-1l44yukenkh1m"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T04:48:10.307Z",
+  "updatedAt": "2026-11-19T04:48:10.307Z",
+  "therapyArea": "Rare disease"
+ },
+ {
+  "id": "story-bsky-ufpzqg1boerqe",
+  "kind": "post",
+  "score": 0.94,
+  "title": "The FDA approved Regeneron's Livsayis, the first quarterly subcutaneous RNA therapy for adults with generalized myasthen",
+  "itemIds": [
+   "bsky-ufpzqg1boerqe"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T04:53:37.533Z",
+  "updatedAt": "2026-11-19T04:53:37.533Z"
+ },
+ {
+  "id": "story-bsky-1ignn901e3ldki",
+  "kind": "post",
+  "score": 0.94,
+  "title": "Those GLP-1 meds must have messed with his head.",
+  "itemIds": [
+   "bsky-1ignn901e3ldki"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T04:56:49.783Z",
+  "updatedAt": "2026-11-19T04:56:49.783Z"
+ },
+ {
+  "id": "story-bsky-1kzn2pfq6wf65",
+  "kind": "post",
+  "score": 0.94,
+  "title": "GSK secured accelerated FDA approval for Nelkarmi in advanced ALK-positive lung cancer ten days ahead of schedule. The t",
+  "itemIds": [
+   "bsky-1kzn2pfq6wf65"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T04:58:14.063Z",
+  "updatedAt": "2026-11-19T04:58:14.063Z",
+  "therapyArea": "Oncology"
+ },
+ {
+  "id": "story-bsky-ui3aabs3ovdp",
+  "kind": "post",
+  "score": 0.94,
+  "title": "Can GLP-1 weight loss drugs protect your brain as you age?\n->News-Medical | More on \"GLP-1 drugs and brain health\" at Bi",
+  "itemIds": [
+   "bsky-ui3aabs3ovdp"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T04:58:21.234772+00:00",
+  "updatedAt": "2026-11-19T04:58:21.234Z"
+ },
+ {
+  "id": "story-bsky-kjjbgj1exqjl1",
+  "kind": "post",
+  "score": 0.94,
+  "title": "Recursion reached agreement with the FDA on a Phase 3 trial design for REC-4881 in familial adenomatous polyposis. The d",
+  "itemIds": [
+   "bsky-kjjbgj1exqjl1"
+  ],
+  "entities": {
+   "drugs": [
+    "REC-4881"
+   ],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T05:08:28.078Z",
+  "updatedAt": "2026-11-19T05:08:28.078Z"
+ },
+ {
+  "id": "story-bsky-ty7f2xr5qf5j",
+  "kind": "post",
+  "score": 0.93,
+  "title": "💉 Ozempic fact: it mimics the GLP-1 hormone to curb appetite — but it's a PRESCRIPTION drug, not a quick fix. Real, las",
+  "itemIds": [
+   "bsky-ty7f2xr5qf5j"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T04:43:19.616Z",
+  "updatedAt": "2026-11-19T04:43:19.616Z"
+ },
+ {
+  "id": "story-bsky-1grmifg48fhai",
+  "kind": "post",
+  "score": 0.93,
+  "title": "From Shenzhen to California, Li Luo follows the data\n\nIn Shenzhen, Luo helped identify biotech companies worth approachi",
+  "itemIds": [
+   "bsky-1grmifg48fhai"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T04:45:31.000Z",
+  "updatedAt": "2026-11-19T04:45:31.000Z"
+ },
+ {
+  "id": "story-bsky-gzq37f1d4mi5",
+  "kind": "post",
+  "score": 0.92,
+  "title": "“Exercise is one the most effective ways to treat cancer-related fatigue,” said Anjali Sibley, MD, Stanford clinical ass",
+  "itemIds": [
+   "bsky-gzq37f1d4mi5"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T04:07:23.392Z",
+  "updatedAt": "2026-11-19T04:07:23.392Z",
+  "therapyArea": "Oncology"
+ },
+ {
+  "id": "story-bsky-100gjrpisuuzf",
+  "kind": "post",
+  "score": 0.92,
+  "title": "Mifepristone has been approved by the FDA for over 20 years. It’s currently used in more than half of all abortion care.",
+  "itemIds": [
+   "bsky-100gjrpisuuzf"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T04:11:14.522Z",
+  "updatedAt": "2026-11-19T04:11:14.522Z"
+ },
+ {
+  "id": "story-bsky-f0ybpmoxd6qk",
+  "kind": "post",
+  "score": 0.92,
+  "title": "Does lifting on a GLP-1 protect your strength? We checked. CHECKS OUT. The trial is real. About 22.6 kg lost in 40 weeks",
+  "itemIds": [
+   "bsky-f0ybpmoxd6qk"
+  ],
+  "entities": {
+   "drugs": [
+    "tirzepatide"
+   ],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T04:13:11.482Z",
+  "updatedAt": "2026-11-19T04:13:11.482Z"
+ },
+ {
+  "id": "story-bsky-17z555t10ii2b3",
+  "kind": "post",
+  "score": 0.92,
+  "title": "In 164 women with stage 0–III breast cancer having adjuvant radiotherapy (156 analysed), Mat Pilates did not significant",
+  "itemIds": [
+   "bsky-17z555t10ii2b3"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T04:15:03.798Z",
+  "updatedAt": "2026-11-19T04:15:03.798Z",
+  "therapyArea": "Oncology"
+ },
+ {
+  "id": "story-bsky-16py2zwwx1saa",
+  "kind": "post",
+  "score": 0.91,
+  "title": "FDA Approves Livsayis As First siRNA Myasthenia Treatment\n#TMLNews #Health #Wellness #PublicHealth #HealthNews\nhttps://t",
+  "itemIds": [
+   "bsky-16py2zwwx1saa"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T03:50:34Z",
+  "updatedAt": "2026-11-19T03:50:34.000Z"
+ },
+ {
+  "id": "story-bsky-1ar7ew01m20dme",
+  "kind": "post",
+  "score": 0.91,
+  "title": "What happens when you throw up after taking your birth control pill due to Ozempic side effects?  This happens 👀😳 \n\n🎥",
+  "itemIds": [
+   "bsky-1ar7ew01m20dme"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T03:58:02.839Z",
+  "updatedAt": "2026-11-19T03:58:02.839Z"
+ },
+ {
+  "id": "story-bsky-7k8b0i4g2q",
+  "kind": "post",
+  "score": 0.89,
+  "title": "Mifepristone has been approved by the FDA for over 20 years. It’s currently used in more than half of all abortion care.",
+  "itemIds": [
+   "bsky-7k8b0i4g2q"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T02:59:14.400Z",
+  "updatedAt": "2026-11-19T02:59:14.400Z"
+ },
+ {
+  "id": "story-bsky-1pyuhdf1sq22st",
+  "kind": "post",
+  "score": 0.89,
+  "title": "Lyell reports updated ronde-cel response and durability data in relapsed or refractory large B-cell lymphoma.\n\n#Lymphoma",
+  "itemIds": [
+   "bsky-1pyuhdf1sq22st"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T03:04:50.023Z",
+  "updatedAt": "2026-11-19T03:04:50.023Z",
+  "therapyArea": "Oncology"
+ },
+ {
+  "id": "story-bsky-djxiza1w2a0a0",
+  "kind": "post",
+  "score": 0.89,
+  "title": "Read the full article here:\n\nbiotechstockdaily.com/fda-clinical...",
+  "itemIds": [
+   "bsky-djxiza1w2a0a0"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T03:05:06.949Z",
+  "updatedAt": "2026-11-19T03:05:06.949Z"
+ },
+ {
+  "id": "story-bsky-1nukiuz1nffz1p",
+  "kind": "post",
+  "score": 0.89,
+  "title": "AEON Biopharma CEO Rob Bancroft eases investors’ minds noting that ABP-450 is already approved by the FDA for aesthetic ",
+  "itemIds": [
+   "bsky-1nukiuz1nffz1p"
+  ],
+  "entities": {
+   "drugs": [
+    "ABP-450"
+   ],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T03:14:42.512Z",
+  "updatedAt": "2026-11-19T03:14:42.512Z"
+ },
+ {
+  "id": "story-bsky-qv05szpcb6d1",
+  "kind": "post",
+  "score": 0.88,
+  "title": "Joanna Coles fascinates me for being so willing to shill for any advertiser, whether Morgan & Morgan or prescription GLP",
+  "itemIds": [
+   "bsky-qv05szpcb6d1"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T02:30:28.885Z",
+  "updatedAt": "2026-11-19T02:30:28.885Z"
+ },
+ {
+  "id": "story-bsky-h499da1y5se5k",
+  "kind": "post",
+  "score": 0.88,
+  "title": "Can GLP-1 weight loss drugs help protect your brain as you age? 🧠💊 The latest research explores potential links to mem",
+  "itemIds": [
+   "bsky-h499da1y5se5k"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T02:47:38.693Z",
+  "updatedAt": "2026-11-19T02:47:38.693Z"
+ },
+ {
+  "id": "story-bsky-ymo8th1v25e2b",
+  "kind": "post",
+  "score": 0.87,
+  "title": "stem cells (biotech)\n     vs\nSTEM cells (techoterrorism)",
+  "itemIds": [
+   "bsky-ymo8th1v25e2b"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T02:08:28.532Z",
+  "updatedAt": "2026-11-19T02:08:28.532Z"
+ },
+ {
+  "id": "story-bsky-3usje0s0re6m",
+  "kind": "post",
+  "score": 0.87,
+  "title": "METTL16-dependent m⁶A enrichment and GLS1 transcript stability are associated with glutamine-related metabolic changes i",
+  "itemIds": [
+   "bsky-3usje0s0re6m"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T02:09:56.853991+00:00",
+  "updatedAt": "2026-11-19T02:09:56.853Z"
+ },
+ {
+  "id": "story-bsky-1xlh92q24hxhg",
+  "kind": "post",
+  "score": 0.87,
+  "title": "In a three-arm RCT of 255 patients with cancer-related fatigue, thunder-fire moxibustion plus Yiqi Wenyang Tincture lowe",
+  "itemIds": [
+   "bsky-1xlh92q24hxhg"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T02:15:04.039Z",
+  "updatedAt": "2026-11-19T02:15:04.039Z",
+  "therapyArea": "Oncology"
+ },
+ {
+  "id": "story-bsky-1b5yikm1h7j06o",
+  "kind": "post",
+  "score": 0.87,
+  "title": "Rare disease trials do this too. Spinraza for SMA is an injection into the spinal fluid, so in its ENDEAR trial of 122 i",
+  "itemIds": [
+   "bsky-1b5yikm1h7j06o"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T02:22:02.313Z",
+  "updatedAt": "2026-11-19T02:22:02.313Z",
+  "therapyArea": "Neurology"
+ },
+ {
+  "id": "story-bsky-qb4r44p7e0jm",
+  "kind": "post",
+  "score": 0.87,
+  "title": "I write The Rare Disease Readout, plain-English rare disease news for families, if a version of this is useful to you.",
+  "itemIds": [
+   "bsky-qb4r44p7e0jm"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T02:22:02.319Z",
+  "updatedAt": "2026-11-19T02:22:02.319Z",
+  "therapyArea": "Rare disease"
+ },
+ {
+  "id": "story-bsky-1eqvvistroqi2",
+  "kind": "post",
+  "score": 0.86,
+  "title": "BeOne, Hengrui top list of China’s most powerful drugmakers www.statnews.com/2026/11/16/b... via @statnews.com",
+  "itemIds": [
+   "bsky-1eqvvistroqi2"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T01:46:54.868Z",
+  "updatedAt": "2026-11-19T01:46:54.868Z"
+ },
+ {
+  "id": "story-bsky-1ycr2piv2ngg8",
+  "kind": "post",
+  "score": 0.86,
+  "title": "I hope she consults with providers. Sometimes people forget ahead with great intentions, but without understanding the i",
+  "itemIds": [
+   "bsky-1ycr2piv2ngg8"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T01:47:23.231Z",
+  "updatedAt": "2026-11-19T01:47:23.231Z"
+ },
+ {
+  "id": "story-bsky-gegsmahu9puc",
+  "kind": "post",
+  "score": 0.86,
+  "title": "He’s currently doing GLP-1 ads, so I’m expecting smaller portions of well prepared food. Or just half assed fast food wi",
+  "itemIds": [
+   "bsky-gegsmahu9puc"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T01:53:37.213Z",
+  "updatedAt": "2026-11-19T01:53:37.213Z"
+ },
+ {
+  "id": "story-bsky-mwh88p13bucf3",
+  "kind": "post",
+  "score": 0.86,
+  "title": "I know someone in the middle of a clinical trial at n*h to save their life. They're terrified they'll get the call their",
+  "itemIds": [
+   "bsky-mwh88p13bucf3"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T02:02:14.837Z",
+  "updatedAt": "2026-11-19T02:02:14.837Z"
+ },
+ {
+  "id": "story-bsky-1xulfpd1w3ym8n",
+  "kind": "post",
+  "score": 0.86,
+  "title": "Cell therapy production is hindered by a 14-day sterility test.\n\n🔗 Read the full story on GazeWire\n\n#Biotech #Crispr #G",
+  "itemIds": [
+   "bsky-1xulfpd1w3ym8n"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T02:05:12Z",
+  "updatedAt": "2026-11-19T02:05:12.000Z"
+ },
+ {
+  "id": "story-bsky-tlnzlo1mfo1ru",
+  "kind": "post",
+  "score": 0.86,
+  "title": "📢 A daily drug for Alzheimer’s did not benefit everyone in a pivotal clinical trial. But it was a different story for o",
+  "itemIds": [
+   "bsky-tlnzlo1mfo1ru"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T02:05:25.058620+00:00",
+  "updatedAt": "2026-11-19T02:05:25.058Z",
+  "therapyArea": "Neurology"
+ },
+ {
+  "id": "story-bsky-x746gu7rq2bc",
+  "kind": "post",
+  "score": 0.86,
+  "title": "📢 A daily drug for Alzheimer’s did not benefit everyone in a pivotal clinical trial. But it was a different story for o",
+  "itemIds": [
+   "bsky-x746gu7rq2bc"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T02:05:47.977238+00:00",
+  "updatedAt": "2026-11-19T02:05:47.977Z",
+  "therapyArea": "Neurology"
+ },
+ {
+  "id": "story-bsky-1vlasaba9r139",
+  "kind": "post",
+  "score": 0.85,
+  "title": "11/18/26 ➤➤ Today’s FREE eBooks on ContentMo\nhttps://contentmo.com/ebooks-blog/2026/11/18\nfeatured: ~ The Secret to \"EFF",
+  "itemIds": [
+   "bsky-1vlasaba9r139"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T01:30:56.226076+00:00",
+  "updatedAt": "2026-11-19T01:30:56.226Z"
+ },
+ {
+  "id": "story-bsky-4je3ie1j0hc8",
+  "kind": "post",
+  "score": 0.85,
+  "title": "\"Have to take care of our geniuses\" says the guy that whacked our science and biotech programs",
+  "itemIds": [
+   "bsky-4je3ie1j0hc8"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T01:32:37.873Z",
+  "updatedAt": "2026-11-19T01:32:37.873Z"
+ },
+ {
+  "id": "story-bsky-mftpot1p9j5eb",
+  "kind": "post",
+  "score": 0.85,
+  "title": "Terumo BCT partners with TrAMPoline Pharma to automate production of engineered TILs.\n\n🔗 Read the full story on GazeWir",
+  "itemIds": [
+   "bsky-mftpot1p9j5eb"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T01:38:08Z",
+  "updatedAt": "2026-11-19T01:38:08.000Z"
+ },
+ {
+  "id": "story-bsky-mn4fg1x8lnnr",
+  "kind": "post",
+  "score": 0.84,
+  "title": "Sketch to finished piece. #GOZR\n\nThis sneaky gooz is about to take out these guards. What is his mission? Those are not ",
+  "itemIds": [
+   "bsky-mn4fg1x8lnnr"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T01:10:03.516Z",
+  "updatedAt": "2026-11-19T01:10:03.516Z"
+ },
+ {
+  "id": "story-bsky-1pgq5bb3n2h3t",
+  "kind": "post",
+  "score": 0.84,
+  "title": "Epic Systems pledges easier record access for AI tools amid antitrust criticism\n\nvia STAT (@statnews.com)\n\n#biotech #AI",
+  "itemIds": [
+   "bsky-1pgq5bb3n2h3t"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T01:10:50.408Z",
+  "updatedAt": "2026-11-19T01:10:50.408Z"
+ },
+ {
+  "id": "story-bsky-v1svuo5mgw2u",
+  "kind": "post",
+  "score": 0.84,
+  "title": "Exogenus Therapeutics adopts standardized assays for EV batch testing.\n\n🔗 Read the full story on GazeWire\n\n#Biotech #Cr",
+  "itemIds": [
+   "bsky-v1svuo5mgw2u"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-19T01:15:13Z",
+  "updatedAt": "2026-11-19T01:15:13.000Z"
+ },
+ {
+  "id": "story-ctgov-NCT07940582-registration-2026-11-17",
+  "kind": "registration",
+  "score": 0.81,
+  "title": "A Research Study Investigating How a New Medicine NNC0721-5186 Works in Women Living With Overweight or Obesity",
+  "itemIds": [
+   "ctgov-NCT07940582-registration-2026-11-17"
+  ],
+  "entities": {
+   "drugs": [
+    "NNC0721-5186",
+    "Semaglutide"
+   ],
+   "nctIds": [
+    "NCT07940582"
+   ],
+   "sponsors": [
+    "Novo Nordisk A/S"
+   ],
+   "conditions": [
+    "Overweight",
+    "Obesity"
+   ]
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z",
+  "therapyArea": "Cardiometabolic"
+ },
+ {
+  "id": "story-ctgov-NCT07940647-registration-2026-11-17",
+  "kind": "registration",
+  "score": 0.81,
+  "title": "A Safety and Tolerability Study of HJB647 in Adult Participants With Uncontrolled Hypertension",
+  "itemIds": [
+   "ctgov-NCT07940647-registration-2026-11-17"
+  ],
+  "entities": {
+   "drugs": [
+    "HJB647"
+   ],
+   "nctIds": [
+    "NCT07940647"
+   ],
+   "sponsors": [
+    "Novartis Pharmaceuticals"
+   ],
+   "conditions": [
+    "Uncontrolled Hypertension"
+   ]
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z",
+  "therapyArea": "Cardiometabolic"
+ },
+ {
+  "id": "story-ctgov-NCT07940777-registration-2026-11-17",
+  "kind": "registration",
+  "score": 0.81,
+  "title": "A Study to Evaluate the Safety and Efficacy of Mavacamten in Adults With Symptomatic Non-obstructive Hypertrophic Cardiomyopathy (SOLSTICE-HCM)",
+  "itemIds": [
+   "ctgov-NCT07940777-registration-2026-11-17"
+  ],
+  "entities": {
+   "drugs": [
+    "Mavacamten"
+   ],
+   "nctIds": [
+    "NCT07940777"
+   ],
+   "sponsors": [
+    "Bristol-Myers Squibb"
+   ],
+   "conditions": [
+    "Non-obstructive Hypertrophic Cardiomyopathy"
+   ]
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z",
+  "therapyArea": "Cardiometabolic"
+ },
+ {
+  "id": "story-ctgov-NCT07940803-registration-2026-11-17",
+  "kind": "registration",
+  "score": 0.81,
+  "title": "A Research Study of a New Medicine NNC0662-3168 for Weight Management and Type 2 Diabetes",
+  "itemIds": [
+   "ctgov-NCT07940803-registration-2026-11-17"
+  ],
+  "entities": {
+   "drugs": [
+    "NNC0662-3168 (Test product-A)",
+    "Active Comparator (Product-B)"
+   ],
+   "nctIds": [
+    "NCT07940803"
+   ],
+   "sponsors": [
+    "Novo Nordisk A/S"
+   ],
+   "conditions": [
+    "Overweight",
+    "Obesity",
+    "Type 2 Diabetes Mellitus"
+   ]
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z",
+  "therapyArea": "Cardiometabolic"
+ },
+ {
+  "id": "story-ctgov-NCT07940829-registration-2026-11-17",
+  "kind": "registration",
+  "score": 0.81,
+  "title": "A Study of RSS0343 Tablets in Healthy Participants and in Participants With Mild or Moderate Renal Impairment",
+  "itemIds": [
+   "ctgov-NCT07940829-registration-2026-11-17"
+  ],
+  "entities": {
+   "drugs": [
+    "RSS0343 Tablet"
+   ],
+   "nctIds": [
+    "NCT07940829"
+   ],
+   "sponsors": [
+    "Reistone Biopharma Company Limited"
+   ],
+   "conditions": [
+    "Non-cystic Fibrosis Bronchiectasis",
+    "Chronic Sinusitis Without Nasal Polyps",
+    "Chronic Obstructive Pulmonary Disease"
+   ]
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z",
+  "therapyArea": "Cardiometabolic"
+ },
+ {
+  "id": "story-ctgov-NCT07940881-registration-2026-11-17",
+  "kind": "registration",
+  "score": 0.81,
+  "title": "A Multicenter, Open-label, Phase 1/1b, Study to Evaluate the Safety, Tolerability, Pharmacokinetics and Efficacy of SI-B037 in Solid Tumors",
+  "itemIds": [
+   "ctgov-NCT07940881-registration-2026-11-17"
+  ],
+  "entities": {
+   "drugs": [
+    "SI-B037"
+   ],
+   "nctIds": [
+    "NCT07940881"
+   ],
+   "sponsors": [
+    "SystImmune Inc."
+   ],
+   "conditions": [
+    "Locally Advanced / Metastatic Solid Tumors",
+    "First in Human",
+    "Metastatic Solid Cancers",
+    "Non Small Cell Lung Cancer",
+    "NSCLC",
+    "Lung Cancer (Diagnosis)",
+    "Lung Cancer (NSCLC)",
+    "Lung Cancer (Non-Small Cell)"
+   ]
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z",
+  "therapyArea": "Oncology"
+ },
+ {
+  "id": "story-ctgov-NCT07941037-registration-2026-11-17",
+  "kind": "registration",
+  "score": 0.81,
+  "title": "Effect of Non-Compressive Semiconductor Embedded Therapeutic Gloves on Osteoarthritis of the Hand",
+  "itemIds": [
+   "ctgov-NCT07941037-registration-2026-11-17"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [
+    "NCT07941037"
+   ],
+   "sponsors": [
+    "MSK Doctors & Associates Ltd"
+   ],
+   "conditions": [
+    "Hand Osteoarthritis"
+   ]
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z",
+  "therapyArea": "Immunology"
+ },
+ {
+  "id": "story-ctgov-NCT07941115-registration-2026-11-17",
+  "kind": "registration",
+  "score": 0.81,
+  "title": "A Clinical Trial With SENS-601, Injected With SPHYNX Administration System, in the Pediatric Population Presenting With Hearing Loss Related to Pathogenic Variation(s) of GJB2 Gene",
+  "itemIds": [
+   "ctgov-NCT07941115-registration-2026-11-17"
+  ],
+  "entities": {
+   "drugs": [
+    "SENS-601 administration"
+   ],
+   "nctIds": [
+    "NCT07941115"
+   ],
+   "sponsors": [
+    "Sensorion"
+   ],
+   "conditions": [
+    "GJB2 Gene Mutation",
+    "DFNB1A",
+    "Congenital Deafness",
+    "Hearing Disorders",
+    "Ear Diseases",
+    "Otorhinolaryngologic Diseases",
+    "Deafness",
+    "Hearing Loss, Bilateral Sensorineural"
+   ]
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z"
+ },
+ {
+  "id": "story-ctgov-NCT07941206-registration-2026-11-17",
+  "kind": "registration",
+  "score": 0.81,
+  "title": "A Phase 1b Study of Radiprodil in Participants With GRIN-Related Neurodevelopmental Disorder Caused by Non-Gain-of-Function Variants",
+  "itemIds": [
+   "ctgov-NCT07941206-registration-2026-11-17"
+  ],
+  "entities": {
+   "drugs": [
+    "Radiprodil"
+   ],
+   "nctIds": [
+    "NCT07941206"
+   ],
+   "sponsors": [
+    "GRIN Therapeutics, Inc."
+   ],
+   "conditions": [
+    "GRIN-related Neurodevelopmental Disorder Caused by Variants Characterized as Non-Gain-of-Function"
+   ]
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z"
+ },
+ {
+  "id": "story-ctgov-NCT07941362-registration-2026-11-17",
+  "kind": "registration",
+  "score": 0.81,
+  "title": "177Lu-ACT319 in FAP Expressing Solid Tumors",
+  "itemIds": [
+   "ctgov-NCT07941362-registration-2026-11-17"
+  ],
+  "entities": {
+   "drugs": [
+    "177Lu-ACT319",
+    "[18F]-FAPI-74 for imaging",
+    "177Lu-ACT319 for imaging",
+    "177Lu-ACT319 at RDE",
+    "177Lu-ACT319 at RDE-1"
+   ],
+   "nctIds": [
+    "NCT07941362"
+   ],
+   "sponsors": [
+    "Actithera INC."
+   ],
+   "conditions": [
+    "FAP-expressing Solid Tumors",
+    "Pancreatic Ductal Adenocarcinoma (PDAC)",
+    "Biliary Tract Carcinoma (BTC)"
+   ]
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z",
+  "therapyArea": "Oncology"
+ },
+ {
+  "id": "story-ctgov-NCT07941388-registration-2026-11-17",
+  "kind": "registration",
+  "score": 0.81,
+  "title": "A Phase I Study of INT-1868 Tablets in Healthy Adult Participants (INT-1868-I101)",
+  "itemIds": [
+   "ctgov-NCT07941388-registration-2026-11-17"
+  ],
+  "entities": {
+   "drugs": [
+    "INT-1868 Tablets",
+    "INT-1868 Placebo"
+   ],
+   "nctIds": [
+    "NCT07941388"
+   ],
+   "sponsors": [
+    "Innatus Therapeutics (Shanghai) Co., Ltd."
+   ],
+   "conditions": [
+    "Atopic Dermatitis (AD)"
+   ]
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z",
+  "therapyArea": "Immunology"
+ },
+ {
+  "id": "story-ctgov-NCT07941479-registration-2026-11-17",
+  "kind": "registration",
+  "score": 0.81,
+  "title": "Study of the Effects of Rimonabant on Functional Recovery in Subacute Stroke Patients",
+  "itemIds": [
+   "ctgov-NCT07941479-registration-2026-11-17"
+  ],
+  "entities": {
+   "drugs": [
+    "Rimonabant"
+   ],
+   "nctIds": [
+    "NCT07941479"
+   ],
+   "sponsors": [
+    "Sinfatin S.L"
+   ],
+   "conditions": [
+    "Subacute Stroke"
+   ]
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z"
+ },
+ {
+  "id": "story-ctgov-NCT07941557-registration-2026-11-17",
+  "kind": "registration",
+  "score": 0.81,
+  "title": "First-in-Human Study of ABS-169 in Healthy Volunteers",
+  "itemIds": [
+   "ctgov-NCT07941557-registration-2026-11-17"
+  ],
+  "entities": {
+   "drugs": [
+    "ABS-169"
+   ],
+   "nctIds": [
+    "NCT07941557"
+   ],
+   "sponsors": [
+    "Aerys Biosciences"
+   ],
+   "conditions": [
+    "Healthy Adult Participants",
+    "Cardiac Fibrosis"
+   ]
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z",
+  "therapyArea": "Cardiometabolic"
+ },
+ {
+  "id": "story-ctgov-NCT07941609-registration-2026-11-17",
+  "kind": "registration",
+  "score": 0.81,
+  "title": "A Study to Investigate the Efficacy and Safety of Dato-DXd-based Combinations in Participants With TROP2 NMR+ NSCLC",
+  "itemIds": [
+   "ctgov-NCT07941609-registration-2026-11-17"
+  ],
+  "entities": {
+   "drugs": [
+    "Dato-DXd",
+    "Durvalumab",
+    "Carboplatin"
+   ],
+   "nctIds": [
+    "NCT07941609"
+   ],
+   "sponsors": [
+    "AstraZeneca"
+   ],
+   "conditions": [
+    "Non-small Cell Lung Cancer (NSCLC)"
+   ]
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z",
+  "therapyArea": "Oncology"
+ },
+ {
+  "id": "story-ctgov-NCT07941622-registration-2026-11-17",
+  "kind": "registration",
+  "score": 0.81,
+  "title": "Study of Hexaxim Compared With Pentaxim Administered With a Monovalent Hepatitis B Vaccine in Healthy Chinese Infants.",
+  "itemIds": [
+   "ctgov-NCT07941622-registration-2026-11-17"
+  ],
+  "entities": {
+   "drugs": [
+    "DTaP-IPV-HB-PRP~T combined vaccine",
+    "DTaP-IPV//PRP~T combined vaccine",
+    "monovalent Hep B vaccine"
+   ],
+   "nctIds": [
+    "NCT07941622"
+   ],
+   "sponsors": [
+    "Sanofi"
+   ],
+   "conditions": [
+    "Haemophilus Influenzae Type b Immunisation",
+    "Hepatitis B Immunisation",
+    "Polio Immunization",
+    "Pertussis Immunisation",
+    "Diphtheria Immunisation",
+    "Tetanus Immunisation",
+    "Healthy Volunteers"
+   ]
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z",
+  "therapyArea": "Infectious disease"
+ },
+ {
+  "id": "story-ctgov-NCT07942233-registration-2026-11-17",
+  "kind": "registration",
+  "score": 0.81,
+  "title": "10% 35-kDa Hyaluronan Fragment (HA35) Gel for Periocular Comfort and Aesthetics",
+  "itemIds": [
+   "ctgov-NCT07942233-registration-2026-11-17"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [
+    "NCT07942233"
+   ],
+   "sponsors": [
+    "Nakhia Impex LLC"
+   ],
+   "conditions": [
+    "Dry Eye Symptoms",
+    "Ocular Fatigue",
+    "Periorbital Wrinkles",
+    "Periocular Skin Condition"
+   ]
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z"
+ },
+ {
+  "id": "story-ctgov-NCT07942259-registration-2026-11-17",
+  "kind": "registration",
+  "score": 0.81,
+  "title": "35-kDa Hyaluronan Fragment (HA35) Chewable Tablets for Gingival Inflammation, Oral Pain and Pharyngeal Discomfort",
+  "itemIds": [
+   "ctgov-NCT07942259-registration-2026-11-17"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [
+    "NCT07942259"
+   ],
+   "sponsors": [
+    "Nakhia Impex LLC"
+   ],
+   "conditions": [
+    "Gingival Inflammation",
+    "Gingival Recession",
+    "Post-Dental-Procedure Oral Pain",
+    "Pharyngeal Pain",
+    "Pharyngeal Pruritus"
+   ]
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z"
+ },
+ {
+  "id": "story-ctgov-NCT07942428-registration-2026-11-17",
+  "kind": "registration",
+  "score": 0.81,
+  "title": "Enzymatic Treatment for Postoperative Nasal Fibrosis After Rhinoplasty",
+  "itemIds": [
+   "ctgov-NCT07942428-registration-2026-11-17"
+  ],
+  "entities": {
+   "drugs": [
+    "sterile saline solution",
+    "Recombinant Lipase, Collagenase, and Hyaluronidase Preparation"
+   ],
+   "nctIds": [
+    "NCT07942428"
+   ],
+   "sponsors": [
+    "Research Inc"
+   ],
+   "conditions": [
+    "Postoperative Nasal Fibrosis After Rhinoplasty"
+   ]
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z"
+ },
+ {
+  "id": "story-ctgov-NCT07942584-registration-2026-11-17",
+  "kind": "registration",
+  "score": 0.81,
+  "title": "Intravenous Recombinant Human Prourokinase (rhPro-UK) for Acute Ischemic Stroke Within 4.5 to 24 Hours of Onset",
+  "itemIds": [
+   "ctgov-NCT07942584-registration-2026-11-17"
+  ],
+  "entities": {
+   "drugs": [
+    "Recombinant Human Prourokinase for Injection (rhPro-UK)",
+    "Aspirin Enteric-Coated Tablets",
+    "Aspirin Enteric-Coated Tablet Placebo",
+    "rhPro-UK Placebo"
+   ],
+   "nctIds": [
+    "NCT07942584"
+   ],
+   "sponsors": [
+    "Tasly Biopharmaceuticals Co., Ltd."
+   ],
+   "conditions": [
+    "Acute Ischemic Stroke AIS"
+   ]
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z"
+ },
+ {
+  "id": "story-ctgov-NCT07942766-registration-2026-11-17",
+  "kind": "registration",
+  "score": 0.81,
+  "title": "A Study of HW201877 Capsules for Participants With Moderate to Severe Active Inflammatory Bowel Disease (IBD)",
+  "itemIds": [
+   "ctgov-NCT07942766-registration-2026-11-17"
+  ],
+  "entities": {
+   "drugs": [
+    "HW201877 capsules"
+   ],
+   "nctIds": [
+    "NCT07942766"
+   ],
+   "sponsors": [
+    "Hubei Bio-Pharmaceutical Industrial Technological Institute Inc."
+   ],
+   "conditions": [
+    "Inflammatory Bowel Disease (IBD)"
+   ]
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z"
+ },
+ {
+  "id": "story-ctgov-NCT07942779-registration-2026-11-17",
+  "kind": "registration",
+  "score": 0.81,
+  "title": "AVL-102 for the Treatment of HPV 16/18/52/58-Related High-Grade Lesions",
+  "itemIds": [
+   "ctgov-NCT07942779-registration-2026-11-17"
+  ],
+  "entities": {
+   "drugs": [
+    "AVL-102 Injection"
+   ],
+   "nctIds": [
+    "NCT07942779"
+   ],
+   "sponsors": [
+    "Beijing Xunsheng Biomedical Research Co., Ltd."
+   ],
+   "conditions": [
+    "CIN 2/3",
+    "HPV Infections"
+   ]
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z",
+  "therapyArea": "Infectious disease"
+ },
+ {
+  "id": "story-ctgov-NCT07943078-registration-2026-11-17",
+  "kind": "registration",
+  "score": 0.81,
+  "title": "A Study of JNJ-99220732 in Participants With Advanced or Metastatic Solid Tumors",
+  "itemIds": [
+   "ctgov-NCT07943078-registration-2026-11-17"
+  ],
+  "entities": {
+   "drugs": [
+    "JNJ-99220732"
+   ],
+   "nctIds": [
+    "NCT07943078"
+   ],
+   "sponsors": [
+    "Janssen Research & Development, LLC"
+   ],
+   "conditions": [
+    "Neoplasms"
+   ]
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z",
+  "therapyArea": "Oncology"
+ },
+ {
+  "id": "story-ctgov-NCT07943091-registration-2026-11-17",
+  "kind": "registration",
+  "score": 0.81,
+  "title": "A Study of LY3945262 in Healthy Participants",
+  "itemIds": [
+   "ctgov-NCT07943091-registration-2026-11-17"
+  ],
+  "entities": {
+   "drugs": [
+    "LY3945262",
+    "Midazolam"
+   ],
+   "nctIds": [
+    "NCT07943091"
+   ],
+   "sponsors": [
+    "Eli Lilly and Company"
+   ],
+   "conditions": [
+    "Healthy Volunteers"
+   ]
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z"
+ },
+ {
+  "id": "story-ctgov-NCT07943221-registration-2026-11-17",
+  "kind": "registration",
+  "score": 0.81,
+  "title": "Study Evaluating Safety & Tolerability of Migaldendranib in US Healthy Volunteers",
+  "itemIds": [
+   "ctgov-NCT07943221-registration-2026-11-17"
+  ],
+  "entities": {
+   "drugs": [
+    "Weekly subcutaneous administration of Migaldendranib (MGB)"
+   ],
+   "nctIds": [
+    "NCT07943221"
+   ],
+   "sponsors": [
+    "Ashvattha Therapeutics, Inc."
+   ],
+   "conditions": [
+    "Healthy Volunteers"
+   ]
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z"
+ },
+ {
+  "id": "story-ctgov-NCT07943312-registration-2026-11-17",
+  "kind": "registration",
+  "score": 0.81,
+  "title": "GA001 Injection in Retinitis Pigmentosa",
+  "itemIds": [
+   "ctgov-NCT07943312-registration-2026-11-17"
+  ],
+  "entities": {
+   "drugs": [
+    "GA001"
+   ],
+   "nctIds": [
+    "NCT07943312"
+   ],
+   "sponsors": [
+    "GenAns Biotechnology Co., Ltd"
+   ],
+   "conditions": [
+    "Retinitis Pigmentosa (RP)"
+   ]
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z"
+ },
+ {
+  "id": "story-ctgov-NCT07943377-registration-2026-11-17",
+  "kind": "registration",
+  "score": 0.81,
+  "title": "Safety, Tolerability, and Pharmacokinetics of Supratherapeutic Doses of ALG-000184 (Parts A and B) and the Absorption, Metabolism, Excretion, and Absolute Bioavailability of ALG-001075 Following a Single Oral Dose of [14C]ALG-000184 and a Single Intravenous Dose of [13C7,15N1]ALG-001075 (Part C)",
+  "itemIds": [
+   "ctgov-NCT07943377-registration-2026-11-17"
+  ],
+  "entities": {
+   "drugs": [
+    "ALG-000184"
+   ],
+   "nctIds": [
+    "NCT07943377"
+   ],
+   "sponsors": [
+    "Aligos Therapeutics"
+   ],
+   "conditions": [
+    "Healthy Participants"
+   ]
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z"
+ },
+ {
+  "id": "story-ctgov-NCT07943390-registration-2026-11-17",
+  "kind": "registration",
+  "score": 0.81,
+  "title": "A Study to Evaluate the Efficacy and Safety of BRC-201 in Patients With Acute Uncomplicated Influenza",
+  "itemIds": [
+   "ctgov-NCT07943390-registration-2026-11-17"
+  ],
+  "entities": {
+   "drugs": [
+    "BRC-201"
+   ],
+   "nctIds": [
+    "NCT07943390"
+   ],
+   "sponsors": [
+    "Boryung Biopharma Co., Ltd."
+   ],
+   "conditions": [
+    "Influenza"
+   ]
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z",
+  "therapyArea": "Infectious disease"
+ },
+ {
+  "id": "story-ctgov-NCT07943520-registration-2026-11-17",
+  "kind": "registration",
+  "score": 0.81,
+  "title": "A Study of SYH2053 Injection in Participants With Hepatic Impairment Compared to Participants With Normal Hepatic Function",
+  "itemIds": [
+   "ctgov-NCT07943520-registration-2026-11-17"
+  ],
+  "entities": {
+   "drugs": [
+    "SYH2053"
+   ],
+   "nctIds": [
+    "NCT07943520"
+   ],
+   "sponsors": [
+    "CSPC Zhongnuo Pharmaceutical (Shijiazhuang) Co., Ltd."
+   ],
+   "conditions": [
+    "Hepatic Impairment"
+   ]
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z"
+ },
+ {
+  "id": "story-ctgov-NCT07943598-registration-2026-11-17",
+  "kind": "registration",
+  "score": 0.81,
+  "title": "A Global Phase 2 Extension Study of Brogidirsen in Boys With Duchenne Muscular Dystrophy",
+  "itemIds": [
+   "ctgov-NCT07943598-registration-2026-11-17"
+  ],
+  "entities": {
+   "drugs": [
+    "Brogidirsen"
+   ],
+   "nctIds": [
+    "NCT07943598"
+   ],
+   "sponsors": [
+    "NS Pharma, Inc."
+   ],
+   "conditions": [
+    "Duchenne Muscular Dystrophy",
+    "Exon 44",
+    "DMD"
+   ]
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z",
+  "therapyArea": "Rare disease"
+ },
+ {
+  "id": "story-ctgov-NCT07943637-registration-2026-11-17",
+  "kind": "registration",
+  "score": 0.81,
+  "title": "Nutritional Status Evaluation in Underweight Indonesian Children Receiving 0.89 kcal/mL Milk Powder - Site Manado",
+  "itemIds": [
+   "ctgov-NCT07943637-registration-2026-11-17",
+   "ctgov-NCT07943650-registration-2026-11-17"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [
+    "NCT07943637",
+    "NCT07943650"
+   ],
+   "sponsors": [
+    "PT Equilab International"
+   ],
+   "conditions": [
+    "Underweight"
+   ]
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z"
+ },
+ {
+  "id": "story-ctgov-NCT07943663-registration-2026-11-17",
+  "kind": "registration",
+  "score": 0.81,
+  "title": "Development of a Virtual Health Care Platform in Heart Failure Patients Transitioning From Hospital to Home",
+  "itemIds": [
+   "ctgov-NCT07943663-registration-2026-11-17"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [
+    "NCT07943663"
+   ],
+   "sponsors": [
+    "nucleusRx Inc"
+   ],
+   "conditions": [
+    "Heart Failure - NYHA II - IV"
+   ]
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z",
+  "therapyArea": "Cardiometabolic"
+ },
+ {
+  "id": "story-ctgov-NCT07943780-registration-2026-11-17",
+  "kind": "registration",
+  "score": 0.81,
+  "title": "Combined Ultrasound Hepatic and Renal Denervation for Essential Hypertension",
+  "itemIds": [
+   "ctgov-NCT07943780-registration-2026-11-17"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [
+    "NCT07943780"
+   ],
+   "sponsors": [
+    "Shanghai Hantong Medical Technology Co., LTD"
+   ],
+   "conditions": [
+    "Essential Hypertension"
+   ]
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z",
+  "therapyArea": "Cardiometabolic"
+ },
+ {
+  "id": "story-ctgov-NCT07943988-registration-2026-11-17",
+  "kind": "registration",
+  "score": 0.81,
+  "title": "Effects of Zynamite S on Fatigue, Mood, Sleep, Safety, and Tolerability in Healthy Adults",
+  "itemIds": [
+   "ctgov-NCT07943988-registration-2026-11-17"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [
+    "NCT07943988"
+   ],
+   "sponsors": [
+    "Kinetic Performance S.L."
+   ],
+   "conditions": [
+    "Safety and Tolerability of Zynamite® S Supplementation in Healthy Adults"
+   ]
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z"
+ },
+ {
+  "id": "story-fda-lczl0b99kf99",
+  "kind": "other",
+  "score": 0.74,
+  "title": "FDA Launches the Global Reliance Disclosure Program to Expand Patient Access to Medicines Worldwide",
+  "itemIds": [
+   "fda-lczl0b99kf99"
+  ],
+  "entities": {
+   "drugs": [
+    "lenacapavir"
+   ],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-17T20:32:16.000Z",
+  "updatedAt": "2026-11-17T20:32:16.000Z"
+ },
+ {
+  "id": "story-pubmed-yczvz61778gus",
+  "kind": "paper",
+  "score": 0.61,
+  "title": "Natural ligand-based CAR T-cell therapy targeting BCMA and TACI for relapsed or refractory multiple myeloma (TriPRIL): a non-randomised, phase 1, first-in-human trial.",
+  "itemIds": [
+   "pubmed-yczvz61778gus"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [
+    "NCT05020444"
+   ],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z",
+  "therapyArea": "Oncology"
+ },
+ {
+  "id": "story-pubmed-1syxj9y1f1rn9c",
+  "kind": "paper",
+  "score": 0.61,
+  "title": "'Light and sound' therapy for Alzheimer's flops in long-anticipated trial.",
+  "itemIds": [
+   "pubmed-1syxj9y1f1rn9c"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z",
+  "therapyArea": "Neurology"
+ },
+ {
+  "id": "story-pubmed-1ulqh9uiixzvw",
+  "kind": "paper",
+  "score": 0.61,
+  "title": "Partial-Breast Irradiation Versus Whole-Breast Irradiation for Low-Risk Invasive Breast Carcinoma: 5-Year Results of the Multicenter, Randomized, Phase III IRMA Trial.",
+  "itemIds": [
+   "pubmed-1ulqh9uiixzvw"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [
+    "NCT01803958"
+   ],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z",
+  "therapyArea": "Oncology"
+ },
+ {
+  "id": "story-pubmed-2zzc3e8dvkt8",
+  "kind": "paper",
+  "score": 0.61,
+  "title": "Neoadjuvant nivolumab plus ipilimumab in surgically resectable hepatocellular carcinoma (PRIME-HCC): a prospective, phase 1b, single-arm trial and translational analyses.",
+  "itemIds": [
+   "pubmed-2zzc3e8dvkt8"
+  ],
+  "entities": {
+   "drugs": [
+    "nivolumab",
+    "ipilimumab"
+   ],
+   "nctIds": [
+    "NCT03682276"
+   ],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-17T00:00:00Z",
+  "updatedAt": "2026-11-17T00:00:00.000Z",
+  "therapyArea": "Oncology"
+ },
+ {
+  "id": "story-pubmed-d4qj0m1hg8x3s",
+  "kind": "paper",
+  "score": 0.31,
+  "title": "Chinese scientist sacked after child died in gene-editing trial.",
+  "itemIds": [
+   "pubmed-d4qj0m1hg8x3s"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-16T00:00:00Z",
+  "updatedAt": "2026-11-16T00:00:00.000Z"
+ },
+ {
+  "id": "story-crl-1jg5dow1wy70uu",
+  "kind": "crl",
+  "score": 0.11,
+  "title": "Complete response letter: Summit Therapeutics Inc. (BLA 761524)",
+  "itemIds": [
+   "crl-1jg5dow1wy70uu"
+  ],
+  "entities": {
+   "drugs": [
+    "ivonescimab"
+   ],
+   "nctIds": [],
+   "sponsors": [
+    "Summit Therapeutics Inc."
+   ],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-13T00:00:00Z",
+  "updatedAt": "2026-11-13T00:00:00.000Z"
+ },
+ {
+  "id": "story-fda-84y6zh14v8lof",
+  "kind": "approval",
+  "score": 0.02,
+  "title": "FDA Approves First Factor Xla Inhibitor to Help Prevent Stroke in Certain Adults at High Risk",
+  "itemIds": [
+   "fda-84y6zh14v8lof"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-09T22:15:46.000Z",
+  "updatedAt": "2026-11-09T22:15:46.000Z"
+ },
+ {
+  "id": "story-fda-w9gn4l1snwfjz",
+  "kind": "adcomm",
+  "score": 0,
+  "title": "FDA Launches Nationwide Effort to Expand Scientific Expertise and Consumer Voices to Advisory Committees",
+  "itemIds": [
+   "fda-w9gn4l1snwfjz"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-09-30T13:26:33.000Z",
+  "updatedAt": "2026-09-30T13:26:33.000Z"
+ },
+ {
+  "id": "story-drugsfda-1af8vdmqwr1go",
+  "kind": "approval",
+  "score": 0,
+  "title": "FDA approved Methergine on 1946-11-19",
+  "itemIds": [
+   "drugsfda-1af8vdmqwr1go"
+  ],
+  "entities": {
+   "drugs": [
+    "Methergine",
+    "Methylergonovine Maleate"
+   ],
+   "nctIds": [],
+   "sponsors": [
+    "Edison Theraps Llc"
+   ],
+   "conditions": []
+  },
+  "firstSeen": "1946-11-19T00:00:00Z",
+  "updatedAt": "1946-11-19T00:00:00.000Z"
+ },
+ {
+  "id": "story-drugsfda-19c4o0b1rhjrg9",
+  "kind": "approval",
+  "score": 0,
+  "title": "FDA approved Xylocaine Dental With Epinephrine on 1948-11-19",
+  "itemIds": [
+   "drugsfda-19c4o0b1rhjrg9",
+   "drugsfda-jpe2zc1bsdr62",
+   "drugsfda-obc1k4gpk24m"
+  ],
+  "entities": {
+   "drugs": [
+    "Xylocaine Dental With Epinephrine",
+    "Epinephrine, Lidocaine Hydrochloride",
+    "Xylocaine Dental",
+    "Lidocaine Hydrochloride",
+    "Xylocaine",
+    "Lidocaine Hydrochloride,Epinephrine Bitartrate"
+   ],
+   "nctIds": [],
+   "sponsors": [
+    "Dentsply Pharm",
+    "Fresenius Kabi Usa"
+   ],
+   "conditions": []
+  },
+  "firstSeen": "1948-11-19T00:00:00Z",
+  "updatedAt": "1948-11-19T00:00:00.000Z"
+ },
+ {
+  "id": "story-drugsfda-1jna30d8l231z",
+  "kind": "approval",
+  "score": 0,
+  "title": "FDA approved Achromycin on 1953-11-19",
+  "itemIds": [
+   "drugsfda-1jna30d8l231z"
+  ],
+  "entities": {
+   "drugs": [
+    "Achromycin",
+    "Tetracycline Hydrochloride"
+   ],
+   "nctIds": [],
+   "sponsors": [
+    "Lederle"
+   ],
+   "conditions": []
+  },
+  "firstSeen": "1953-11-19T00:00:00Z",
+  "updatedAt": "1953-11-19T00:00:00.000Z"
+ },
+ {
+  "id": "story-drugsfda-1m6o38x1cu1cqr",
+  "kind": "approval",
+  "score": 0,
+  "title": "FDA approved Pyrolite on 1976-11-19",
+  "itemIds": [
+   "drugsfda-1m6o38x1cu1cqr"
+  ],
+  "entities": {
+   "drugs": [
+    "Pyrolite",
+    "Technetium Tc-99m Pyro/Trimeta Phosphates Kit"
+   ],
+   "nctIds": [],
+   "sponsors": [
+    "Pharmalucence"
+   ],
+   "conditions": []
+  },
+  "firstSeen": "1976-11-19T00:00:00Z",
+  "updatedAt": "1976-11-19T00:00:00.000Z"
+ },
+ {
+  "id": "story-drugsfda-roynue1uvue5w",
+  "kind": "approval",
+  "score": 0,
+  "title": "FDA approved Pitocin on 1980-11-19",
+  "itemIds": [
+   "drugsfda-roynue1uvue5w"
+  ],
+  "entities": {
+   "drugs": [
+    "Pitocin",
+    "Oxytocin"
+   ],
+   "nctIds": [],
+   "sponsors": [
+    "Ph Health"
+   ],
+   "conditions": []
+  },
+  "firstSeen": "1980-11-19T00:00:00Z",
+  "updatedAt": "1980-11-19T00:00:00.000Z"
+ },
+ {
+  "id": "story-drugsfda-1mtouod1if4j1z",
+  "kind": "approval",
+  "score": 0,
+  "title": "FDA approved Accupril on 1991-11-19",
+  "itemIds": [
+   "drugsfda-1mtouod1if4j1z"
+  ],
+  "entities": {
+   "drugs": [
+    "Accupril",
+    "Quinapril Hydrochloride"
+   ],
+   "nctIds": [],
+   "sponsors": [
+    "Pfizer Pharms"
+   ],
+   "conditions": []
+  },
+  "firstSeen": "1991-11-19T00:00:00Z",
+  "updatedAt": "1991-11-19T00:00:00.000Z"
+ },
+ {
+  "id": "story-drugsfda-1qnq0ki10lrfvs",
+  "kind": "approval",
+  "score": 0,
+  "title": "FDA approved Muse on 1996-11-19",
+  "itemIds": [
+   "drugsfda-1qnq0ki10lrfvs"
+  ],
+  "entities": {
+   "drugs": [
+    "Muse",
+    "Alprostadil"
+   ],
+   "nctIds": [],
+   "sponsors": [
+    "Viatris"
+   ],
+   "conditions": []
+  },
+  "firstSeen": "1996-11-19T00:00:00Z",
+  "updatedAt": "1996-11-19T00:00:00.000Z"
+ },
+ {
+  "id": "story-drugsfda-baojnz1bhafxx",
+  "kind": "approval",
+  "score": 0,
+  "title": "FDA approved Vesicare on 2004-11-19",
+  "itemIds": [
+   "drugsfda-baojnz1bhafxx"
+  ],
+  "entities": {
+   "drugs": [
+    "Vesicare",
+    "Solifenacin Succinate"
+   ],
+   "nctIds": [],
+   "sponsors": [
+    "Astellas"
+   ],
+   "conditions": []
+  },
+  "firstSeen": "2004-11-19T00:00:00Z",
+  "updatedAt": "2004-11-19T00:00:00.000Z"
+ },
+ {
+  "id": "story-drugsfda-19s7rkh1glxk1f",
+  "kind": "approval",
+  "score": 0,
+  "title": "FDA approved Moxeza on 2010-11-19",
+  "itemIds": [
+   "drugsfda-19s7rkh1glxk1f",
+   "drugsfda-bowlsf1l729hx"
+  ],
+  "entities": {
+   "drugs": [
+    "Moxeza",
+    "Moxifloxacin Hydrochloride",
+    "Gablofen",
+    "Baclofen Injection"
+   ],
+   "nctIds": [],
+   "sponsors": [
+    "Harrow Eye",
+    "Piramal Critical"
+   ],
+   "conditions": []
+  },
+  "firstSeen": "2010-11-19T00:00:00Z",
+  "updatedAt": "2010-11-19T00:00:00.000Z"
+ },
+ {
+  "id": "story-drugsfda-1wx1yl2160umus",
+  "kind": "approval",
+  "score": 0,
+  "title": "FDA approved Voxzogo 0.4mg on 2021-11-19",
+  "itemIds": [
+   "drugsfda-1wx1yl2160umus"
+  ],
+  "entities": {
+   "drugs": [
+    "Voxzogo 0.4mg",
+    "Vosoritide"
+   ],
+   "nctIds": [],
+   "sponsors": [
+    "Biomarin Pharm"
+   ],
+   "conditions": []
+  },
+  "firstSeen": "2021-11-19T00:00:00Z",
+  "updatedAt": "2021-11-19T00:00:00.000Z"
+ },
+ {
+  "id": "story-drugsfda-16ceva1ko2wwj",
+  "kind": "approval",
+  "score": 0,
+  "title": "FDA approved Hyrnuo on 2025-11-19",
+  "itemIds": [
+   "drugsfda-16ceva1ko2wwj"
+  ],
+  "entities": {
+   "drugs": [
+    "Hyrnuo",
+    "Sevabertinib"
+   ],
+   "nctIds": [],
+   "sponsors": [
+    "Bayer Healthcare"
+   ],
+   "conditions": []
+  },
+  "firstSeen": "2025-11-19T00:00:00Z",
+  "updatedAt": "2025-11-19T00:00:00.000Z"
+ },
+ {
+  "id": "story-crl-e5sqau15fraqo",
+  "kind": "crl",
+  "score": 0,
+  "title": "Complete response letter: SEIKAGAKU Corporation (BLA 761393)",
+  "itemIds": [
+   "crl-e5sqau15fraqo"
+  ],
+  "entities": {
+   "drugs": [
+    "SI-6603"
+   ],
+   "nctIds": [],
+   "sponsors": [
+    "SEIKAGAKU Corporation"
+   ],
+   "conditions": []
+  },
+  "firstSeen": "2026-09-09T00:00:00Z",
+  "updatedAt": "2026-09-09T00:00:00.000Z"
+ },
+ {
+  "id": "story-fda-j0tv5g1tmzb7a",
+  "kind": "approval",
+  "score": 0,
+  "title": "FDA Approves First Treatment for MCT8 Deficiency",
+  "itemIds": [
+   "fda-j0tv5g1tmzb7a"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [
+    "NCT05579327"
+   ],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-09-28T21:43:18.000Z",
+  "updatedAt": "2026-09-28T21:43:18.000Z"
+ },
+ {
+  "id": "story-fda-yistvfindhrd",
+  "kind": "other",
+  "score": 0,
+  "title": "FDA Investigation Leads to Charges Against Two Indian Nationals Involved in Transnational Counterfeit Drug Distribution Scheme",
+  "itemIds": [
+   "fda-yistvfindhrd"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-09-29T21:01:07.000Z",
+  "updatedAt": "2026-09-29T21:01:07.000Z",
+  "therapyArea": "Neurology"
+ },
+ {
+  "id": "story-fda-wdj8l4h81hbq",
+  "kind": "approval",
+  "score": 0,
+  "title": "FDA Approves First Heart Valve Designed to Grow with Children",
+  "itemIds": [
+   "fda-wdj8l4h81hbq"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-10-01T19:02:08.000Z",
+  "updatedAt": "2026-10-01T19:02:08.000Z",
+  "therapyArea": "Cardiometabolic"
+ },
+ {
+  "id": "story-fda-yx1dlk1x8ab1u",
+  "kind": "other",
+  "score": 0,
+  "title": "FDA Seeks Public Input to Support Ibogaine Research",
+  "itemIds": [
+   "fda-yx1dlk1x8ab1u"
+  ],
+  "entities": {
+   "drugs": [
+    "FDA-2026",
+    "HFA-305"
+   ],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-10-05T13:02:06.000Z",
+  "updatedAt": "2026-10-05T13:02:06.000Z"
+ },
+ {
+  "id": "story-fda-1rbqwrtvqszrj",
+  "kind": "approval",
+  "score": 0,
+  "title": "FDA Approves First Treatment for Certain People With BCG-Unresponsive Bladder Cancer",
+  "itemIds": [
+   "fda-1rbqwrtvqszrj"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [
+    "NCT03022825"
+   ],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-10-14T15:14:51.000Z",
+  "updatedAt": "2026-10-14T15:14:51.000Z",
+  "therapyArea": "Oncology"
+ },
+ {
+  "id": "story-fda-21fdzw1w3ribq",
+  "kind": "other",
+  "score": 0,
+  "title": "FDA Launches the Rare Disease Framework Initiative to Develop a Holistic, Fit-For-Purpose Framework for Rare Disease Drug Development",
+  "itemIds": [
+   "fda-21fdzw1w3ribq"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-10-14T15:50:52.000Z",
+  "updatedAt": "2026-10-14T15:50:52.000Z",
+  "therapyArea": "Rare disease"
+ },
+ {
+  "id": "story-crl-1bf9jdp18n09sz",
+  "kind": "crl",
+  "score": 0,
+  "title": "Complete response letter: Cristcot HCA LLC (NDA 220054)",
+  "itemIds": [
+   "crl-1bf9jdp18n09sz"
+  ],
+  "entities": {
+   "drugs": [
+    "CINC-2015"
+   ],
+   "nctIds": [],
+   "sponsors": [
+    "Cristcot HCA LLC"
+   ],
+   "conditions": []
+  },
+  "firstSeen": "2026-10-19T00:00:00Z",
+  "updatedAt": "2026-10-19T00:00:00.000Z"
+ },
+ {
+  "id": "story-fda-1103bqv1ps7p1p",
+  "kind": "approval",
+  "score": 0,
+  "title": "FDA Approves Immunotherapy That May Allow Certain Patients with Rectal Cancer to Avoid Chemotherapy, Radiation and Surgery",
+  "itemIds": [
+   "fda-1103bqv1ps7p1p"
+  ],
+  "entities": {
+   "drugs": [
+    "dostarlimab"
+   ],
+   "nctIds": [
+    "NCT05723562",
+    "NCT04165772"
+   ],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-10-19T16:19:38.000Z",
+  "updatedAt": "2026-10-19T16:19:38.000Z",
+  "therapyArea": "Oncology"
+ },
+ {
+  "id": "story-fda-4ymubofmt1qi",
+  "kind": "other",
+  "score": 0,
+  "title": "FDA Issues Final Guidance on Prescription Drug Apps and Software",
+  "itemIds": [
+   "fda-4ymubofmt1qi"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-10-20T13:03:14.000Z",
+  "updatedAt": "2026-10-20T13:03:14.000Z"
+ },
+ {
+  "id": "story-fda-1svhp4u1vyosos",
+  "kind": "approval",
+  "score": 0,
+  "title": "FDA Approves Once-Weekly Generic Hormone Therapy Patch for Women",
+  "itemIds": [
+   "fda-1svhp4u1vyosos"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-10-20T15:57:36.000Z",
+  "updatedAt": "2026-10-20T15:57:36.000Z"
+ },
+ {
+  "id": "story-fda-h6s8yj126kxdx",
+  "kind": "approval",
+  "score": 0,
+  "title": "FDA Approves First-of-Its-Kind Chronic Hepatitis B Treatment",
+  "itemIds": [
+   "fda-h6s8yj126kxdx"
+  ],
+  "entities": {
+   "drugs": [
+    "oligonucleotide"
+   ],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-10-20T19:40:38.000Z",
+  "updatedAt": "2026-10-20T19:40:38.000Z",
+  "therapyArea": "Infectious disease"
+ },
+ {
+  "id": "story-fda-4ke5c6z4un24",
+  "kind": "approval",
+  "score": 0,
+  "title": "FDA Approves First Plasmid DNA-based Immunotherapy for Adults with Recurrent Respiratory Papillomatosis",
+  "itemIds": [
+   "fda-4ke5c6z4un24"
+  ],
+  "entities": {
+   "drugs": [
+    "doruxapapogene",
+    "lalikinogene"
+   ],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-10-30T20:32:08.000Z",
+  "updatedAt": "2026-10-30T20:32:08.000Z"
+ },
+ {
+  "id": "story-fda-1wifit8kh9dz",
+  "kind": "other",
+  "score": 0,
+  "title": "FDA Provides Clarity to Support Cell and Gene Therapy Development and Quality",
+  "itemIds": [
+   "fda-1wifit8kh9dz"
+  ],
+  "entities": {
+   "drugs": [],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-02T13:56:06.000Z",
+  "updatedAt": "2026-11-02T13:56:06.000Z"
+ },
+ {
+  "id": "story-fda-1nukn9lprsql3",
+  "kind": "approval",
+  "score": 0,
+  "title": "FDA Grants Accelerated Approval to a New Treatment for Head and Neck Squamous Cell Carcinoma",
+  "itemIds": [
+   "fda-1nukn9lprsql3"
+  ],
+  "entities": {
+   "drugs": [
+    "amivantamab"
+   ],
+   "nctIds": [],
+   "sponsors": [],
+   "conditions": []
+  },
+  "firstSeen": "2026-11-05T22:30:38.000Z",
+  "updatedAt": "2026-11-05T22:30:38.000Z",
+  "therapyArea": "Oncology"
+ }
+]

@@ -1,0 +1,37 @@
+name: ingest
+# Fast sources every 15 minutes, off the top of the hour (GitHub delays runs most at :00).
+on:
+  schedule:
+    - cron: '7,22,37,52 * * * *'
+  workflow_dispatch:
+concurrency:
+  group: ingest
+  cancel-in-progress: false
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      DNBC_CONTACT: ${{ secrets.DNBC_CONTACT }}
+      BLUESKY_HANDLE: ${{ secrets.BLUESKY_HANDLE }}
+      BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+      BUSINESSWIRE_FEEDS: ${{ secrets.BUSINESSWIRE_FEEDS }}
+    steps:
+      # Skip quietly until the DATABASE_URL secret is set (see docs/PLAN.md section 10).
+      - name: secrets set?
+        id: gate
+        run: if [ -n "$DATABASE_URL" ]; then echo "ok=1" >> "$GITHUB_OUTPUT"; else echo "DATABASE_URL secret not set; skipping"; fi
+      - if: steps.gate.outputs.ok == '1'
+        uses: actions/checkout@v4
+      - if: steps.gate.outputs.ok == '1'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - if: steps.gate.outputs.ok == '1'
+        run: npm ci
+      - if: steps.gate.outputs.ok == '1'
+        run: npm run job -- ingest
+      - if: steps.gate.outputs.ok == '1'
+        run: npm run job -- stories
