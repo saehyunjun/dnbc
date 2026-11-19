@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-11-19, Phase 2 (part) and the scheduler
+
+- Template writer `src/lib/pipeline/write-templates.ts`: registrations, FDA releases, CRLs, This Day in Approvals, Catalyst Calendar, and Pipeline Profile (one library segment for each of the top 60 sponsors by active trials).
+- Model writer `src/lib/pipeline/write-model.ts` (AI Gateway, `PIQ_PAID_RUN=1` and a budget cap). Not used: the free tier blocks Claude models, $0 spent. Live and library segments were written by session subagents and saved through `import-segments`, which runs the same check.
+- Check fixes: an item's own date counts and a month-day takes the item's year; "missing" counts as missed.
+- Scheduler `src/lib/pipeline/schedule.ts` and the `schedule` job. Rules in `docs/PLAN.md` section 6. 2026-11-19: 48 wheels from 184 segments, 0% padding, 43% live, 57% library. Playlist saved in Neon.
+- Neon store: upserts drop duplicate ids, a full trials read goes in pages of 5,000, dropped HTTP responses retry twice, and new queries `getTrials({ due })` and `sponsorCounts`.
+- `daily.yml` adds `write-library` and `schedule`.
+- Checks: `npm run check` 0 errors, 0 warnings. `npm test` 81 of 81.
+- Screenshots: none (no UI yet).
+
 ## 2026-11-18, Phase 1: ingest
 
 - Neon free store `dnbc-db` through Vercel Marketplace, linked to Vercel project `dnbc`. `src/lib/store/neon.ts` (tables of id plus jsonb, created on first use). 114,576 CT.gov trials seeded in 110 s.

@@ -151,7 +151,9 @@ export interface GridRow {
 }
 
 export const WEEKDAY: GridRow[] = [
-	{ start: '06:00', end: '09:00', show: 'morning-dose' },
+	// 21:00 to 07:00 cycles reruns and library hours (Aaron 2026-11-18).
+	{ start: '06:00', end: '07:00', show: 'reruns' },
+	{ start: '07:00', end: '09:00', show: 'morning-dose' },
 	{ start: '09:00', end: '10:00', show: 'pipeline-open' },
 	{ start: '10:00', end: '12:00', show: 'trial-desk' },
 	{ start: '12:00', end: '14:00', show: 'deal-desk' },

@@ -78,11 +78,21 @@ export class FileStore implements Store {
 		for (const t of trials) m.set(t.nct, t);
 		this.save('trials');
 	}
-	async getTrials(q: { ncts?: string[]; sponsor?: string } = {}) {
+	async getTrials(q: { ncts?: string[]; sponsor?: string; due?: { from: string; to: string } } = {}) {
 		const m = this.load<Trial>('trials');
 		if (q.ncts) return q.ncts.map((n) => m.get(n)).filter((x): x is Trial => !!x);
-		const all = [...m.values()];
-		return q.sponsor ? all.filter((t) => t.sponsor === q.sponsor) : all;
+		let all = [...m.values()];
+		if (q.due) {
+			const { from, to } = q.due;
+			all = all.filter((t) => t.phase.includes('PHASE3') && t.primaryCompletion?.length === 10 && t.primaryCompletion >= from && t.primaryCompletion <= to);
+		}
+		return q.sponsor !== undefined ? all.filter((t) => t.sponsor === q.sponsor) : all;
+	}
+	async sponsorCounts(limit: number) {
+		const active = new Set(['RECRUITING', 'NOT_YET_RECRUITING', 'ACTIVE_NOT_RECRUITING', 'ENROLLING_BY_INVITATION']);
+		const by = new Map<string, number>();
+		for (const t of this.load<Trial>('trials').values()) if (t.sponsor && active.has(t.status)) by.set(t.sponsor, (by.get(t.sponsor) ?? 0) + 1);
+		return [...by].sort((a, b) => b[1] - a[1]).slice(0, limit).map(([sponsor, n]) => ({ sponsor, n }));
 	}
 	async countTrials() {
 		return this.load<Trial>('trials').size;

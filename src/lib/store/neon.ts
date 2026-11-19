@@ -20,6 +20,11 @@ const SCHEMA = [
 
 const CHUNK = 1500;
 
+/** Last write wins per id: Postgres rejects one upsert that touches a row twice. */
+function unique<T>(xs: T[], key: (x: T) => string): T[] {
+	return [...new Map(xs.map((x) => [key(x), x])).values()];
+}
+
 function chunks<T>(xs: T[], n = CHUNK): T[][] {
 	const out: T[][] = [];
 	for (let i = 0; i < xs.length; i += n) out.push(xs.slice(i, i + n));
@@ -34,8 +39,18 @@ export class NeonStore implements Store {
 		this.sql = neon(url);
 	}
 
-	private q<T = Record<string, unknown>>(text: string, params: unknown[] = []): Promise<T[]> {
-		return this.sql.query(text, params) as Promise<T[]>;
+	/** Neon over HTTP sometimes drops a response ("TypeError: terminated"). Every statement here is
+	 * an idempotent select or upsert, so a dropped one is retried twice. */
+	private async q<T = Record<string, unknown>>(text: string, params: unknown[] = []): Promise<T[]> {
+		for (let attempt = 1; ; attempt++) {
+			try {
+				return (await this.sql.query(text, params)) as T[];
+			} catch (e) {
+				const dropped = e instanceof TypeError || /terminated|fetch failed|ECONNRESET/i.test(String(e));
+				if (!dropped || attempt >= 3) throw e;
+				await new Promise((r) => setTimeout(r, 1000 * attempt));
+			}
+		}
 	}
 
 	private init(): Promise<void> {
@@ -48,7 +63,7 @@ export class NeonStore implements Store {
 	async putItems(items: SourceItem[]) {
 		await this.init();
 		let added = 0;
-		for (const c of chunks(items)) {
+		for (const c of chunks(unique(items, (x) => x.id))) {
 			const rows = await this.q<{ inserted: boolean }>(
 				`insert into items (id, source, fetched_at, published_at, data)
 				 select x->>'id', x->>'source', (x->>'fetchedAt')::timestamptz, nullif(x->>'publishedAt','')::timestamptz, x
@@ -87,7 +102,7 @@ export class NeonStore implements Store {
 
 	async putStories(stories: Story[]) {
 		await this.init();
-		for (const c of chunks(stories)) {
+		for (const c of chunks(unique(stories, (x) => x.id))) {
 			await this.q(
 				`insert into stories (id, updated_at, data)
 				 select x->>'id', (x->>'updatedAt')::timestamptz, x from jsonb_array_elements($1::jsonb) x
@@ -109,7 +124,7 @@ export class NeonStore implements Store {
 
 	async putSegments(segments: Segment[]) {
 		await this.init();
-		for (const c of chunks(segments, 300)) {
+		for (const c of chunks(unique(segments, (x) => x.id), 300)) {
 			await this.q(
 				`insert into segments (id, library, created_at, data)
 				 select x->>'id', (x->>'library')::boolean, (x->>'createdAt')::timestamptz, x from jsonb_array_elements($1::jsonb) x
@@ -158,7 +173,7 @@ export class NeonStore implements Store {
 
 	async putTrials(trials: Trial[]) {
 		await this.init();
-		for (const c of chunks(trials, 2000)) {
+		for (const c of chunks(unique(trials, (x) => x.nct), 2000)) {
 			await this.q(
 				`insert into trials (nct, sponsor, data)
 				 select x->>'nct', coalesce(x->>'sponsor',''), x from jsonb_array_elements($1::jsonb) x
@@ -168,14 +183,45 @@ export class NeonStore implements Store {
 		}
 	}
 
-	async getTrials(q: { ncts?: string[]; sponsor?: string } = {}) {
+	async getTrials(q: { ncts?: string[]; sponsor?: string; due?: { from: string; to: string } } = {}) {
 		await this.init();
+		if (q.due) {
+			const due = await this.q<{ data: Trial }>(
+				`select data from trials where data->>'phase' like '%PHASE3%' and length(data->>'primaryCompletion') = 10
+				 and data->>'primaryCompletion' between $1 and $2`,
+				[q.due.from, q.due.to]
+			);
+			return due.map((r) => r.data);
+		}
 		const rows = q.ncts
 			? await this.q<{ data: Trial }>(`select data from trials where nct = any($1)`, [q.ncts])
 			: q.sponsor !== undefined
 				? await this.q<{ data: Trial }>(`select data from trials where sponsor = $1`, [q.sponsor])
-				: await this.q<{ data: Trial }>(`select data from trials`);
+				: await this.allTrials();
 		return rows.map((r) => r.data);
+	}
+
+	/** The whole table in pages by NCT id: one 50 MB HTTP response gets cut off. */
+	private async allTrials() {
+		const out: { data: Trial }[] = [];
+		let after = '';
+		for (;;) {
+			const page = await this.q<{ nct: string; data: Trial }>(`select nct, data from trials where nct > $1 order by nct limit 5000`, [after]);
+			out.push(...page);
+			if (page.length < 5000) return out;
+			after = page[page.length - 1].nct;
+		}
+	}
+
+	async sponsorCounts(limit: number) {
+		await this.init();
+		const rows = await this.q<{ sponsor: string; n: string }>(
+			`select sponsor, count(*)::text as n from trials
+			 where sponsor <> '' and data->>'status' in ('RECRUITING','NOT_YET_RECRUITING','ACTIVE_NOT_RECRUITING','ENROLLING_BY_INVITATION')
+			 group by sponsor order by count(*) desc limit $1`,
+			[limit]
+		);
+		return rows.map((r) => ({ sponsor: r.sponsor, n: Number(r.n) }));
 	}
 
 	async countTrials() {

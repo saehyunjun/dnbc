@@ -297,7 +297,7 @@ Each phase ends with `npm run check` (0 errors), the headless suite, screenshots
 |---|---|---|---|
 | 0 | Wed 18 | Plan | v3 written. `CLAUDE.md` and `docs/SHOWS.md` written. Neon free limits confirmed. Public GitHub repo created and pushed. Aaron has set the Actions secrets |
 | 1 | Thu 19 | Ingest | 9 automated sources write `SourceItem`s to Neon, and the CT.gov snapshot is seeded. A dry run makes at least 50 stories with entities. The fixture day is frozen. **`ingest.yml` and `daily.yml` run on schedule from Thursday night**, so stories build up before launch. **Status 2026-11-18:** built a day early. 7 of 9 sources live, 180 stories (129 airable), fixture day frozen. The schedule waits on the Actions secrets (section 10). Business Wire and EDGAR not live |
-| 2 | Fri 20 | Write and check | the 5 live formats and 4 library formats. 120 live segments from the fixture day pass the check, and the check catches 15 planted bad segments (one per rule, plus wrong speaker, reversed outcome, and social-only fact). The patient screen drops 5 planted bad quotes. The 30 written-ahead library segments pass. Reddit and LinkedIn files have 20 quotes each |
+| 2 | Fri 20 | Write and check | the 5 live formats and 4 library formats. 120 live segments from the fixture day pass the check, and the check catches 15 planted bad segments (one per rule, plus wrong speaker, reversed outcome, and social-only fact). The patient screen drops 5 planted bad quotes. The 30 written-ahead library segments pass. Reddit and LinkedIn files have 20 quotes each. **Status 2026-11-19:** template writer (pipeline, FDA releases, CRLs, This Day in Approvals, Catalyst Calendar, Pipeline Profile), 10 model-written live segments and 30 written-ahead library segments from session subagents (the AI Gateway free tier blocks Claude models), all through the check. 184 segments in Neon. Scheduler `src/lib/pipeline/schedule.ts` built early from Phase 4: 2026-11-19 is 0% padding, 43% live and 57% library. Patient screen and quote files not done |
 | 3 | Sat 21 | Player | every beat type and format draws at both sizes. Two browsers with clocks set 90 s apart land on the same beat. The ticker, up-next strip, `/schedule`, and kill switch work |
 | 4 | Sun 22 | Schedule and soak | `soak.mjs` on a simulated 24 hours of fixtures finds no empty wheel, no repeat that breaks the live or library rules, and no blocked or failed segment on air. The same check passes on the weekend and holiday grids. `produce.yml` runs on schedule from Sunday morning, and Sunday evening's wheels are watched live. Watch notes are fixed |
 | 5 | Mon 23 | Launch | public at a domain, with a link preview image and a card on PIQHome `/experiments`. Holiday grid set for 26 and 27 November |
@@ -314,6 +314,14 @@ If time runs short, cut in this order: the `pipeline` beat (Pipeline Open and Cl
 - Interviews: the beat before each quote is a statement, not a question. Patient quotes show no username or link. Bluesky quotes show a handle only.
 - Serve: the function sends the 60 s cache header and the server `Date` header.
 - Pages: `/` and `/schedule` load in under 2 s on the preview build.
+
+### Fill rules as built (2026-11-19)
+
+Template segments run about 35 s, not the 2 to 3 minutes the plan assumed, so the fill needs repeats:
+
+- 21:00 to 07:00 ET is reruns and library hours, cycled as often as needed (Aaron 2026-11-18). Morning Dose is 07:00 to 09:00, and 06:00 to 07:00 is reruns.
+- Pass 1: a live segment airs in at most 3 daytime hours. Pass 2, only for a short wheel: up to 6 hours, never in the hour next to one it already airs in. Pass 3: a show with no segments of its kinds takes other live segments under the same rules.
+- Library hours cycle the whole library. A wheel still short after pass 3 cycles the library too, so a library segment can air twice a day.
 
 ## 7. Risks
 
@@ -345,6 +353,8 @@ Voices and sound, avatars or video, viewer polls, accounts, market prices, EMA, 
 
 - Domain.
 - Set the Actions secrets in `saehyunjun/dnbc` (Settings, Secrets and variables, Actions). `DATABASE_URL` is the Neon `DATABASE_URL` in `.env.local` (from `vercel env pull`). `DNBC_CONTACT` is the SEC contact. Optional: `BUSINESSWIRE_FEEDS` (a health feed URL from Business Wire's RSS builder) and `BLUESKY_HANDLE` plus `BLUESKY_APP_PASSWORD`. Until `DATABASE_URL` is set, both workflows start and skip.
+
+- Model writing for live shows. Automated runs need AI Gateway credits beyond the free tier (Claude models return 403 on it) and an `AI_GATEWAY_API_KEY` secret. Until then live shows run on templates plus segments written by session subagents.
 
 ## 11. Review log
 

@@ -35,8 +35,11 @@ export interface Store {
 	putPlaylist(p: Playlist): Promise<void>;
 	getPlaylist(day: string): Promise<Playlist | undefined>;
 	putTrials(trials: Trial[]): Promise<void>;
-	getTrials(q?: { ncts?: string[]; sponsor?: string }): Promise<Trial[]>;
+	/** `due`: Phase 3 trials with a full primary completion date in [from, to]. */
+	getTrials(q?: { ncts?: string[]; sponsor?: string; due?: { from: string; to: string } }): Promise<Trial[]>;
 	countTrials(): Promise<number>;
+	/** Sponsors by number of active trials (recruiting, not yet, active, by invitation), most first. */
+	sponsorCounts(limit: number): Promise<{ sponsor: string; n: number }[]>;
 	getBlocked(): Promise<Blocked[]>;
 	block(id: string, reason: string): Promise<void>;
 	getKV<T = unknown>(key: string): Promise<T | undefined>;

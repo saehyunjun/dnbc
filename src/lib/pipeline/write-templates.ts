@@ -21,7 +21,7 @@ export interface WriteContext {
 	now?: number;
 }
 
-interface Draft {
+export interface Draft {
 	beat: Beat;
 	optional?: boolean;
 }
@@ -81,7 +81,7 @@ export function screenSentences(text: string, max = TIMING.maxWords): string[] {
 		.filter((s) => words(s) >= 6 && words(s) <= max && /[.!?]$/.test(s));
 }
 
-function finish(
+export function finish(
 	story: Story | undefined,
 	drafts: Draft[],
 	meta: { id: string; format: FormatId; title: string; library: boolean; libraryShow?: LibraryShowId; asOf: string },
@@ -294,4 +294,75 @@ export function writeStory(story: Story, ctx: WriteContext): { segment?: Segment
 	if (sources.has('drugsfda')) return writeAnniversary(story, ctx);
 	if (sources.has('fda-press')) return writeFdaRelease(story, ctx);
 	return { dropped: ['no template for this story; needs the model writer'] };
+}
+
+// ---------- Pipeline Profile (library): one sponsor's registry pipeline ----------
+
+const PHASE_ORDER = ['Early Phase 1', 'Phase 1', 'Phase 1/2', 'Phase 2', 'Phase 2/3', 'Phase 3', 'Phase 4'];
+const ACTIVE = new Set(['RECRUITING', 'NOT_YET_RECRUITING', 'ACTIVE_NOT_RECRUITING', 'ENROLLING_BY_INVITATION']);
+
+/** Sponsors with the most active trials, with those trials. */
+export function topSponsors(trials: Trial[], n = 60): Map<string, Trial[]> {
+	const by = new Map<string, Trial[]>();
+	for (const t of trials) {
+		if (!ACTIVE.has(t.status) || !t.sponsor) continue;
+		const list = by.get(t.sponsor) ?? [];
+		list.push(t);
+		by.set(t.sponsor, list);
+	}
+	return new Map([...by].sort((a, b) => b[1].length - a[1].length).slice(0, n));
+}
+
+/** The facts a profile may state, as a primary item the check can read. */
+export function profileItem(sponsor: string, trials: Trial[], now: number): SourceItem {
+	const phases = new Map<string, number>();
+	const areas = new Map<string, number>();
+	for (const t of trials) {
+		const p = phaseOf(t.phase);
+		if (p !== 'early') phases.set(p, (phases.get(p) ?? 0) + 1);
+		const a = therapyArea(t.conditions.join(' '));
+		if (a) areas.set(a, (areas.get(a) ?? 0) + 1);
+	}
+	const p3 = trials.filter((t) => t.phase.includes('PHASE3') && t.start).sort((a, b) => (b.start ?? '').localeCompare(a.start ?? '')).slice(0, 4);
+	const lines = [
+		`${sponsor} has ${trials.length} active industry interventional trials on ClinicalTrials.gov.`,
+		...PHASE_ORDER.filter((p) => phases.has(p)).map((p) => `${p}: ${phases.get(p)} trials.`),
+		...[...areas].sort((a, b) => b[1] - a[1]).slice(0, 4).map(([a, n]) => `${a}: ${n} trials.`),
+		...p3.map((t) => `${t.nct}: ${shortDrug(t.interventions) ?? 'drug'} in ${t.conditions[0] ?? 'unlisted condition'}, Phase 3, start ${t.start}.`)
+	];
+	return {
+		id: `profile-${sponsor.toLowerCase().replace(/\W+/g, '-').slice(0, 50)}-${new Date(now).toISOString().slice(0, 10)}`,
+		source: 'ctgov',
+		tier: 'primary',
+		url: `https://clinicaltrials.gov/search?lead=${encodeURIComponent(sponsor)}`,
+		fetchedAt: new Date(now).toISOString(),
+		publishedAt: new Date(now).toISOString(),
+		title: `${sponsor} pipeline on ClinicalTrials.gov`,
+		text: lines.join('\n'),
+		entities: { drugs: p3.flatMap((t) => t.interventions), sponsors: [sponsor], nctIds: p3.map((t) => t.nct), conditions: p3.flatMap((t) => t.conditions) },
+		kind: 'other',
+		meta: { profile: true, phases: Object.fromEntries(phases), areas: Object.fromEntries(areas) }
+	};
+}
+
+export function writeProfile(it: SourceItem, ctx: WriteContext) {
+	const S = [it.id];
+	const sponsor = it.entities.sponsors[0];
+	const who = shortSponsor(sponsor);
+	const phases = Object.entries((it.meta?.phases ?? {}) as Record<string, number>).map(([phase, count]) => ({ phase, count }));
+	const areas = Object.entries((it.meta?.areas ?? {}) as Record<string, number>).sort((a, b) => b[1] - a[1]).slice(0, 4);
+	const total = /has (\d+) active/.exec(it.text)?.[1];
+	const p3 = [...it.text.matchAll(/^(NCT\d{8}): (.+?) in (.+?), Phase 3, start (\S+)\.$/gm)];
+	const drafts: Draft[] = [
+		{ beat: { type: 'headline', text: `Pipeline Profile: ${who}`, sources: S } },
+		{ beat: { type: 'anchor', who: 'anchor-b', text: `${who} has ${total} active trials of its own on ClinicalTrials.gov. Here is where they sit.`, sources: S } },
+		{ beat: { type: 'pipeline', sponsor: who, phases, sources: S }, optional: true },
+		{ beat: { type: 'list', title: 'Where the trials are', items: areas.map(([a, n]) => `${a}: ${n} trials`), sources: S }, optional: true },
+		{ beat: { type: 'list', title: 'Latest Phase 3 starts', items: p3.map((m) => `${m[2]}, ${clip(m[3], 6) || 'see registry'} (${sayDate(m[4])})`), sources: S }, optional: true },
+		{ beat: { type: 'anchor', who: 'clinician', text: `A registry count shows where a company is spending effort. It says nothing yet about which trials will work.`, sources: S }, optional: true },
+		{ beat: { type: 'anchor', who: 'anchor-b', text: `Source: ClinicalTrials.gov.`, sources: S } }
+	];
+	if (!areas.length) drafts.splice(3, 1);
+	if (!p3.length) drafts.splice(drafts.findIndex((d) => d.beat.type === 'list' && d.beat.title.startsWith('Latest')), 1);
+	return finish(undefined, drafts, { id: `seg-${it.id}`, format: 'explainer', title: `Pipeline Profile: ${who}`, library: true, libraryShow: 'pipeline-profile', asOf: today(ctx.now) }, ctx);
 }

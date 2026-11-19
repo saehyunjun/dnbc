@@ -141,7 +141,8 @@ export type LibraryShowId =
 	| 'catalyst-calendar'
 	| 'patent-cliff'
 	| 'conference'
-	| 'what-if';
+	| 'what-if'
+	| 'pipeline-profile';
 
 export interface Segment {
 	id: string;

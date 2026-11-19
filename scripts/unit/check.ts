@@ -101,5 +101,20 @@ export const checks: [string, () => void][] = [
 		assert.ok(r.ok, r.errors.join(' | '));
 	}],
 	['planted: beat over 40 words', () => fails([{ type: 'anchor', who: 'anchor-a', text: Array(45).fill('word').join(' '), sources: S }], /over 40/)],
-	['planted: no as-of date', () => fails([{ type: 'headline', text: 'Acme news', sources: S }], /as of/, { asOf: '' })]
+	['planted: no as-of date', () => fails([{ type: 'headline', text: 'Acme news', sources: S }], /as of/, { asOf: '' })],
+	['a year-less source date takes the item year; the item date counts for the Source line', () => {
+		const r = run([
+			{ type: 'headline', text: 'Zorbitamab meets its goal', sources: S },
+			{ type: 'anchor', who: 'anchor-a', text: 'Acme reported results on 23 November 2026.', sources: S },
+			{ type: 'anchor', who: 'anchor-b', text: 'Source: Acme Bio, 23 November 2026.', sources: S }
+		]);
+		assert.ok(r.ok, r.errors.join(' | '));
+	}],
+	['"did not meet" of ACM-200 supports "missed" of ACM-200', () => {
+		const r = run([
+			{ type: 'headline', text: 'ACM-200 misses in Phase 2', sources: S },
+			{ type: 'anchor', who: 'anchor-a', text: 'ACM-200 missed its primary endpoint in a Phase 2 study.', sources: S }
+		]);
+		assert.ok(r.ok, r.errors.join(' | '));
+	}]
 ];

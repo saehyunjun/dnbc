@@ -127,7 +127,7 @@ const OUTCOMES: [string, RegExp, RegExp][] = [
 	// [name, how a beat says it, how a source must say it]
 	['approved', /\b(approv(?:ed|es|al))\b/i, /\bapprov/i],
 	['met', /\bmet (?:its|the|both|all)?\s*(?:primary|secondary|co-primary)?\s*(?:end ?points?|goal)\b|\bhit (?:its|the) (?:primary )?end ?point\b/i, /\b(met|achieved|meeting) (?:its |the |both |all )?(?:co-)?(?:primary|secondary|key)?\s*(?:end ?points?|goal|objective)|statistically significant/i],
-	['missed', /\b(missed|failed to meet|did not meet|fell short)\b/i, /\b(did not (?:meet|achieve)|failed to|missed|not statistically significant)\b/i],
+	['missed', /\b(missed|failed to meet|did not meet|fell short)\b/i, /\b(did not (?:meet|achieve)|failed to|missed|missing|not statistically significant)\b/i],
 	['rejected', /\b(rejected|complete response letter|\bCRL\b|turned down)\b/i, /\b(complete response|CRL|not approv|declined to approve)\b/i],
 	['discontinued', /\bdiscontinu/i, /\bdiscontinu|terminat|stop(?:ped|ping) (?:the )?(?:trial|study|development)/i],
 	['halted', /\b(halt(?:ed|s)?|paused|suspended|clinical hold)\b/i, /\b(halt|pause|suspend|clinical hold)/i],
@@ -200,6 +200,16 @@ export function checkSegment(seg: Segment, ctx: CheckContext): CheckResult {
 		// Rule: numbers and dates must be in a cited factual item
 		if (beatDates.size || beatNums.size) {
 			const { keys: srcDates, stripped: srcStripped } = dateKeys(factText);
+			// An item's own date counts, and a month-day without a year takes the item's year.
+			for (const it of factual) {
+				const [y, m, d] = it.publishedAt.slice(0, 10).split('-').map(Number);
+				if (!y) continue;
+				for (const k of [String(y), `${y}-${m}`, `${y}-${m}-${d}`, `${m}-${d}`]) srcDates.add(k);
+				for (const k of [...srcDates]) {
+					const md = /^(\d{1,2})-(\d{1,2})$/.exec(k);
+					if (md) for (const x of [String(y), `${y}-${md[1]}`, `${y}-${md[1]}-${md[2]}`]) srcDates.add(x);
+				}
+			}
 			const srcNums = sourceNumbers(srcStripped);
 			for (const k of srcDates) if (/^\d{4}$/.test(k)) srcNums.add(k);
 			for (const d of beatDates) if (!srcDates.has(d) && !(/^\d{4}$/.test(d) && srcNums.has(d))) err(i, `date "${d}" not in its sources`);
