@@ -171,5 +171,17 @@ export function segmentScope(seg: { title: string; beats: unknown[] }): Conditio
 	return matchScope([seg.title, ...words.filter((x): x is string => typeof x === 'string')].join(' \n '));
 }
 
+/** A stored story is in scope by its `scope` field, or, for stories saved before that field, by `storyScope`. */
+export function storyInScope(story: Story, items?: Map<string, SourceItem>): boolean {
+	return story.scope ? story.scope.length > 0 : storyScope(story, items).length > 0;
+}
+
+/** A segment airs when its story is in scope, or, with no story (library), when its own words name a listed condition or drug. */
+export function segmentInScope(seg: { title: string; beats: unknown[]; scope?: string[] }, story?: Story): boolean {
+	if (seg.scope) return seg.scope.length > 0;
+	if (story && storyInScope(story)) return true;
+	return segmentScope(seg).length > 0;
+}
+
 export const inScope = (cs: Condition[]) => cs.length > 0;
 export const scopeGroups = groups;

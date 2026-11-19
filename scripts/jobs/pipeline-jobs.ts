@@ -1,5 +1,6 @@
 // Pipeline jobs (stories, and later write, check, schedule). Ingest jobs live in registry.ts.
 
+import { itemScope, segmentInScope, storyInScope } from '../../src/lib/channel/scope.ts';
 import type { Job } from './registry.ts';
 import { buildStories, airable } from '../../src/lib/pipeline/stories.ts';
 import { writeStory, writeCatalyst, catalystItem, pickCatalysts, shortDrug, topSponsors, profileItem, writeProfile, type PipelineCounts } from '../../src/lib/pipeline/write-templates.ts';
@@ -31,7 +32,10 @@ export const PIPELINE_JOBS: Record<string, Job> = {
 		const now = Date.now();
 		const since = new Date(now - Number(days ?? 7) * DAY).toISOString();
 		const items = new Map((await store.getItems({ since })).map((i) => [i.id, i]));
-		const stories = (await store.getStories({ since })).filter(airable);
+		// Scope (docs/PLAN.md section 0): only neurology, psychiatry, and brain cancer stories are written.
+		const all = (await store.getStories({ since })).filter(airable);
+		const stories = all.filter((s) => storyInScope(s, items));
+		console.log(`write: ${stories.length} of ${all.length} airable stories in scope`);
 		const pipelines = new Map<string, PipelineCounts[]>();
 		for (const s of stories.filter((x) => x.kind === 'registration')) {
 			const sponsor = s.entities.sponsors[0];
@@ -51,6 +55,7 @@ export const PIPELINE_JOBS: Record<string, Job> = {
 		const days7 = new Set(Array.from({ length: 7 }, (_, k) => new Date(now + k * DAY).toISOString().slice(5, 10)));
 		for (const it of await store.getItems({ source: 'drugsfda' })) {
 			if (!days7.has(String(it.meta?.monthDay ?? ''))) continue;
+			if (!itemScope(it).length) continue; // This Day in Approvals keeps in-scope drugs only
 			items.set(it.id, it);
 			const st = { id: `story-${it.id}`, itemIds: [it.id], kind: it.kind, title: it.title, entities: it.entities, score: 0, firstSeen: it.publishedAt, updatedAt: it.publishedAt };
 			const r = writeStory(st, { items, now });
@@ -159,9 +164,13 @@ export const PIPELINE_JOBS: Record<string, Job> = {
 		const now = Date.now();
 		const days = dayArg && dayArg !== '-' ? [dayArg] : [channelDay(now), addDays(channelDay(now), 1)];
 		const since = new Date(now - 7 * DAY).toISOString();
-		const segments = [...(await store.getSegments({ library: false, since })), ...(await store.getSegments({ library: true }))];
-		const storyIds = [...new Set(segments.map((s) => s.storyId).filter((x): x is string => !!x))];
+		const pool = [...(await store.getSegments({ library: false, since })), ...(await store.getSegments({ library: true }))];
+		const storyIds = [...new Set(pool.map((s) => s.storyId).filter((x): x is string => !!x))];
 		const stories = storyIds.length ? await store.getStories({ ids: storyIds }) : [];
+		// Scope (docs/PLAN.md section 0): out-of-scope segments stay in the store but never air.
+		const storyById = new Map(stories.map((s) => [s.id, s]));
+		const segments = pool.filter((g) => segmentInScope(g, g.storyId ? storyById.get(g.storyId) : undefined));
+		console.log(`schedule: ${segments.length} of ${pool.length} segments in scope`);
 		for (const day of days) {
 			const prev = await store.getPlaylist(day);
 			const { playlist, stats } = buildPlaylist(day, {
