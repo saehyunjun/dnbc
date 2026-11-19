@@ -144,6 +144,20 @@ export type LibraryShowId =
 	| 'what-if'
 	| 'pipeline-profile';
 
+/** One footnote. Beats cite by item id; the player numbers footnotes in `Segment.citations` order. */
+export interface Citation {
+	/** The SourceItem id that beats list in `sources`. */
+	id: string;
+	/** Publisher or registry, e.g. "PR Newswire", "ClinicalTrials.gov", "FDA". */
+	label: string;
+	/** Item title, short. */
+	title?: string;
+	/** YYYY-MM-DD. */
+	date?: string;
+	/** Empty for Reddit (no links). */
+	url?: string;
+}
+
 export interface Segment {
 	id: string;
 	storyId?: string;
@@ -158,6 +172,8 @@ export interface Segment {
 	/** Sum of beat durations, seconds. */
 	duration: number;
 	forwardLooking?: boolean;
+	/** Footnotes for every item the beats cite, in first-cited order. Sources are never spoken lines. */
+	citations?: Citation[];
 }
 
 export type ShowId =

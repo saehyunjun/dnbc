@@ -6,6 +6,7 @@
 import type { Beat, CastId, FormatId, LibraryShowId, Segment, SourceItem, Story } from '../types';
 import type { Trial } from '../store/index';
 import { applyTiming, TIMING } from '../channel/timing';
+import { citationsFor, isSourceLine } from './citations';
 import { checkSegment, fold } from './check';
 import { therapyArea } from './stories';
 
@@ -87,13 +88,15 @@ export function finish(
 	meta: { id: string; format: FormatId; title: string; library: boolean; libraryShow?: LibraryShowId; asOf: string },
 	ctx: WriteContext
 ): { segment?: Segment; dropped: string[] } {
-	let keep = drafts.slice();
+	// Sources are footnotes, never spoken lines.
+	let keep = drafts.filter((d) => !isSourceLine(d.beat));
 	const dropped: string[] = [];
 	for (let pass = 0; pass < 3; pass++) {
 		const seg: Segment = { ...meta, storyId: story?.id, beats: keep.map((d) => d.beat), createdAt: new Date(ctx.now ?? Date.now()).toISOString(), duration: 0 };
 		const r = checkSegment(seg, { items: ctx.items, story, now: ctx.now });
 		if (r.ok) {
 			seg.duration = applyTiming(seg.beats);
+			seg.citations = citationsFor(seg.beats, ctx.items);
 			return { segment: seg, dropped };
 		}
 		const bad = new Set(r.errors.map((e) => Number(/^beat (\d+)/.exec(e)?.[1])).filter((n) => !Number.isNaN(n)));
@@ -154,7 +157,6 @@ export function writeRegistration(story: Story, ctx: WriteContext) {
 			optional: true
 		});
 	if (done && future) drafts.push({ beat: { type: 'anchor', who: lead, text: `The registry lists primary completion for ${sayDate(done)}.`, sources: S }, optional: true });
-	drafts.push({ beat: { type: 'anchor', who: 'anchor-b', text: `Source: ClinicalTrials.gov, ${nct}.`, sources: S } });
 
 	return finish(story, drafts, { id: `seg-reg-${nct}`, format: 'pipeline', title: headline, library: false, asOf: today(ctx.now) }, ctx);
 }
@@ -174,7 +176,6 @@ export function writeFdaRelease(story: Story, ctx: WriteContext) {
 		{ beat: { type: 'anchor', who: 'anchor-a', text: lines[0], sources: S } }
 	];
 	for (const l of lines.slice(1, 3)) drafts.push({ beat: { type: 'anchor', who: 'anchor-b', text: l, sources: S }, optional: true });
-	drafts.push({ beat: { type: 'anchor', who: 'anchor-a', text: `Source: FDA press release, ${sayDate(date)}.`, sources: S } });
 	return finish(story, drafts, { id: `seg-fda-${it.id}`, format: 'headlines', title: it.title, library: false, asOf: today(ctx.now) }, ctx);
 }
 
@@ -194,7 +195,6 @@ export function writeCrl(story: Story, ctx: WriteContext) {
 		{ beat: { type: 'anchor', who: 'anchor-a', text: `A complete response letter, or CRL, is the FDA's letter saying it can't approve an application yet.`, sources: S } },
 		{ beat: { type: 'anchor', who: 'anchor-a', text: `The FDA published the letter to ${who}${app ? ` on ${app}` : ''}.`, sources: S } },
 		{ beat: { type: 'anchor', who: 'skeptic', text: `A CRL lists what the FDA needs before it will look again. Some are fixed in months, some never.`, sources: S }, optional: true },
-		{ beat: { type: 'anchor', who: 'anchor-b', text: `Source: FDA's published complete response letters.`, sources: S } }
 	];
 	return finish(story, drafts, { id: `seg-crl-${it.id}`, format: 'headlines', title: headline, library: false, asOf: today(ctx.now) }, ctx);
 }
@@ -217,7 +217,6 @@ export function writeAnniversary(story: Story, ctx: WriteContext) {
 		{ beat: { type: 'headline', text: `On this day in ${year}`, sources: S } },
 		{ beat: { type: 'stat', value: name, label: `approved by the FDA on ${sayDate(date)}${generic && generic.toLowerCase() !== name.toLowerCase() ? `, generic name ${generic.toLowerCase()}` : ''}`, sources: S } },
 		{ beat: { type: 'anchor', who: 'professor', text: `The ${kind} application${app ? `, ${app},` : ''} is held today by ${who || 'its sponsor'}.`, sources: S }, optional: true },
-		{ beat: { type: 'anchor', who: 'professor', text: `Source: Drugs@FDA.`, sources: S } }
 	];
 	return finish(story, drafts, { id: `seg-day-${it.id}`, format: 'day-in-approvals', title: `${name}, ${year}`, library: true, libraryShow: 'this-day', asOf: today(ctx.now) }, ctx);
 }
@@ -279,7 +278,6 @@ export function writeCatalyst(area: string, it: SourceItem, trials: Trial[], ctx
 		{ beat: { type: 'anchor', who: 'anchor-b', text: `These Phase 3 trials list primary completion in the next 30 days. Results usually follow months later.`, sources: S } },
 		{ beat: { type: 'list', title: `${area}, Phase 3, primary completion`, items, sources: S } },
 		{ beat: { type: 'anchor', who: 'skeptic', text: `Completion dates on the registry slip often. Treat them as a sponsor's plan, not a promise.`, sources: S }, optional: true },
-		{ beat: { type: 'anchor', who: 'anchor-b', text: `Source: ClinicalTrials.gov.`, sources: S } }
 	];
 	const story: Story = { id: `story-${it.id}`, itemIds: [it.id], kind: 'other', title: it.title, entities: it.entities, score: 0, firstSeen: it.publishedAt, updatedAt: it.publishedAt, therapyArea: area };
 	return finish(story, drafts, { id: `seg-${it.id}`, format: 'catalyst', title: `Catalyst Calendar: ${area}`, library: true, libraryShow: 'catalyst-calendar', asOf: today(ctx.now) }, ctx);
@@ -360,7 +358,6 @@ export function writeProfile(it: SourceItem, ctx: WriteContext) {
 		{ beat: { type: 'list', title: 'Where the trials are', items: areas.map(([a, n]) => `${a}: ${n} trials`), sources: S }, optional: true },
 		{ beat: { type: 'list', title: 'Latest Phase 3 starts', items: p3.map((m) => `${m[2]}, ${clip(m[3], 6) || 'see registry'} (${sayDate(m[4])})`), sources: S }, optional: true },
 		{ beat: { type: 'anchor', who: 'clinician', text: `A registry count shows where a company is spending effort. It says nothing yet about which trials will work.`, sources: S }, optional: true },
-		{ beat: { type: 'anchor', who: 'anchor-b', text: `Source: ClinicalTrials.gov.`, sources: S } }
 	];
 	if (!areas.length) drafts.splice(3, 1);
 	if (!p3.length) drafts.splice(drafts.findIndex((d) => d.beat.type === 'list' && d.beat.title.startsWith('Latest')), 1);

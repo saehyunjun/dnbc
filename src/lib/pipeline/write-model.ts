@@ -49,7 +49,7 @@ Rules, all strict:
 - A quote beat copies whole sentences verbatim from one source, with the speaker named in that source near the quote. Put "name" and "role" as the source gives them. The beat before a quote is an anchor statement naming where the quote came from, ending with a colon. Never a question. Never present a quote as an answer to us.
 - No invented words for any real person.
 - Cast ids: anchor-a (fact-first anchor), anchor-b (calm anchor), clinician (reads design: endpoints, controls, size), skeptic (what could go wrong, no sneering).
-- The last beat is an anchor line ending "Source: <publisher>, <date as D Month YYYY>."
+- Never write a "Source:" line or name the source as something a cast member says. Sources show as footnotes from each beat's "sources" ids.
 
 Beat shapes:
 {"type":"headline","text":"..."} (under 12 words)

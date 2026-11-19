@@ -6,6 +6,7 @@ import { writeStory, writeCatalyst, catalystItem, pickCatalysts, shortDrug, topS
 import { writeWithModel, checkWritten, assertPaidRun, Budget, WRITER_MODEL } from '../../src/lib/pipeline/write-model.ts';
 import { applyTiming } from '../../src/lib/channel/timing.ts';
 import { pipelineOf } from '../../src/lib/ingest/ctgov.ts';
+import { citationsFor, isSourceLine } from '../../src/lib/pipeline/citations.ts';
 import { buildPlaylist } from '../../src/lib/pipeline/schedule.ts';
 import { channelDay } from '../../src/lib/channel/time.ts';
 import type { Segment, SourceItem } from '../../src/lib/types.ts';
@@ -132,6 +133,24 @@ export const PIPELINE_JOBS: Record<string, Job> = {
 		}
 		await store.putItems(items);
 		await store.putSegments(out);
+	},
+
+	/** One-off migration: stored segments lose their spoken "Source:" lines and gain footnotes. */
+	cite: async (store, [dry]) => {
+		const segs = await store.getSegments();
+		const ids = [...new Set(segs.flatMap((s) => s.beats.flatMap((b) => b.sources ?? [])))];
+		const items = new Map((await store.getItems({ ids })).map((i) => [i.id, i]));
+		let stripped = 0;
+		for (const s of segs) {
+			const before = s.beats.length;
+			s.beats = s.beats.filter((b) => !isSourceLine(b));
+			stripped += before - s.beats.length;
+			s.duration = applyTiming(s.beats);
+			s.citations = citationsFor(s.beats, items);
+		}
+		const none = segs.filter((s) => !s.citations?.length).length;
+		console.log(`cite: ${segs.length} segments, ${stripped} source lines removed, ${none} with no citation`);
+		if (dry !== 'dry') await store.putSegments(segs);
 	},
 
 	/** Build a channel day's playlist (default: today in ET). `dry` prints the fill without saving. */
